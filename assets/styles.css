@@ -168,11 +168,22 @@ body {
 .option {
   display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: 1px solid var(--border); border-radius: var(--radius-sm); cursor: pointer; background: transparent;
   transition: background var(--speed-mid) var(--easing), transform var(--speed-fast) var(--easing), border-color var(--speed-mid) var(--easing), box-shadow var(--speed-mid) var(--easing);
+  -webkit-tap-highlight-color: transparent;
 }
 .option input { transform: scale(1.15); }
-.option:hover { background: rgba(var(--tint), 0.15); }
+@media (hover: hover) and (pointer: fine) {
+  .option:hover { background: rgba(var(--tint), 0.15); }
+}
+@media (hover: none) {
+  .option:hover { background: transparent; }
+}
 .option:active { transform: scale(0.995); }
-.option:focus-within { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--tint), 0.25); }
+/* Keyboard-only focus highlight (no highlight from programmatic focus or touch) */
+@supports selector(:has(*)) {
+  .kbd-nav .option:has(input:focus-visible) { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(var(--tint), 0.25); }
+}
+/* Fallback: visible outline on the input itself when using keyboard */
+.option input:focus-visible { outline: 2px solid rgba(var(--tint), 0.45); outline-offset: 2px; border-radius: 4px; }
 
 .feedback { margin-top: 10px; font-weight: 700; text-align: center; opacity: 0; transform: translateY(4px); transition: opacity var(--speed-mid) var(--easing), transform var(--speed-mid) var(--easing); }
 .feedback.show { opacity: 1; transform: translateY(0); }

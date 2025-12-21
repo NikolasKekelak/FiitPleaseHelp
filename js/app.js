@@ -8,6 +8,20 @@ const rapidMode = true;
 let waitingForTap = false;
 let tapCleanup = null;
 
+// Keyboard navigation detection for focus-visible styling only when using keyboard
+(function initKbdNavDetection() {
+  const root = document.documentElement;
+  const add = () => root.classList.add('kbd-nav');
+  const remove = () => root.classList.remove('kbd-nav');
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Tab' || (typeof e.key === 'string' && e.key.startsWith('Arrow'))) add();
+  }, { capture: true });
+  // Any pointer/touch interaction disables keyboard-focused styling
+  document.addEventListener('mousedown', remove, { capture: true });
+  document.addEventListener('pointerdown', remove, { capture: true });
+  document.addEventListener('touchstart', remove, { capture: true, passive: true });
+})();
+
 const els = {
   screens: {
     course: document.getElementById('screen-course'),
