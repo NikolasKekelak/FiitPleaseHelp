@@ -29,6 +29,7 @@ const els = {
   backToCourseBtn: document.getElementById('backToCourseBtn'),
   // theme
   themeToggle: document.getElementById('themeToggle'),
+  paletteSelect: document.getElementById('paletteSelect'),
 
   // quiz
   progressText: document.getElementById('progressText'),
@@ -79,6 +80,11 @@ function setTheme(dark) {
   document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
 }
 
+function setPalette(name) {
+  const value = name || 'cozy';
+  document.documentElement.setAttribute('data-palette', value);
+}
+
 function initTheme() {
   const saved = localStorage.getItem('mq_theme');
   const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -90,6 +96,18 @@ function initTheme() {
     setTheme(d);
     localStorage.setItem('mq_theme', d ? 'dark' : 'light');
   });
+
+  // Initialize color palette (persist per-device)
+  const savedPal = localStorage.getItem('mq_palette') || 'cozy';
+  setPalette(savedPal);
+  if (els.paletteSelect) {
+    els.paletteSelect.value = savedPal;
+    els.paletteSelect.addEventListener('change', () => {
+      const p = els.paletteSelect.value || 'cozy';
+      setPalette(p);
+      localStorage.setItem('mq_palette', p);
+    });
+  }
 }
 
 async function initCourseScreen() {
@@ -214,23 +232,57 @@ function displayResult(result, q) {
 function attachTapToContinueOnce() {
   if (waitingForTap) return;
   waitingForTap = true;
-  const handler = () => {
+
+  const installClickShield = (duration = 280) => {
+    const swallow = (ev) => {
+      ev.preventDefault();
+      ev.stopPropagation();
+      if (typeof ev.stopImmediatePropagation === 'function') ev.stopImmediatePropagation();
+    };
+    const cap = true; // use capture phase and match with boolean for removal
+    window.addEventListener('click', swallow, { capture: true });
+    window.addEventListener('pointerdown', swallow, { capture: true });
+    window.addEventListener('mousedown', swallow, { capture: true });
+    window.addEventListener('touchstart', swallow, { capture: true, passive: false });
+    setTimeout(() => {
+      window.removeEventListener('click', swallow, cap);
+      window.removeEventListener('pointerdown', swallow, cap);
+      window.removeEventListener('mousedown', swallow, cap);
+      window.removeEventListener('touchstart', swallow, cap);
+    }, duration);
+  };
+
+  const handler = (e) => {
     if (!waitingForTap) return;
     waitingForTap = false;
+    if (e) {
+      // consume this event so it doesn't activate an option on the next screen
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
+    }
     if (tapCleanup) { tapCleanup(); tapCleanup = null; }
+    // Blur any active element to avoid :focus-within highlight carry-over
+    if (document.activeElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
+    // Advance
     onNext();
+    // Install a short shield to swallow any late click/tap events on some mobile browsers
+    installClickShield(280);
   };
+
   const keyHandler = (e) => {
     if (!waitingForTap) return;
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
-      handler();
+      handler(e);
     }
   };
   // Defer attaching click listeners to avoid catching the same click that selected the answer
   setTimeout(() => {
-    document.body.addEventListener('click', handler, { once: true });
-    document.body.addEventListener('touchstart', handler, { once: true, passive: true });
+    document.body.addEventListener('click', handler, { once: true, capture: true });
+    document.body.addEventListener('touchstart', handler, { once: true, passive: false, capture: true });
     document.addEventListener('keydown', keyHandler);
     tapCleanup = () => {
       document.removeEventListener('keydown', keyHandler);

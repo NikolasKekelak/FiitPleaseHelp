@@ -10,11 +10,23 @@
   <header class="app-header">
     <h1>Mastery Quiz</h1>
     <div class="theme-toggle">
-      <label class="switch">
-        <input id="themeToggle" type="checkbox" />
-        <span class="slider"></span>
-      </label>
-      <span class="toggle-label">Dark</span>
+      <div class="toggle-group">
+        <label class="switch" title="Toggle dark mode">
+          <input id="themeToggle" type="checkbox" />
+          <span class="slider"></span>
+        </label>
+        <span class="toggle-label">Dark</span>
+      </div>
+      <div class="palette-group">
+        <label for="paletteSelect" class="toggle-label">Palette</label>
+        <select id="paletteSelect" class="palette-select">
+          <option value="cozy">Cozy</option>
+          <option value="ocean">Ocean</option>
+          <option value="forest">Forest</option>
+          <option value="plum">Plum</option>
+          <option value="solar">Solar</option>
+        </select>
+      </div>
     </div>
   </header>
 
