@@ -151,6 +151,9 @@ body {
   border-color: transparent;
 }
 
+/* Dark mode: ensure readable text on light button backgrounds without affecting primary or subtle buttons */
+[data-theme="dark"] .btn:not(.primary):not(.subtle) { color: #121314; }
+
 .btn.subtle { background: transparent; }
 
 .hint { color: var(--muted); font-size: 13px; text-align: center; }
