@@ -1,0 +1,228 @@
+{
+  "topic_id": "basics",
+  "topic_name": "Základne pojmy",
+  "questions": [
+    {
+      "id": "pcos",
+      "type": "mc_single",
+      "question": "Ktorý OS, je určený pre bežného použivateľa",
+      "explanation": "PC OS, Bežný OS, ktorý nájdeme v PC. Zväčša určený pre jedného používateľa\nvykonáva úlohy bežnej potreby. V súčasnosti takýto OS beží na\nmnohojadrových procesoroch.",
+      "options": [
+        "PC OS",
+        "Real-Time OS",
+        "Embedded OS",
+        "Server OS"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "pcserveros",
+      "type": "mc_single",
+      "question": "Aký je rozdiel medzi Server OS a  PC OS?",
+      "explanation": "Rozdiely medzi Server OS a PC OS sa prakticky zužujú na špecifické nastavenia jadra operačného systému. (P2 - Klasifikácia OS)",
+      "options": [
+        "Minimálny",
+        "Drasticky sa ľíšia"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "rtos",
+      "type": "mc_single",
+      "question": "Pri návrhu systému, ktorý musí okamžite reagovať na nebezpečné situácie, ktorý typ operačného systému je najvhodnejší?",
+      "explanation": "Pokiaľ ide o život, tak pravdepodobne potrebujeme systém, ktorí dáva odozvu takmer okamžite.",
+      "options": [
+        "Real-Time OS",
+        "PC - OS",
+        "Embedded OS",
+        "Server OS"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "susicka",
+      "type": "mc_single",
+      "question": "Kebyže chcem použiť OS pre sušičku. Ktorí by bol najvhodnejší?",
+      "explanation": "Embdedded OS je určený na riadenie výpočtových systémov, bez priameho zásahu\npoužívateľa. Nasadzuje sa do menších prístrojov dennej potreby ako je\npráčka, sušička. Na druhú stranu existujú vnorené systémy, ktoré riadia\nvýrobný proces ako je napríklad v pivovare, vysokých peciach. (P2 - Klasifikácia OS)",
+      "options": [
+        "Server OS",
+        "Embedded OS",
+        "Multiprocessor OS",
+        "PC - OS",
+        "Mainframe OS"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "multiprocessor",
+      "type": "mc_single",
+      "question": "Mám serverovňu, kde budú na všetkých súčasne prebiehať výpočty počasia, ktorý OS by bolo najvhodnejšie použiť?",
+      "explanation": "Multiprocessor OS - Je OS určený predovšetkým pre výpočtové systémy, ktoré sú vybavené\nmnožstvom procesorov združených do tzv. Clusters. Nasadzujú sa na\nvýpočtovo náročné úlohy ako je počítanie matematických problémov\nprípadne predpovedí počasia. (P2 - Klasifikacia OS)",
+      "options": [
+        "Multipocessor OS",
+        "Server OS",
+        "Embedded OS",
+        "PC - OS"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "trap",
+      "type": "mc_single",
+      "question": "Pomocou akej inštrukcie prechádzam medzi CPU režimami?",
+      "explanation": "Prechod medzi menej a viac privilegovaným režimom je možný len pomocou špeciálnej\ninštrukcie (TRAP). Táto inštrukcia je súčasťou systémového volania OS. (P2 - 31)",
+      "options": [
+        "TRAP",
+        "KERNEL",
+        "CHANGE",
+        "PRIVLAGE",
+        "KERNELMODE/USERMODE"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "hyprthreadpro",
+      "type": "mc_single",
+      "question": "Aká je hlavná výhoda hyperthreadingu?",
+      "explanation": "Moderné procesory podporujú uloženie kontextov dvoch vlákien naraz.\nVždy sa vykonáva práve jedno vlákno. Výhoda je, že v prípade ak jedno\nvlákno je blokované, tak v jednotkách ns je možné prepnúť kontext\nspracovania na druhé vlákno. Je to výrazná úspora času pretože bežné. (P2 - 32)\nprepnutie môže trvať rádovo dlhšie.",
+      "options": [
+        "Rýchle prepnutie na druhé vlákno pri blokovaní prvého",
+        "Súčasné vykonávanie dvoch vlákien na jednom jadre",
+        "Zvýšenie frekvencie procesora",
+        "Zníženie spotreby energie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "singlethread",
+      "type": "mc_single",
+      "question": "Koľko vlákien je v jednom okamihu reálne vykonávaných na jednom jadre pri hyperthreadingu?",
+      "explanation": "Moderné procesory podporujú uloženie kontextov dvoch vlákien naraz.\nVždy sa vykonáva práve jedno vlákno. (P2 - 32)",
+      "options": [
+        "Jedno",
+        "Dve",
+        "Závisí od OS",
+        "Závisí od plánovača"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "neghyper",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o hyperthreadingu je NEPRAVDIVÉ?",
+      "explanation": "Moderné procesory podporujú uloženie kontextov dvoch vlákien naraz.\nVždy sa vykonáva práve jedno vlákno. Výhoda je, že v prípade ak jedno\nvlákno je blokované, tak v jednotkách ns je možné prepnúť kontext\nspracovania na druhé vlákno. Je to výrazná úspora času pretože bežné\nprepnutie môže trvať rádovo dlhšie. (P2 - 32)",
+      "options": [
+        "Obe vlákna sa vykonávajú súčasne v rovnakom čase",
+        "Procesor má uložené kontexty viacerých vlákien",
+        "Prepnutie medzi vláknami je veľmi rýchle",
+        "Hyperthreading pomáha skrývať latencie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "processcancelation",
+      "type": "mc_single",
+      "question": "Prečo bol do procesora zavedený mechanizmus prerušenia?",
+      "explanation": "Prerušovací podsystém\nProcesor vykonáva prácu sekvenčne. Na to aby bolo možné vykonávať\nprácu viacerých úloh bol do CPU zavedený mechanizmus prerušenia\npráce. Prerušenie CPU spôsobí, že register PC je prepísaný novou\nadresou, z ktorej je prečítaná prvá inštrukcia. Obyčajne na tejto adrese je\nuložený prerušovací podprogram OS, ktorý zabezpečí správne odloženie\nkontextu prerušenej úlohy a následné spracovanie prerušenia.\r (P2 - 35)",
+      "options": [
+        "Aby bolo možné vykonávať prácu viacerých úloh",
+        "Aby procesor vykonával viac inštrukcií naraz",
+        "Na zvýšenie frekvencie CPU",
+        "Na zníženie spotreby energie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "processcancelation2",
+      "type": "mc_single",
+      "question": "Aká je hlavná úloha prerušovacieho podprogramu operačného systému?",
+      "explanation": "Prerušovací podsystém\nProcesor vykonáva prácu sekvenčne. Na to aby bolo možné vykonávať\nprácu viacerých úloh bol do CPU zavedený mechanizmus prerušenia\npráce. Prerušenie CPU spôsobí, že register PC je prepísaný novou\nadresou, z ktorej je prečítaná prvá inštrukcia. Obyčajne na tejto adrese je\nuložený prerušovací podprogram OS, ktorý zabezpečí správne odloženie\nkontextu prerušenej úlohy a následné spracovanie prerušenia. (P2 -35)",
+      "options": [
+        "Uložiť kontext prerušenej úlohy a spracovať prerušenie",
+        "Zvýšiť výkon procesora",
+        "Paralelne vykonať viac inštrukcií",
+        "Zmeniť plánovač procesov"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "memorycapacity",
+      "type": "mc_single",
+      "question": "Pamäť delíme na 4 úrovňe, ktorá možnosť ich zoradí podľa kapacity VZOSTUPNE?",
+      "explanation": "P2 - 38",
+      "options": [
+        "Registers - Cache - Main Memory - Disk",
+        "Disk - Main Memory - Cache - Registers",
+        "Main Memory - Cache - Registers - Disk",
+        "Cache - Registers - Disk - Main Memory"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "memorytime",
+      "type": "mc_single",
+      "question": "Pamäť delíme na 4 úrovňe, ktorá možnosť ich zoradí podľa doby prístupu ZOSTUPNE?",
+      "explanation": "P2 - 38",
+      "options": [
+        "Disk - Main Memory - Cache - Registers",
+        "Registers - Cache - Main Memory - Disk",
+        "Cache - Main Memory - Disk - Registers",
+        "Main Memory - Disk - Registers - Cache"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "negregisters",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o Registroch je PRAVDIVÉ?",
+      "explanation": "Priama súčasť jadra procesora.\nOkamžitý prístup k dátam.\nVysoká cena - obmedzené množstvo registrov.\nObsadenie registrov riadi kompilátor.\r\n(P2 - 39)",
+      "options": [
+        "Ani jedno",
+        "Nachádzaju sa v Main Memory (RAM)",
+        "Troška pomalši, ale stále rýhly prístup k dátam",
+        "Lacné, su malé. Môžem ich mať veľa",
+        "Obsadenie registrov riadi HW, keďže SW nevie predpovedať obsadenie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "negcache",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o CACHE je pravdivé?",
+      "explanation": "Pridružená veľmi rýchla pamäť.\nNa procesoroch je bežné mať niekoľko úrovní takejto pamäte.\nV Cache sa ukladajú tie najčastejšie používané časti dát a\nprogramov.\nVo väčšine prípadov je Cache riadená výlučne HW.\nRozdelená na tzv. Cache Lines alebo Blocks\n(P2 - 40)",
+      "options": [
+        "Bežne sa delí do viacerých úrovní (napr. L1 a L2)",
+        "V CACHE sa ukladajú málo použivané dáta a kusy programov",
+        "CACHE je výlučne riadená SW",
+        "Je veľmi pomalá, jej prístupová doba je rovnaká ako pre DISK"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "cache2",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o CACHE je pravdivé?",
+      "explanation": "L1 Cache\nDosahuje rýchlosť prístupu prakticky totožnú ako ku registrom. Jej\nveľkosť v procesore dosahuje zhruba 256kB pričom je rozdelená na pamäť\nprogramu a pamäť dát.\nL2 Cache\nDosahuje rýchlosť prístupu 1-2 cykly procesora. Jej veľkosť v procesore\ndosahuje zhruba 8MB zvyčajne sa používa len na odloženie dát.\nCache Hit a Cache Miss\nCPU udržuje asociatívnu pamäť odložených Cache Lines. CPU pri\nprístupe k dátam konzultuje túto pamäť. Ak existuje záznam v Cache\nmáme tzv. Cache Hit. V prípade, že dáta nie sú v Cache, procesor musí\npristúpiť do hlavnej pamäte. V takom prípade hovoríme o Cache Miss.\r\n\n(P2-41)",
+      "options": [
+        "Ak existuje záznam v Cache máme tzv. Cache Hit",
+        "L1 CACHE je spravidla väčšia ako L2 CACHE",
+        "Doba prístupu do L2 Cache je vždy totožná s dobou prístupu k registrom",
+        "V prípade, že dáta nie sú v Cache, procesor musí pristúpiť do hlavnej pamäte. V takom prípade hovoríme o Cache Hit"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "RAM",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o Main Memory (RAM), je nepravdivé?",
+      "explanation": "V súčasnosti dosahuje veľkosti presahujúce 8 GB.\nPripojená k CPU prostredníctvom samostatnej zbernice.\nPrístupová doba rádovo väčšia ako pri Cache\n\n(P2 - 43)",
+      "options": [
+        "Prístupová doba rádovo menšia ako pri Cache",
+        "V súčasnosti dosahuje veľkosti presahujúce 8 GB.",
+        "Pripojená k CPU prostredníctvom samostatnej zbernice.",
+        "Pokiaľ není dostatočné miesto na DISKU na RAMke sa vytvorí virtuálna pamäť"
+      ],
+      "correct": 0
+    }
+  ]
+}

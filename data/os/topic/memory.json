@@ -1,0 +1,72 @@
+{
+  "topic_id": "memory",
+  "topic_name": "Pamäť a správa pamäte",
+  "questions": [
+    {
+      "id": "mem_tf_vm",
+      "type": "true_false",
+      "question": "Virtuálna pamäť umožňuje procesom používať väčší adresný priestor, než je fyzická pamäť.",
+      "correct": true,
+      "explanation": "Virtuálna pamäť mapuje virtuálne adresy procesov na fyzické rámce, čím umožňuje ilúziu veľkého súvislého priestoru.",
+      "image": "memory/vm_concept.png"
+    },
+    {
+      "id": "mem_mc_single_pagefault",
+      "type": "mc_single",
+      "question": "Čo sa stane pri page fault-e?",
+      "options": [
+        "CPU vyčistí TLB a pokračuje",
+        "OS načíta požadovanú stránku z disku do pamäte",
+        "Proces sa navždy ukončí",
+        "Cache sa resetuje"
+      ],
+      "correct": 1,
+      "explanation": "Page fault vyvolá obsluhu v OS, ktorá načíta chýbajúcu stránku z diskového úložiska do RAM a aktualizuje tabuľky stránok."
+    },
+    {
+      "id": "mem_mc_multi_alloc",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o alokácii pamäte sú pravdivé?",
+      "options": [
+        "Buddy allocátor delí bloky na polovice",
+        "Slab allocátor je vhodný pre objekty fixnej veľkosti",
+        "First-fit vždy nájde optimálne riešenie",
+        "Best-fit minimalizuje fragmentáciu v každom prípade"
+      ],
+      "correct": [
+        0,
+        1
+      ],
+      "explanation": "Buddy aj slab sú bežné techniky. First-fit ani best-fit negarantujú optimálne riešenia; best-fit dokonca môže zhoršiť fragmentáciu."
+    },
+    {
+      "id": "mem_fill_text_fifo",
+      "type": "fill_text",
+      "question": "Ako sa volá politika nahrádzania stránok, ktorá vyraďuje najdlhšie používanú stránku? (skratka)",
+      "answers": [
+        "FIFO"
+      ],
+      "explanation": "FIFO – First In, First Out – vyraďuje najstaršie zavedenú stránku."
+    },
+    {
+      "id": "mem_fill_table_bits",
+      "type": "fill_table",
+      "question": "Doplň bity v tabuľke stránok (slovensky):",
+      "table": {
+        "answers": [
+          [
+            "prítomnosti",
+            "R/W",
+            "U/S"
+          ],
+          [
+            "dirty",
+            "accessed",
+            "frame"
+          ]
+        ]
+      },
+      "explanation": "Bežné bity v zázname tabuľky stránok: prítomnosti (present), R/W (read/write), U/S (user/supervisor), accessed, dirty, a adresa rámca."
+    }
+  ]
+}
