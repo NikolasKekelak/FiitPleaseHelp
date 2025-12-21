@@ -3,14 +3,6 @@
   "course_name": "Operačné systémy",
   "topics": [
     {
-      "id": "memory",
-      "file": "topic/memory.json"
-    },
-    {
-      "id": "linux",
-      "file": "topic/linux.json"
-    },
-    {
       "id": "basics",
       "file": "topic/basics.json"
     }

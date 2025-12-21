@@ -223,6 +223,107 @@
         "Pokiaľ není dostatočné miesto na DISKU na RAMke sa vytvorí virtuálna pamäť"
       ],
       "correct": 0
+    },
+    {
+      "id": "program",
+      "type": "mc_single",
+      "question": "Program je:",
+      "explanation": "Program\nje súbor obsahujúci množinu usporiadaných krokov, inštrukcií vedúcich k\ndosiahnutiu želaného cieľa, správania.\r\n(P2 - 51)",
+      "options": [
+        "je súbor obsahujúci množinu usporiadaných krokov, inštrukcií vedúcich k dosiahnutiu želaného cieľa, správania",
+        "je vykonávaný process s pridelenými prostriedkami výpočtového systému",
+        "je adresár obsahujúci množinu usporiadaných krokov, inštrukcií vedúcich k dosiahnutiu želaného cieľa, správania",
+        "je vykonávaný súbor s pridelenými prostriedkami výpočtového systému"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "proces",
+      "type": "mc_single",
+      "question": "Proces je:",
+      "explanation": "Proces\nje vykonávaný program s pridelenými prostriedkami výpočtového systému\n(P2 - 51)",
+      "options": [
+        "je vykonávaný process s pridelenými prostriedkami výpočtového systému",
+        "je súbor obsahujúci množinu usporiadaných krokov, inštrukcií vedúcich k dosiahnutiu želaného cieľa, správania",
+        "je adresár obsahujúci množinu usporiadaných krokov, inštrukcií vedúcich k dosiahnutiu želaného cieľa, správania",
+        "je vykonávaný súbor s pridelenými prostriedkami výpočtového systému"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "program2",
+      "type": "mc_single",
+      "question": "Čo NEPLATÍ o procesoch?",
+      "explanation": "Proces môže vzniknúť iba prostredníctvom iného procesu. Vzniká\ntzv. Process Tree.\r\n\n(P2 - 51)",
+      "options": [
+        "Proces môže vzniknúť sám od seba",
+        "Proces má pridelený adresný priestor, registre, súbory...",
+        "OS udržuje informácie o procesoch v tzv. Process Table.",
+        "Procesy navzájom inter-reagujú. Interakcia je riešená OS."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "adresnypriestor",
+      "type": "mc_single",
+      "question": "\"Je všetka potenciálna pamäť adresovateľná adresno-dátovou zbernicou procesora.\"",
+      "explanation": "Adresný priestor\nje všetka potenciálna pamäť adresovateľná adresno-dátovou zbernicou\nprocesora.\n(P2-52)",
+      "options": [
+        "Adresný priestor",
+        "Fyzický adresný priestor",
+        "Virtualny priestor"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "fyzickypriestor",
+      "type": "mc_single",
+      "question": "\"Je všetka reálne existujúca pamäť adresovateľná adresno-dátovou zbernicou procesora.\r\"",
+      "explanation": "Fyzický Adresný priestor\nje všetka reálne existujúca pamäť adresovateľná adresno-dátovou\nzbernicou procesora.",
+      "options": [
+        "Fyzický adresný priestor",
+        "Adresný priestor",
+        "Virtualny priestor"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "virtualmemory",
+      "type": "mc_single",
+      "question": "\"Je koncept OS zabezpečujúci prístup k celému adresnému priestoru v\nlimitovanom fyzickom adresnom priestore.\"",
+      "explanation": "Virtuálna pamäť\r\nje koncept OS zabezpečujúci prístup k celému adresnému priestoru v\nlimitovanom fyzickom adresnom priestore.",
+      "options": [
+        "Virtuálna pamäť",
+        "Fyzická pamäť",
+        "Adresný priestor"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "systemcallasdiía",
+      "type": "mc_single",
+      "question": "Čo NEPLATÍ o System Call?",
+      "explanation": "System Call (systémové volanie)\nje špeciálna funkcia, ktorá je súčasťou abstraktného rozhrania (API) OS.\nToto API bežne nájdeme v tzv. knižniciach OS. OS a HW vieme ovládať\nlen prostredníctvom tohto API. Jadrom systémového volania je vykonanie\nšpeciálnej inštrukcie TRAP, ktorá zabezpečí prepnutie do privilegovaného\nrežimu procesora. Po prepnutí do tohto režimu OS vyhodnotí aké\nsystémové volanie sa zavolalo a následne ho vykoná.\r\n\n(P2 - 54)",
+      "options": [
+        "Není potreba pri ovládaní HW",
+        "Jedná sa o špecialnu funkciu abstraktného rozhrania OS",
+        "Jej jadrom je vykonanie inštrukcie TRAP, a následne vykoná zavolané systémové volanie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "groupsystemcalls",
+      "type": "mc_single",
+      "question": "OS implementuje 4 základné skupiny systemových volaní, ktoré z nasledujúcich tam NEPATRÍ?",
+      "explanation": "P2 - 56, tabuľka\nProcess Managment\nFile Managment\nDirectory- and File-system managment\nMiscellaneous",
+      "options": [
+        "HW Managment",
+        "Process Managment",
+        "File Managment",
+        "Directory- and File-system managment",
+        "Miscellaneous"
+      ],
+      "correct": 0
     }
   ]
 }
