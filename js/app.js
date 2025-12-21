@@ -233,22 +233,53 @@ function attachTapToContinueOnce() {
   if (waitingForTap) return;
   waitingForTap = true;
 
-  const installClickShield = (duration = 280) => {
+  const installClickShield = (duration = 450) => {
+    // Create an invisible full-screen overlay to swallow all late events
+    const overlay = document.createElement('div');
+    overlay.style.position = 'fixed';
+    overlay.style.inset = '0';
+    overlay.style.zIndex = '9999';
+    overlay.style.background = 'transparent';
+    overlay.setAttribute('aria-hidden', 'true');
+
     const swallow = (ev) => {
-      ev.preventDefault();
+      // Prevent the trailing event from focusing/activating elements on the next screen
+      if (typeof ev.cancelable !== 'boolean' || ev.cancelable) ev.preventDefault();
       ev.stopPropagation();
       if (typeof ev.stopImmediatePropagation === 'function') ev.stopImmediatePropagation();
     };
+
+    // Attach aggressive capture-phase listeners on both window and overlay
     const cap = true; // use capture phase and match with boolean for removal
-    window.addEventListener('click', swallow, { capture: true });
-    window.addEventListener('pointerdown', swallow, { capture: true });
-    window.addEventListener('mousedown', swallow, { capture: true });
-    window.addEventListener('touchstart', swallow, { capture: true, passive: false });
+    const addAll = (target) => {
+      target.addEventListener('click', swallow, { capture: true });
+      target.addEventListener('pointerdown', swallow, { capture: true });
+      target.addEventListener('pointerup', swallow, { capture: true });
+      target.addEventListener('mousedown', swallow, { capture: true });
+      target.addEventListener('mouseup', swallow, { capture: true });
+      target.addEventListener('touchstart', swallow, { capture: true, passive: false });
+      target.addEventListener('touchend', swallow, { capture: true, passive: false });
+      target.addEventListener('touchcancel', swallow, { capture: true, passive: false });
+    };
+    const removeAll = (target) => {
+      target.removeEventListener('click', swallow, cap);
+      target.removeEventListener('pointerdown', swallow, cap);
+      target.removeEventListener('pointerup', swallow, cap);
+      target.removeEventListener('mousedown', swallow, cap);
+      target.removeEventListener('mouseup', swallow, cap);
+      target.removeEventListener('touchstart', swallow, cap);
+      target.removeEventListener('touchend', swallow, cap);
+      target.removeEventListener('touchcancel', swallow, cap);
+    };
+
+    addAll(window);
+    document.body.appendChild(overlay);
+    addAll(overlay);
+
     setTimeout(() => {
-      window.removeEventListener('click', swallow, cap);
-      window.removeEventListener('pointerdown', swallow, cap);
-      window.removeEventListener('mousedown', swallow, cap);
-      window.removeEventListener('touchstart', swallow, cap);
+      removeAll(window);
+      removeAll(overlay);
+      if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
     }, duration);
   };
 
