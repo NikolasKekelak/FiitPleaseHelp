@@ -16,6 +16,221 @@
         "Všetky sú pravdivé."
       ],
       "correct": 2
+    },
+    {
+      "id": "precessmodelwithout",
+      "type": "mc_single",
+      "question": "Aké tvrdenie najlepšie vystihuje stav systému BEZ procesného modelu?",
+      "explanation": "",
+      "explanation_image": "processes/P3-7.png",
+      "options": [
+        "Úlohy by sa vykonávali paralelne pomocou vlákien.",
+        "Vykonávanie úloh by prebiehalo ako nekonečná slučka bez jasnej štruktúry.",
+        "OS by automaticky riešil synchronizáciu aplikácií.",
+        "Procesy by mali vlastné adresné priestory."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "precessmodelwithout",
+      "type": "mc_single",
+      "question": "Aké tvrdenie najlepšie vystihuje stav systému BEZ procesného modelu?",
+      "explanation": "",
+      "explanation_image": "processes/P3-7.png",
+      "options": [
+        "Úlohy by sa vykonávali paralelne pomocou vlákien.",
+        "Vykonávanie úloh by prebiehalo ako nekonečná slučka bez jasnej štruktúry.",
+        "OS by automaticky riešil synchronizáciu aplikácií.",
+        "Procesy by mali vlastné adresné priestory."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "precessmodeladvantage",
+      "type": "mc_single",
+      "question": "Akú výhodu prináša procesný model programátorovi?",
+      "explanation": "",
+      "explanation_image": "processes/P3-8.png",
+      "options": [
+        "Programátor musí ručne prepínať procesy.",
+        "Programátor sa môže sústrediť na návrh aplikácie namiesto riadenia CPU.",
+        "Programátor musí riešiť prístupové oprávnenia ostatných aplikácií.",
+        "Programátor musí implementovať bezpečnostné mechanizmy OS.",
+        "Neprináša židnu výhodu."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "processmodel",
+      "type": "mc_single",
+      "question": "Čo neplatí o process modeli? // sorry nechcelo sa mi to deliť na 2 otázky",
+      "explanation": "",
+      "explanation_image": "processes/P3-9.png",
+      "options": [
+        "Abstrakcia od riadenia prístupu ku zdrojom výpočtového systému.",
+        "Proces je izolovaný na výpočtovom systéme (Neprivilegovaný režim).",
+        "Proces a jeho prostredie je chránený OS.",
+        "Proces sa nemusí deliť o prostriedky.",
+        "Striedanie procesov na CPU riadi OS.",
+        "Programátor by sa mal zaoberať prerušeniami.",
+        "Prideľovanie pamäte a prostriedkov riadi OS.",
+        "Umožňuje Multiprogramming."
+      ],
+      "correct": 5
+    },
+    {
+      "id": "systemprocesspov",
+      "type": "mc_single",
+      "question": "Čo platí o systéme z pohľadu procesu?",
+      "explanation": "",
+      "explanation_image": "processes/P3-10.png",
+      "options": [
+        "Proces má priamy prístup k hardvéru (CPU, pamäť, zariadenia).",
+        "Proces komunikuje s hardvérom výhradne prostredníctvom ovládačov bez účasti OS.",
+        "Proces vidí operačný systém ako vrstvu služieb, knižníc a vlastných dát.",
+        "Proces je zodpovedný za správu súborového systému a zariadení.",
+        "Všetko je pravdivé.",
+        "Všetko je nepravdivé."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "osperspective",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o Systému z pohľadu os je pravdivé?",
+      "explanation": "",
+      "explanation_image": "processes/P4-11.png",
+      "options": [
+        "Operačný systém vníma celý systém ako jeden bežiaci proces.",
+        "Operačný systém riadi viacero procesov a spravuje ich dáta a prostriedky.",
+        "Operačný systém nemá prístup k ovládačom zariadení.",
+        "Operačný systém deleguje plánovanie CPU priamo na aplikácie.",
+        "Všetky tvrdenia sú pravdivé.",
+        "Všetky tvrdenia sú nepravdivé."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "pararelismandpseudopararelism",
+      "type": "mc_single",
+      "question": "Ktoré z nasledujúcich tvrdení je pravdivé?",
+      "explanation": "",
+      "explanation_image": "processes/P3-13.png",
+      "options": [
+        "Všetky tvrdenia sú nesprávne.",
+        "Všetky tvrdenia sú správne.",
+        "V jednom okamihu je vykonávaný na jednom CPU aspoň jeden proces.",
+        "Pseduo-pararelizmus je keď sa na viacerých jadrách CPU vykonávajú viaceré procesy.",
+        "O paralelizme hovoríme vtedy, časté striedanie procesov na jednom jadre CPU, budí dojem že každý sa vykonáva súčasne."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "multiprogramming",
+      "type": "mc_single",
+      "question": "Na výpočet čoho slúži nasledujúci vzorec?",
+      "explanation": "",
+      "image": "processes/utilizaciaCPU.png",
+      "explanation_image": "processes/p3-16.png",
+      "options": [
+        "Utilizácia CPU",
+        "Pravdepodopnosť čakania jadra CPU",
+        "Ani jedno nie je správne.",
+        "Všetky sú správne.",
+        "Čas čakania na I/O"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "procesrepresentation",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o reprezentácii procesu v operačnom systéme je NEPRAVDIVÉ?",
+      "explanation": "",
+      "explanation_image": "processes/P3-17.png",
+      "options": [
+        "Process Table je dátová štruktúra OS, ktorá obsahuje záznamy o všetkých procesoch v systéme.",
+        "Process Control Block (PCB) je jeden záznam v Process Table, ktorý obsahuje všetky informácie potrebné na správu procesu.",
+        "Process Context predstavuje aktuálny stav procesu a ukladá sa do PCB pri preplánovaní procesu.",
+        "Process Context je samostatná tabuľka OS, oddelená od Process Table, určená výhradne na ukladanie stavov procesov.",
+        "Všetky tvrdenia sú nesprávne.",
+        "Všetky tvrdenia sú správne."
+      ],
+      "correct": 3
+    },
+    {
+      "id": "processtree956",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o procesnom strome je PRAVDIVÉ?",
+      "explanation": "",
+      "explanation_image": "processes/P3-18.png",
+      "options": [
+        "Každý proces v systéme pozná identifikátory všetkých ostatných procesov.",
+        "V Unix-like OS vznikajú procesy vytváraním inými procesmi, čím sa vytvára vzťah rodič–dieťa.",
+        "V procesnom strome si dieťa ukladá identifikátor rodiča, ale rodič si neukladá identifikátory detí.",
+        "Operačný systém Windows používa rovnaký procesný strom ako Unix.",
+        "Všetky tvrdenia sú pravidvé.",
+        "Všetky tvrdenia sú nepravdivé."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "vznikprocesu",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o vzniku procesu je PRAVDIVÉ?",
+      "explanation": "",
+      "explanation_image": "processes/P3-25-1.png",
+      "options": [
+        "Volanie fork() v Unixe vytvorí nový proces bez zdieľania pamäte s rodičom.",
+        "Volanie exec() vytvorí nový proces, ktorý je potomkom pôvodného procesu.",
+        "Vo Windowse sa nový proces vytvára volaním CreateProcess(), ktoré vytvorí úplne samostatný proces.",
+        "Volanie spawn() v Unixe nahradí pamäť procesu novým programom."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "copy-on-write",
+      "type": "mc_single",
+      "question": "Aké tvrdenie o mechanizme copy-on-write je NEPRAVDIVÉ?",
+      "explanation": "",
+      "explanation_image": "processes/P3-26.png",
+      "options": [
+        "Počas volania fork() sa pamäť procesu okamžite nekopíruje.",
+        "Kopírovanie pamäte prebehne až v momente zápisu do pamäte detským procesom.",
+        "Mechanizmus copy-on-write znižuje režijné náklady vytvárania procesov.",
+        "Pamäť procesu sa pri copy-on-write vždy skopíruje ešte pred návratom z fork()."
+      ],
+      "correct": 3
+    },
+    {
+      "id": "processtates",
+      "type": "mc_single",
+      "question": "Process sa môže nachádzať v 3 stavoch, RUNNING, READY a BLOCKED. Ktorí prechod nie je validný?",
+      "explanation": "",
+      "explanation_image": "processes/P3-30.png",
+      "options": [
+        "Všetky prechody sú valídne.",
+        "Ani jeden prechod nie je validný.",
+        "RUNNING -> BLOCKED",
+        "RUNNING -> READY",
+        "BLOCKED -> READY",
+        "READY   -> RUNNING"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "nevalidneukončenie",
+      "type": "mc_single",
+      "question": "Kedy dôjde k dobrovoľnému zániku procesu?",
+      "explanation": "",
+      "explanation_image": "processes/P3-27.png",
+      "options": [
+        "Štandardné ukončenie s chybou",
+        "Segemntation fault",
+        "Division by Zero",
+        "Ukončenie iným procesom",
+        "Ukončenie s fatálnou chybou"
+      ],
+      "correct": 0
     }
   ]
 }
