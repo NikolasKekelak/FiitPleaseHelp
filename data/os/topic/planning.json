@@ -1,0 +1,148 @@
+{
+  "topic_id": "planning",
+  "topic_name": "planning",
+  "questions": [
+    {
+      "id": "planningalgoritmus",
+      "type": "mc_single",
+      "question": "Čo zabezbečuje Scheduler (Plánovač)?",
+      "explanation": "neger",
+      "explanation_image": "planning/P3-48.png",
+      "options": [
+        "Vyberá jeden z pripravených procesov, ktorému pridelí CPU podľa plánovacieho algoritmu.",
+        "Pomocou Plánovacieho Algoritmu naplánuje na najoptímalnejšie poradie procesov, v ktorom sa budú neskôr vykonávať.",
+        "Riadi prístup procesov k pamäti a vstupno-výstupným zariadeniam.",
+        "Zabezpečuje, že každý proces dostane CPU v presne rovnakom čase.",
+        "Nič z uvedených možností.",
+        "Všetky z uvedených možností."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "kedynepotrebuje",
+      "type": "mc_single",
+      "question": "Kedy OS NEPOTREBUJE plánovať?",
+      "explanation": "Nevieme s istotou povedať kedy proces skončí",
+      "explanation_image": "planning/P3-49.png",
+      "options": [
+        "Vykonávaný proces skončil.",
+        "Vykonávaný proces vytvoril nový proces.",
+        "Vykonávaný proces je blokovaný systémovým volaním.",
+        "Vykonávaný proces je takmer ukončený"
+      ],
+      "correct": 3
+    },
+    {
+      "id": "preemptiveandnonpreemptive",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie správne rozlišuje preemptívne a nepreemptívne plánovanie?",
+      "explanation": "",
+      "explanation_image": "planning/P3-50.png",
+      "options": [
+        "Preemptívne plánovanie umožňuje plánovaču prerušiť vykonávanie bežiacej úlohy.",
+        "Nepreemptívne plánovanie umožňuje prerušiť proces kedykoľvek na základe HW prerušenia.",
+        "Preemptívne plánovanie dovolí zmenu procesu len vtedy, keď sa proces dobrovoľne vzdá CPU.",
+        "Medzi preemptívnym a nepreemptívnym plánovaním neexistuje žiadny rozdiel."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "nonpreemptiveplanning",
+      "type": "mc_single",
+      "question": "Kedy môže pri nepreemptívnom plánovaní dôjsť k zmene vykonávaného procesu?",
+      "explanation": "",
+      "explanation_image": "planning/P3-50.png",
+      "options": [
+        "Pri každom HW prerušení.",
+        "Len ak sa proces dobrovoľne vzdá CPU alebo sa zablokuje systémovým volaním.",
+        "Keď plánovač vyhodnotí, že iný proces má vyššiu prioritu.",
+        "Kedykoľvek, bez ohľadu na stav procesu."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "boundprocesses",
+      "type": "mc_single",
+      "question": "Majme obrázok s dvomi procesmi, kde ukazuje vyťaženie CPU daným procesom, ktorí je CPU-bound (výpočtovo intenzívny) a ktorí je I/O-bound (I/O intenzívne)",
+      "explanation": "Výpočtovo intenzívne procesy, potrebujú na procesore dlhši čas, kvôli výpočtom (napriklad BFS prehľadávanie stromu)\nI/O intenzivne, sú väčšinou uprednostnené plánovačom, procesy. Na procesore môžu byť len pár inštrukcii. (napriklad keď píšem do klávesnice, len sa zistí čo som stlačil a niekde sa to zapíše)",
+      "image": "planning/boundage.png",
+      "options": [
+        "a) CPU-Bound, b) I/O-bound",
+        "a) I/O-bound, b) CPU-Bound",
+        "Nemožno určiť jednoznačne"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "criterions",
+      "type": "mc_single",
+      "question": "Ktoré kritérium NEPTARÍ medzi spoločné kritéria plánovania rôznych typov OS?",
+      "explanation": "Interaktívne systémy patria až pod interaktívne systémy",
+      "explanation_image": "planning/interaktívne systémy.png",
+      "options": [
+        "Férovosť - každý proces by sa mal dostať k CPU.",
+        "Vynucovanie politiky - politika plánovania je dodržiavaná vždy.",
+        "Vyváženosť - Celý systém je rovnako zaneprázdnený",
+        "Doba odozvy - Požiadavky spracované čo najrýchlejšie."
+      ],
+      "correct": 3
+    },
+    {
+      "id": "batchsystemvytazenost",
+      "type": "mc_single",
+      "question": "Aká je hlavná úloha plánovača bežiacom na \"Batch systémoch\"?",
+      "explanation": "",
+      "explanation_image": "planning/BatchSystemScheduler.png",
+      "options": [
+        "Predvídateľnosť",
+        "Neustále vytaženie CPU",
+        "Doba odozvy",
+        "Príjemny uživateľský zážitok"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "nonpreemptivealgoritms",
+      "type": "mc_single",
+      "question": "Medzi Nepreemptívne algoritmy patria:",
+      "explanation": "",
+      "explanation_image": "planning/P3-54.png",
+      "options": [
+        "First Come First Served, Shortest Job First",
+        "Shortest Job First, Shortest Remaining Time, Round Robin",
+        "First Come Fisrt Served",
+        "Lotériove Plánovanie, Prioritné Planovanie, First Come Fisrt Served",
+        "Round-Robin, Garantované plánovanie",
+        "Ani jedna z možností nie je správna"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "primeranypodiel",
+      "type": "mc_single",
+      "question": "Ktorí plánovací algoritmus, je vhodnejšie použiť keď chcem aby systém zvýhodňoval počet použivateľov namiesto počet procesov?",
+      "explanation": "",
+      "explanation_image": "planning/P4-57.png",
+      "options": [
+        "Garantované plánovanie",
+        "Plánovanie s primeraným podielom"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "threadplanning",
+      "type": "mc_single",
+      "question": "Vyberte správne tvredenie o planovovaní vlákien:",
+      "explanation": "",
+      "explanation_image": "planning/P3-58.png",
+      "options": [
+        "Plánovač dokáže zohľadniť User Threads.",
+        "Ak často krát sa User Threads striedajú, tak systém začne značne trpieť.",
+        "Plánovač nedokáže zohľadniť prítomnosť Kernel Threads.",
+        "Všetky tvrdenia sú správne.",
+        "Všetky tvrdenia sú nesprávne."
+      ],
+      "correct": 1
+    }
+  ]
+}

@@ -9,6 +9,14 @@
     {
       "id": "processes",
       "file": "topic/processes.json"
+    },
+    {
+      "id": "threads",
+      "file": "topic/threads.json"
+    },
+    {
+      "id": "planning",
+      "file": "topic/planning.json"
     }
   ]
 }
