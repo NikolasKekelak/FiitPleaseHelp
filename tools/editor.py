@@ -84,10 +84,16 @@ def copy_image_into_course(course_id, topic_id, src_path):
 # ---------- Validation ----------
 
 def validate_question(q):
-    required = ['id', 'type', 'question', 'explanation']
-    for k in required:
+    # Base required fields
+    base_required = ['id', 'type', 'question']
+    for k in base_required:
         if not q.get(k):
             return False, f"Missing field: {k}"
+    # Allow either text explanation or explanation image (at least one is required)
+    has_text_expl = bool((q.get('explanation') or '').strip())
+    has_image_expl = bool(q.get('explanation_image'))
+    if not (has_text_expl or has_image_expl):
+        return False, 'Provide either explanation text or explanation_image (or both)'
     t = q.get('type')
     if t == 'true_false':
         if 'correct' not in q or not isinstance(q['correct'], bool):
@@ -126,6 +132,9 @@ class EditorApp:
         root.title('Mastery Quiz Editor')
         root.geometry('1100x650')
 
+        # Apply dark theme
+        self._apply_dark_theme()
+
         self.courses = load_courses()
         self.current_course = None
         self.topics_json = None
@@ -163,6 +172,7 @@ class EditorApp:
 
         ttk.Label(left, text='Questions').grid(row=6, column=0, sticky='w')
         self.q_list = tk.Listbox(left, height=25)
+        self._style_listbox(self.q_list)
         self.q_list.grid(row=7, column=0, sticky='ns')
         self.q_list.bind('<<ListboxSelect>>', lambda e: self.on_select_question())
 
@@ -191,11 +201,13 @@ class EditorApp:
 
         ttk.Label(right, text='Question Text').grid(row=r, column=0, sticky='ne')
         self.question_txt = tk.Text(right, height=4)
+        self._style_text(self.question_txt)
         self.question_txt.grid(row=r, column=1, sticky='ew', pady=2)
         r += 1
 
-        ttk.Label(right, text='Explanation').grid(row=r, column=0, sticky='ne')
+        ttk.Label(right, text='Explanation (text)').grid(row=r, column=0, sticky='ne')
         self.expl_txt = tk.Text(right, height=4)
+        self._style_text(self.expl_txt)
         self.expl_txt.grid(row=r, column=1, sticky='ew', pady=2)
         r += 1
 
@@ -206,6 +218,15 @@ class EditorApp:
         self.image_var = tk.StringVar()
         ttk.Entry(img_row, textvariable=self.image_var).grid(row=0, column=0, sticky='ew')
         ttk.Button(img_row, text='Select…', command=self.select_image).grid(row=0, column=1, padx=4)
+        r += 1
+
+        ttk.Label(right, text='Explanation Image').grid(row=r, column=0, sticky='e')
+        expl_img_row = ttk.Frame(right)
+        expl_img_row.grid(row=r, column=1, sticky='ew', pady=2)
+        expl_img_row.columnconfigure(0, weight=1)
+        self.expl_image_var = tk.StringVar()
+        ttk.Entry(expl_img_row, textvariable=self.expl_image_var).grid(row=0, column=0, sticky='ew')
+        ttk.Button(expl_img_row, text='Select…', command=self.select_expl_image).grid(row=0, column=1, padx=4)
         r += 1
 
         self.dynamic_frame = ttk.Frame(right)
@@ -221,7 +242,39 @@ class EditorApp:
 
         self.refresh_form_fields()
 
-    # ---------- Data Binding ----------
+    def _apply_dark_theme(self):
+        # Basic dark palette for ttk + Tk widgets
+        bg = '#121212'
+        bg2 = '#1e1f22'
+        fg = '#e6e6e6'
+        self.root.configure(bg=bg)
+        style = ttk.Style(self.root)
+        try:
+            style.theme_use('clam')
+        except Exception:
+            pass
+        style.configure('.', background=bg2, foreground=fg)
+        style.configure('TFrame', background=bg2)
+        style.configure('TLabel', background=bg2, foreground=fg)
+        style.configure('TButton', background=bg2, foreground=fg, relief='flat')
+        style.map('TButton', background=[('active', '#2a2c30')])
+        style.configure('TEntry', fieldbackground=bg, foreground=fg)
+        style.configure('TCombobox', fieldbackground=bg, foreground=fg, background=bg2)
+        style.map('TCombobox', fieldbackground=[('readonly', bg)], foreground=[('readonly', fg)])
+        style.configure('TSeparator', background='#2a2a2a')
+
+    def _style_text(self, widget: tk.Text):
+        widget.configure(bg='#121212', fg='#e6e6e6', insertbackground='#e6e6e6', highlightthickness=1, highlightbackground='#2a2a2a', relief='flat')
+
+    def _style_listbox(self, widget: tk.Listbox):
+        widget.configure(bg='#121212', fg='#e6e6e6', selectbackground='#2a2c30', selectforeground='#e6e6e6', highlightthickness=0, relief='flat')
+
+    def select_expl_image(self):
+        p = filedialog.askopenfilename(title='Select explanation image', filetypes=[('Image files','*.png;*.jpg;*.jpeg;*.gif;*.webp;*.svg'),('All files','*.*')])
+        if p:
+            self.expl_image_var.set(p)
+
+        # ---------- Data Binding ----------
 
     def populate_courses(self):
         ids = [c['id'] for c in self.courses]
@@ -352,6 +405,8 @@ class EditorApp:
         self.question_txt.delete('1.0', tk.END)
         self.expl_txt.delete('1.0', tk.END)
         self.image_var.set('')
+        if hasattr(self, 'expl_image_var'):
+            self.expl_image_var.set('')
         self.refresh_form_fields()
 
     def load_question_into_form(self, q):
@@ -362,6 +417,8 @@ class EditorApp:
         self.expl_txt.delete('1.0', tk.END)
         self.expl_txt.insert('1.0', q.get('explanation', ''))
         self.image_var.set(q.get('image', ''))
+        if hasattr(self, 'expl_image_var'):
+            self.expl_image_var.set(q.get('explanation_image', ''))
         self.refresh_form_fields(q)
 
     def refresh_form_fields(self, q=None):
@@ -380,6 +437,7 @@ class EditorApp:
                 opts = '\n'.join(q.get('options', []))
                 correct_idx = q.get('correct', 0)
             self.opts_text = tk.Text(self.dynamic_frame, height=6)
+            self._style_text(self.opts_text)
             self.opts_text.insert('1.0', opts)
             self.opts_text.pack(fill='x')
             ttk.Label(self.dynamic_frame, text='Correct option index (0-based)').pack(anchor='w', pady=(6,0))
@@ -393,6 +451,7 @@ class EditorApp:
                 opts = '\n'.join(q.get('options', []))
                 corr = ','.join(str(i) for i in q.get('correct', []))
             self.opts_text = tk.Text(self.dynamic_frame, height=6)
+            self._style_text(self.opts_text)
             self.opts_text.insert('1.0', opts)
             self.opts_text.pack(fill='x')
             ttk.Label(self.dynamic_frame, text='Correct indices (comma-separated, 0-based)').pack(anchor='w', pady=(6,0))
@@ -412,6 +471,7 @@ class EditorApp:
                 rows = q['table']['answers']
                 table_txt = '\n'.join(','.join(str(c) for c in row) for row in rows)
             self.table_text = tk.Text(self.dynamic_frame, height=8)
+            self._style_text(self.table_text)
             self.table_text.insert('1.0', table_txt)
             self.table_text.pack(fill='x')
         else:
@@ -433,6 +493,9 @@ class EditorApp:
         if img:
             # copy on save_question after validation
             q['image'] = img
+        expl_img = self.expl_image_var.get().strip() if hasattr(self, 'expl_image_var') else ''
+        if expl_img:
+            q['explanation_image'] = expl_img
         t = q['type']
         if t == 'true_false':
             q['correct'] = bool(self.tf_var.get())
@@ -469,6 +532,7 @@ class EditorApp:
         frm = ttk.Frame(win, padding=10)
         frm.pack(fill='both', expand=True)
         text = tk.Text(frm, wrap='word', height=20, width=80)
+        self._style_text(text)
         text.pack(fill='both', expand=True)
         def w(s):
             text.insert('end', s + '\n')
@@ -502,6 +566,10 @@ class EditorApp:
         if img:
             w("")
             w(f"Image: {img}")
+        expl_img = q.get('explanation_image')
+        if expl_img:
+            w("")
+            w(f"Explanation image: {expl_img}")
         w("")
         w("Explanation:")
         w(q.get('explanation',''))
@@ -520,11 +588,14 @@ class EditorApp:
         if not ok:
             messagebox.showerror('Validation error', msg)
             return
-        # Copy image into images/<course>/<topic>/ and set relative JSON image path
+        # Copy images into images/<course>/<topic>/ and set relative JSON image path(s)
         topic_id = self.current_topic.get('topic_id') or self.topic_cmb.get()
         if q.get('image'):
             rel_img = copy_image_into_course(self.current_course, topic_id, q['image'])
             q['image'] = rel_img
+        if q.get('explanation_image'):
+            rel_expl_img = copy_image_into_course(self.current_course, topic_id, q['explanation_image'])
+            q['explanation_image'] = rel_expl_img
         # Upsert into list
         if self.selected_question_index is not None:
             self.current_topic['questions'][self.selected_question_index] = q

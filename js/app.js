@@ -56,6 +56,7 @@ const els = {
   nextBtn: document.getElementById('nextBtn'),
   feedback: document.getElementById('feedback'),
   explanationBox: document.getElementById('explanationBox'),
+  explanationImage: document.getElementById('explanationImage'),
   explanationText: document.getElementById('explanationText'),
 
   // done
@@ -224,7 +225,18 @@ function disableAnswerInputs(disabled) {
 }
 
 function displayResult(result, q) {
+  // Explanation text
   els.explanationText.textContent = q.explanation || '';
+  // Explanation image (optional)
+  if (els.explanationImage) {
+    els.explanationImage.innerHTML = '';
+    if (q.explanation_image) {
+      const img = document.createElement('img');
+      img.src = q.explanation_image;
+      img.alt = 'Explanation image';
+      els.explanationImage.appendChild(img);
+    }
+  }
   if (result.correct) {
     els.feedback.textContent = 'Correct';
     els.feedback.classList.add('ok');
@@ -359,6 +371,7 @@ function renderCurrentQuestion() {
   els.feedback.className = 'feedback';
   els.explanationBox.open = false;
   els.explanationText.textContent = '';
+  if (els.explanationImage) els.explanationImage.innerHTML = '';
 
   els.questionMeta.textContent = context.sessionLabel ? context.sessionLabel : '';
   els.questionText.textContent = q.question;
@@ -411,21 +424,8 @@ function onSubmit(e) {
   const userAnswer = readUserAnswer(els.answerForm, q);
   const result = engine.answer(q.id, userAnswer);
 
-  els.explanationText.textContent = q.explanation || '';
-  if (result.correct) {
-    els.feedback.textContent = 'Correct';
-    els.feedback.classList.add('ok');
-  } else {
-    els.feedback.textContent = 'Incorrect';
-    els.feedback.classList.add('bad');
-    if (result.showCorrect) {
-      const cc = document.createElement('div');
-      cc.style.marginTop = '6px';
-      cc.innerHTML = `<small>Correct answer:</small> ${result.correctAnswerHtml}`;
-      els.feedback.appendChild(cc);
-    }
-  }
-  els.explanationBox.open = true;
+  // Use common result renderer to populate feedback and explanation
+  displayResult(result, q);
 
   // Lock inputs; wait for explicit Next
   disableAnswerInputs(true);

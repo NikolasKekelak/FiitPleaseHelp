@@ -50,14 +50,22 @@ export async function loadTopicQuestions(courseId, relativeFilePath) {
   if (!data || !Array.isArray(data.questions)) throw new Error('Invalid topic file structure: missing questions[]');
   // Normalize image paths to be relative from project root if they are relative in file
   data.questions.forEach(q => {
+    // Normalize primary question image path
     if (q.image && !/^https?:\/\//.test(q.image)) {
       const p = String(q.image).replace(/\\/g, '/');
-      // If already starts with images/ (absolute within site), keep as is
       if (/^\/?images\//.test(p)) {
         q.image = p.replace(/^\//, '');
       } else {
-        // Otherwise, treat as relative to course folder inside images/<courseId>/...
         q.image = `images/${courseId}/${p}`;
+      }
+    }
+    // Normalize optional explanation image path
+    if (q.explanation_image && !/^https?:\/\//.test(q.explanation_image)) {
+      const pe = String(q.explanation_image).replace(/\\/g, '/');
+      if (/^\/?images\//.test(pe)) {
+        q.explanation_image = pe.replace(/^\//, '');
+      } else {
+        q.explanation_image = `images/${courseId}/${pe}`;
       }
     }
   });

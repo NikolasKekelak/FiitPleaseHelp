@@ -194,6 +194,8 @@ body {
 .feedback.bad { color: var(--error); }
 
 .explanation { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
+.explanation-image { margin-top: 8px; display: flex; justify-content: center; }
+.explanation-image img { max-width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--border); }
 
 /* Tap-anywhere hint pulse */
 .hint.pulse { animation: pulse 1.6s var(--easing) infinite; }

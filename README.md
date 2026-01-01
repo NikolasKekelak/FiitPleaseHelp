@@ -75,7 +75,7 @@ Topic file schema (self-describing):
 ```
 
 Question types (required fields per type):
-- Common to all: `id`, `type`, `question`, `explanation`, optional `image`
+- Common to all: `id`, `type`, `question`, `explanation`, optional `image`, optional `explanation_image`
 - true_false: `correct` (boolean)
 - mc_single: `options` (array of strings), `correct` (number index)
 - mc_multi: `options` (array of strings), `correct` (array of number indices)

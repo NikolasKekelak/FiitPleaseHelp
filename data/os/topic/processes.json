@@ -1,0 +1,21 @@
+{
+  "topic_id": "processes",
+  "topic_name": "processes",
+  "questions": [
+    {
+      "id": "processesnottrue",
+      "type": "mc_single",
+      "question": "Aké tvrdenie je o procese NEPRAVDIVÉ?",
+      "explanation": "P3 - 6",
+      "explanation_image": "processes/1.png",
+      "options": [
+        "Proces má vlastný adresný priestor v pamäti.",
+        "Proces obsahuje aspoň jedno vlákno vykonávania.",
+        "Viac procesov môže zdieľať rovnaký zásobník a rovnaké registre.",
+        "Proces je základná jednotka plánovania v operačnom systéme.",
+        "Všetky sú pravdivé."
+      ],
+      "correct": 2
+    }
+  ]
+}
