@@ -7,6 +7,8 @@ import { renderQuestion, readUserAnswer, clearAnswerArea, setDisabled } from './
 const rapidMode = true;
 let waitingForTap = false;
 let tapCleanup = null;
+let doubleTapTimer = null;
+let tapCount = 0;
 
 // Keyboard navigation detection for focus-visible styling only when using keyboard
 (function initKbdNavDetection() {
@@ -253,30 +255,29 @@ function displayResult(result, q) {
   // trigger subtle fade-in animation
   els.feedback.classList.add('show');
   els.explanationBox.open = true;
+  // Hide answer options to keep the focus on the explanation
+  clearAnswerArea(els.answerForm);
 }
 
-function attachTapToContinueOnce() {
+function attachDoubleTapToContinue() {
   if (waitingForTap) return;
   waitingForTap = true;
+  tapCount = 0;
+  if (doubleTapTimer) { clearTimeout(doubleTapTimer); doubleTapTimer = null; }
 
   const installClickShield = (duration = 450) => {
-    // Create an invisible full-screen overlay to swallow all late events
     const overlay = document.createElement('div');
     overlay.style.position = 'fixed';
     overlay.style.inset = '0';
     overlay.style.zIndex = '9999';
     overlay.style.background = 'transparent';
     overlay.setAttribute('aria-hidden', 'true');
-
     const swallow = (ev) => {
-      // Prevent the trailing event from focusing/activating elements on the next screen
       if (typeof ev.cancelable !== 'boolean' || ev.cancelable) ev.preventDefault();
       ev.stopPropagation();
       if (typeof ev.stopImmediatePropagation === 'function') ev.stopImmediatePropagation();
     };
-
-    // Attach aggressive capture-phase listeners on both window and overlay
-    const cap = true; // use capture phase and match with boolean for removal
+    const cap = true;
     const addAll = (target) => {
       target.addEventListener('click', swallow, { capture: true });
       target.addEventListener('pointerdown', swallow, { capture: true });
@@ -297,11 +298,9 @@ function attachTapToContinueOnce() {
       target.removeEventListener('touchend', swallow, cap);
       target.removeEventListener('touchcancel', swallow, cap);
     };
-
     addAll(window);
     document.body.appendChild(overlay);
     addAll(overlay);
-
     setTimeout(() => {
       removeAll(window);
       removeAll(overlay);
@@ -309,44 +308,63 @@ function attachTapToContinueOnce() {
     }, duration);
   };
 
-  const handler = (e) => {
-    if (!waitingForTap) return;
+  const advance = (e) => {
     waitingForTap = false;
     if (e) {
-      // consume this event so it doesn't activate an option on the next screen
       if (typeof e.preventDefault === 'function') e.preventDefault();
       if (typeof e.stopPropagation === 'function') e.stopPropagation();
       if (typeof e.stopImmediatePropagation === 'function') e.stopImmediatePropagation();
     }
     if (tapCleanup) { tapCleanup(); tapCleanup = null; }
-    // Blur any active element to avoid :focus-within highlight carry-over
     if (document.activeElement && typeof document.activeElement.blur === 'function') {
       document.activeElement.blur();
     }
-    // Advance
     onNext();
-    // Install a short shield to swallow any late click/tap events on some mobile browsers
     installClickShield(280);
+  };
+
+  const handleTap = (e) => {
+    if (!waitingForTap) return;
+    tapCount += 1;
+    if (tapCount === 1) {
+      // First tap: update hint and start a short timer window for the second tap
+      const hint = els.feedback.querySelector('.hint.pulse');
+      if (hint) hint.textContent = 'Tap again to continue';
+      doubleTapTimer = setTimeout(() => {
+        tapCount = 0; // require two taps within window
+      }, 800);
+      // consume event
+      if (typeof e.preventDefault === 'function') e.preventDefault();
+      if (typeof e.stopPropagation === 'function') e.stopPropagation();
+      return;
+    }
+    if (tapCount >= 2) {
+      if (doubleTapTimer) { clearTimeout(doubleTapTimer); doubleTapTimer = null; }
+      advance(e);
+    }
   };
 
   const keyHandler = (e) => {
     if (!waitingForTap) return;
     if (e.key === ' ' || e.key === 'Enter') {
       e.preventDefault();
-      handler(e);
+      handleTap(e);
     }
   };
-  // Defer attaching click listeners to avoid catching the same click that selected the answer
+
   setTimeout(() => {
-    document.body.addEventListener('click', handler, { once: true, capture: true });
-    document.body.addEventListener('touchstart', handler, { once: true, passive: false, capture: true });
+    document.body.addEventListener('click', handleTap, { capture: true });
+    document.body.addEventListener('touchstart', handleTap, { passive: false, capture: true });
     document.addEventListener('keydown', keyHandler);
     tapCleanup = () => {
+      document.body.removeEventListener('click', handleTap, true);
+      document.body.removeEventListener('touchstart', handleTap, true);
       document.removeEventListener('keydown', keyHandler);
     };
   }, 0);
+
   // Show hint for rapid mode
-  els.feedback.insertAdjacentHTML('beforeend', '<div class="hint pulse" style="margin-top:8px;opacity:0.7">Tap anywhere to continue</div>');
+  els.feedback.insertAdjacentHTML('beforeend', '<div class="hint pulse" style="margin-top:8px;opacity:0.7">Tap twice to continue</div>');
 }
 
 function renderCurrentQuestion() {
@@ -361,6 +379,8 @@ function renderCurrentQuestion() {
   // reset any pending tap handlers
   waitingForTap = false;
   if (tapCleanup) { tapCleanup(); tapCleanup = null; }
+  if (doubleTapTimer) { clearTimeout(doubleTapTimer); doubleTapTimer = null; }
+  tapCount = 0;
 
   const q = engine.current();
   if (!q) {
@@ -400,7 +420,7 @@ function renderCurrentQuestion() {
       const result = engine.answer(q.id, idx);
       displayResult(result, q);
       disableAnswerInputs(true);
-      attachTapToContinueOnce();
+      attachDoubleTapToContinue();
     };
     radios.forEach(r => {
       r.addEventListener('change', onPick, { once: true });
