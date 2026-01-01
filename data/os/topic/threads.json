@@ -1,0 +1,21 @@
+{
+  "topic_id": "threads",
+  "topic_name": "threads",
+  "questions": [
+    {
+      "id": "threadcalls",
+      "type": "mc_single",
+      "question": "POSIX definuje cez 60 volaní suviciacimi s vláknami, ktoré z nasledujúcich volaní je SPRÁVNE?",
+      "explanation": "",
+      "explanation_image": "threads/P3-42.png",
+      "options": [
+        "Pthread_exit - dobrovoľne uvoľní priestor inému vláknu, a context sa odloží.",
+        "Pthread_join - spoj kontexty dvoch vlákien.",
+        "Pthreasd_yield - vráti hodnotu vlákna (\"return value\" vlákna).",
+        "Všetky sú nesprávne.",
+        "Všetky sú spravne."
+      ],
+      "correct": 3
+    }
+  ]
+}
