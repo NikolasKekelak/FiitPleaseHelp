@@ -70,6 +70,55 @@
         "Slúži výhradne na detekciu page faultov."
       ],
       "correct": 2
+    },
+    {
+      "id": "pagefaultsexingtime",
+      "type": "mc_single",
+      "question": "Kedy vzniká page fault?",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-195931_hyprshot.png",
+      "options": [
+        "Keď proces pristupuje k adrese mimo svojho adresného priestoru.",
+        "Keď tabuľka stránok neobsahuje záznam o danej stránke",
+        "Keď stránka nemá pridelený stránkový rám v hlavnej pamäti",
+        "Keď je hlavná pamäť úplne zaplnená."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "sortpaging",
+      "type": "sort",
+      "question": "Zoraď poradie ako prebieha fetchnutie inštrukcie pri strankovaní. (a vieme že prebehne page fault)",
+      "explanation": "Mal by si to vediet z projektu tak neghladaj explanation",
+      "items": [
+        "CPU sa pokúsi fetchovať inštrukciu z virtuálnej adresy.",
+        "Pri výpočte fyzickej adresy sa MMU pozrie či stránka nemá záznam v TLB.",
+        "Ak záznam nebol v TLB MMU sa pozrie do tabuľky stránok, ktorá sa už nachádza v hlavnej pamäti.",
+        "A nenachádza sa MMU vyvolá hardvérové prerušenie – page fault a riadenie prevezme OS.",
+        "Operačný systém vyberie obeť na základe použivaného algoritmu",
+        "OS načíta požadovanú stránku z disku do vybraného rámu a aktualizuje tabuľku stránok aj TLB.",
+        "CPU znovu fetchne tú istú inštrukciu, tentokrát už úspešne."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "pageframesizeabsolute",
+      "type": "fill_text",
+      "question": "Majme systém s jedno úrovňovým strankovaním s 32-bitovým operačným systémom. Veľkosť stránky je 4kB. Aká bude veľkosť (v počtu záznamov) tabuľky stránok? (exponent označujte pomocou ^)",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-203502_hyprshot.png",
+      "answers": [
+        "2^20",
+        "1038576"
+      ]
     }
   ]
 }
