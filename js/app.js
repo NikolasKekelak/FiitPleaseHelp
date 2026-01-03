@@ -312,6 +312,20 @@ function highlightAnswersInPlace(q, result) {
       if (isChosen(idx)) lab.classList.add('chosen');
       if (isChosen(idx) && !corr.has(idx)) lab.classList.add('incorrect');
     });
+  } else if (q.type === 'sort') {
+    // For sort: if correct -> mark all items as correct
+    // Else highlight any consecutive runs (>=2) using result.meta.consecutiveRuns
+    const rows = Array.from(els.answerForm.querySelectorAll('.sort-list .sort-item'));
+    rows.forEach(r => r.classList.remove('correct', 'run-correct'));
+    if (result && result.correct) {
+      rows.forEach(r => r.classList.add('correct'));
+    } else if (result && result.meta && Array.isArray(result.meta.consecutiveRuns)) {
+      result.meta.consecutiveRuns.forEach(([start, end]) => {
+        for (let i = start; i <= end && i < rows.length; i++) {
+          rows[i].classList.add('run-correct');
+        }
+      });
+    }
   }
 }
 
@@ -425,9 +439,9 @@ function attachDoubleTapToContinue() {
 
 function renderCurrentQuestion() {
   if (rapidMode) {
-    // In rapid mode, hide buttons by default, except for mc_multi and fill_text which require manual Answer
+    // In rapid mode, hide buttons by default, except for mc_multi, fill_text, and sort which require manual Answer
     const qCur = engine && engine.current();
-    if (qCur && (qCur.type === 'mc_multi' || qCur.type === 'fill_text')) {
+    if (qCur && (qCur.type === 'mc_multi' || qCur.type === 'fill_text' || qCur.type === 'sort')) {
       els.submitBtn.style.display = '';
       els.nextBtn.style.display = 'none';
     } else {

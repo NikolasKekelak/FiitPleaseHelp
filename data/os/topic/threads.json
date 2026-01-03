@@ -117,6 +117,19 @@
         "Vytvorenie a ukončenie vlákna je rádovo celkom rýchlejšie ako jeho recyklácia."
       ],
       "correct": 5
+    },
+    {
+      "id": "sort_pipeline_order",
+      "type": "sort",
+      "question": "Usporiadajte fázy inštrukčnej pipeline do správneho poradia:",
+      "explanation": "Štandardné zjednodušené poradie je Fetch → Decode → Execute → Writeback.",
+      "items": [
+        "Decode",
+        "Fetch",
+        "Execute",
+        "Writeback"
+      ],
+      "correct": [1, 0, 2, 3]
     }
   ]
 }

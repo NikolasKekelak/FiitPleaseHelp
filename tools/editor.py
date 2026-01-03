@@ -119,6 +119,21 @@ def validate_question(q):
         ans = table.get('answers')
         if not isinstance(ans, list) or not all(isinstance(row, list) for row in ans):
             return False, 'fill_table requires table.answers as 2D array'
+    elif t == 'sort':
+        items = q.get('items')
+        corr = q.get('correct')
+        if not isinstance(items, list) or len(items) < 2:
+            return False, 'sort requires items[] (>=2)'
+        if not isinstance(corr, list) or not all(isinstance(i, int) for i in corr):
+            return False, 'sort requires correct[] as array of indices (0..n-1)'
+        n = len(items)
+        if len(corr) != n:
+            return False, 'sort correct[] must have the same length as items[]'
+        if any(i < 0 or i >= n for i in corr):
+            return False, 'sort: correct indices out of range'
+        # must be a permutation
+        if sorted(corr) != list(range(n)):
+            return False, 'sort: correct[] must contain each index 0..n-1 exactly once (a permutation)'
     else:
         return False, f'Unknown type: {t}'
     return True, 'OK'
@@ -194,7 +209,7 @@ class EditorApp:
 
         ttk.Label(right, text='Type').grid(row=r, column=0, sticky='e')
         self.type_var = tk.StringVar(value='true_false')
-        self.type_cmb = ttk.Combobox(right, textvariable=self.type_var, values=['true_false','mc_single','mc_multi','fill_text','fill_table'], state='readonly')
+        self.type_cmb = ttk.Combobox(right, textvariable=self.type_var, values=['true_false','mc_single','mc_multi','fill_text','fill_table','sort'], state='readonly')
         self.type_cmb.grid(row=r, column=1, sticky='w', pady=2)
         self.type_cmb.bind('<<ComboboxSelected>>', lambda e: self.refresh_form_fields())
         r += 1
@@ -474,6 +489,32 @@ class EditorApp:
             self._style_text(self.table_text)
             self.table_text.insert('1.0', table_txt)
             self.table_text.pack(fill='x')
+        elif t == 'sort':
+            ttk.Label(self.dynamic_frame, text='Items to sort (one per line, displayed initially in this order)').pack(anchor='w')
+            items_txt = ''
+            corr_txt = ''
+            if q:
+                items = q.get('items', [])
+                if items and isinstance(items[0], dict):
+                    items_txt = '\n'.join(it.get('text','') for it in items)
+                    # When items are objects, correct might be ids; convert to indices by mapping current order
+                    id_to_idx = {str(it.get('id')): i for i, it in enumerate(items)}
+                    corr_src = q.get('correct', [])
+                    try:
+                        corr_idx = [str(id_to_idx[str(v)]) for v in corr_src]
+                        corr_txt = ','.join(corr_idx)
+                    except Exception:
+                        corr_txt = ','.join(str(v) for v in corr_src)
+                else:
+                    items_txt = '\n'.join(str(it) for it in items)
+                    corr_txt = ','.join(str(v) for v in (q.get('correct', [])))
+            self.sort_items_text = tk.Text(self.dynamic_frame, height=8)
+            self._style_text(self.sort_items_text)
+            self.sort_items_text.insert('1.0', items_txt)
+            self.sort_items_text.pack(fill='x')
+            ttk.Label(self.dynamic_frame, text='Correct final order as indices (comma-separated permutation of 0..n-1)').pack(anchor='w', pady=(6,0))
+            self.sort_correct_var = tk.StringVar(value=corr_txt)
+            ttk.Entry(self.dynamic_frame, textvariable=self.sort_correct_var).pack(fill='x')
         else:
             ttk.Label(self.dynamic_frame, text='Unknown type').pack()
 
@@ -519,6 +560,17 @@ class EditorApp:
                     continue
                 rows.append([cell.strip() for cell in line.split(',')])
             q['table'] = {'answers': rows}
+        elif t == 'sort':
+            items = [line.strip() for line in self.sort_items_text.get('1.0', tk.END).split('\n') if line.strip()]
+            q['items'] = items
+            corr_raw = [s.strip() for s in self.sort_correct_var.get().split(',') if s.strip()]
+            if corr_raw:
+                try:
+                    q['correct'] = [int(s) for s in corr_raw]
+                except Exception:
+                    q['correct'] = list(range(len(items)))
+            else:
+                q['correct'] = list(range(len(items)))
         return q
 
     def preview_question(self):
@@ -562,6 +614,16 @@ class EditorApp:
             w("Table answers:")
             for row in q.get('table',{}).get('answers',[]):
                 w(' | '.join(str(c) for c in row))
+        elif t=='sort':
+            w("Items:")
+            for i, it in enumerate(q.get('items', [])):
+                if isinstance(it, dict):
+                    w(f"  {i}. {it.get('text','')}")
+                else:
+                    w(f"  {i}. {it}")
+            w("")
+            w("Correct order (indices):")
+            w(', '.join(str(i) for i in q.get('correct', [])))
         img = q.get('image')
         if img:
             w("")

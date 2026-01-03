@@ -78,6 +78,75 @@
         1,
         2
       ]
+    },
+    {
+      "id": "swappingmyass",
+      "type": "mc_multi",
+      "question": "Čo patrí pod \"SWAPPING\". Označte pravdivé tvrdenia.",
+      "explanation": "nejako rozložené naprieč 6. Prednáškou. TO BE ADDED EXPLANATION",
+      "options": [
+        "Obeťami swap-u sú veľmi aktívne procesy",
+        "Celý proces je odložený na disk do tzv. SWAP partície",
+        "OS začína swapovať, aj keď to možno není ešte potreba (napr. pri 60% vyťaženi RAM)",
+        "SWAPujeme kontexty procesov priamo na procesori",
+        "Málo aktívne procesy odkladáme z CACHE do hlavnej pamäte",
+        "Process uložený na disk nemôže byť vykonávaný"
+      ],
+      "correct": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "swappingyoass",
+      "type": "mc_single",
+      "question": "Dôvodom na odloženie na disk NIE JE:",
+      "explanation": "",
+      "explanation_image": "memory-managment/2026-01-03-151026_hyprshot.png",
+      "options": [
+        "Proces je dlhodobo neaktívny, čaká na prostriedok",
+        "Vznikol nový proces s vyššou prioritou",
+        "Pamäť dosahuje prahovú úroveň obsadenia",
+        "Procesu v stave READY nie je pridelené jadro CPU"
+      ],
+      "correct": 3
+    },
+    {
+      "id": "defragmatiation",
+      "type": "mc_multi",
+      "question": "Označte správne tvrdenia týkajúce sa Kompakcie Pamäte",
+      "explanation": "Je to veľmi náročná operácia, keďže sa bloky procesov presúvaju \"fyzicky\". Procesy nemôžu byť vykonávané a tak sú pozastavené.",
+      "explanation_image": "memory-managment/2026-01-03-152338_hyprshot.png",
+      "options": [
+        "Inak nazývané, Defragmentácia",
+        "Jedná sa o lightweight operáciu",
+        "počas kompakcie dôjde k uprataniu pamäte",
+        "Aj keď sa proces preśuva proces, stále môže byť vykonaný vďaka dynamickej realokácii",
+        "Používa sa prevážne na upratanie Diskov"
+      ],
+      "correct": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "stackfuckedheaporheapfuckedstack?",
+      "type": "mc_multi",
+      "question": "Prirodzene sa stáve, že stack a pamäť dát prerastie priestor, ktorý bol pridelený procesu. Keď nastane táto situácia, aké sú rôzne spôsoby, ktoré môže OS spraviť aby vyriešil tento problém?",
+      "explanation": "",
+      "explanation_image": "memory-managment/2026-01-03-153110_hyprshot.png",
+      "options": [
+        "môžeme ho premiestniť na inú pozíciu v pamäti.",
+        "susedný proces môžeme premiestniť do swap-u na disku.",
+        "proces môže spať kým v jeho okolí nie je dosť miesta",
+        "vymaže, znova načíta program na rovnaké miesto, ale s inou veľkosťou adresného priestoru"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
     }
   ]
 }

@@ -35,6 +35,9 @@ export function renderQuestion(form, q) {
     case 'fill_table':
       renderFillTable(form, q);
       break;
+    case 'sort':
+      renderSort(form, q);
+      break;
     default:
       form.textContent = 'Unsupported question type';
   }
@@ -119,6 +122,79 @@ function renderFillTable(form, q) {
   form.appendChild(table);
 }
 
+function renderSort(form, q) {
+  const list = document.createElement('div');
+  list.className = 'sort-list';
+
+  // Normalize items to array of { id, text }
+  const items = (q.items || []).map((it, idx) => {
+    if (typeof it === 'string') return { id: String(idx), text: it };
+    return { id: String(it.id), text: it.text };
+  });
+
+  // Create rows
+  items.forEach((it) => {
+    const row = document.createElement('div');
+    row.className = 'sort-item';
+    row.setAttribute('draggable', 'true');
+    row.dataset.id = it.id;
+
+    const handle = document.createElement('span');
+    handle.className = 'sort-handle';
+    handle.textContent = '≡';
+    row.appendChild(handle);
+
+    const label = document.createElement('span');
+    label.className = 'sort-label';
+    label.textContent = it.text;
+    row.appendChild(label);
+
+    list.appendChild(row);
+  });
+
+  // DnD behavior (HTML5)
+  let dragEl = null;
+  list.addEventListener('dragstart', (e) => {
+    const target = e.target.closest('.sort-item');
+    if (!target) return;
+    dragEl = target;
+    target.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    try { e.dataTransfer.setData('text/plain', target.dataset.id || ''); } catch (_) {}
+  });
+  list.addEventListener('dragend', (e) => {
+    const target = e.target.closest('.sort-item');
+    if (target) target.classList.remove('dragging');
+    dragEl = null;
+  });
+  list.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const after = getDragAfterElement(list, e.clientY);
+    const dragging = list.querySelector('.dragging');
+    if (!dragging) return;
+    if (after == null) {
+      list.appendChild(dragging);
+    } else {
+      list.insertBefore(dragging, after);
+    }
+  });
+
+  function getDragAfterElement(container, y) {
+    const els = [...container.querySelectorAll('.sort-item:not(.dragging)')];
+    return els.reduce((closest, child) => {
+      const box = child.getBoundingClientRect();
+      const offset = y - box.top - box.height / 2;
+      if (offset < 0 && offset > closest.offset) {
+        return { offset, element: child };
+      } else {
+        return closest;
+      }
+    }, { offset: Number.NEGATIVE_INFINITY, element: null }).element;
+  }
+
+  form.appendChild(list);
+}
+
 export function readUserAnswer(form, q) {
   switch (q.type) {
     case 'true_false': {
@@ -150,6 +226,15 @@ export function readUserAnswer(form, q) {
         user.push(row);
       }
       return user;
+    }
+    case 'sort': {
+      const rows = Array.from(form.querySelectorAll('.sort-list .sort-item'));
+      return rows.map(r => {
+        const id = r.getAttribute('data-id');
+        // Prefer numeric when possible for consistency
+        const n = Number(id);
+        return Number.isNaN(n) ? id : n;
+      });
     }
     default:
       return null;

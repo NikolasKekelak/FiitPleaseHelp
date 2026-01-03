@@ -105,7 +105,7 @@ export class QuizEngine {
 
   answer(id, userAnswer) {
     const q = this.questions[this.indexById.get(id)];
-    const correct = evaluate(q, userAnswer);
+    const { correct, meta } = evaluate(q, userAnswer);
 
     if (correct) {
       this.mastered.add(q.id);
@@ -118,7 +118,7 @@ export class QuizEngine {
 
     const { showCorrect, correctAnswerHtml } = correctAnswerInfo(q);
 
-    return { correct, showCorrect, correctAnswerHtml };
+    return { correct, showCorrect, correctAnswerHtml, meta };
   }
 }
 
@@ -152,6 +152,26 @@ function normalizeQuestions(questions) {
       case 'fill_table':
         if (!q.table || !Array.isArray(q.table.answers)) throw new Error(`Question ${q.id} fill_table requires table.answers 2D array`);
         break;
+      case 'sort': {
+        // Normalize items to objects { id, text }
+        if (!Array.isArray(q.items) || q.items.length < 2) throw new Error(`Question ${q.id} sort requires items[] (>=2)`);
+        q.items = q.items.map((it, idx) => (typeof it === 'string' ? { id: String(idx), text: it } : { id: String(it.id), text: it.text }));
+        if (!Array.isArray(q.correct) || q.correct.length !== q.items.length) throw new Error(`Question ${q.id} sort requires correct[] same length as items[]`);
+        // Coerce correct IDs to strings matching items ids, but allow numeric indices if items were strings
+        const idSet = new Set(q.items.map(it => String(it.id)));
+        q.correct = q.correct.map(v => String(v));
+        // If provided as indices, map to string indices as ids
+        if (!q.correct.every(id => idSet.has(id))) {
+          // Try mapping numeric indices to ids
+          const mapped = q.correct.map(v => {
+            const n = Number(v);
+            if (Number.isNaN(n) || n < 0 || n >= q.items.length) return String(v);
+            return String(q.items[n].id);
+          });
+          q.correct = mapped;
+        }
+        break;
+      }
       default:
         throw new Error(`Unknown type: ${q.type}`);
     }
@@ -163,6 +183,7 @@ function normalizeQuestions(questions) {
 function inferType(q) {
   if (q.hasOwnProperty('answers') && !q.options) return 'fill_text';
   if (q.table) return 'fill_table';
+  if (q.items && Array.isArray(q.correct) && !q.options) return 'sort';
   if (q.options && Array.isArray(q.correct)) return 'mc_multi';
   if (q.options) return 'mc_single';
   if (typeof q.correct === 'boolean') return 'true_false';
@@ -172,37 +193,56 @@ function inferType(q) {
 function evaluate(q, userAnswer) {
   switch (q.type) {
     case 'true_false':
-      return Boolean(userAnswer) === Boolean(q.correct);
+      return { correct: Boolean(userAnswer) === Boolean(q.correct), meta: {} };
     case 'mc_single': {
       const idx = typeof userAnswer === 'number' ? userAnswer : Number(userAnswer);
-      return idx === q.correct;
+      return { correct: idx === q.correct, meta: {} };
     }
     case 'mc_multi': {
       const ua = Array.isArray(userAnswer) ? userAnswer.slice().sort((a,b)=>a-b) : [];
-      if (ua.length !== q.correct.length) return false;
-      for (let i=0;i<ua.length;i++) if (ua[i] !== q.correct[i]) return false;
-      return true;
+      if (ua.length !== q.correct.length) return { correct: false, meta: {} };
+      for (let i=0;i<ua.length;i++) if (ua[i] !== q.correct[i]) return { correct: false, meta: {} };
+      return { correct: true, meta: {} };
     }
     case 'fill_text': {
       const norm = s => String(s || '').trim().toLowerCase();
       const ans = norm(userAnswer);
-      return q.answers.some(a => norm(a) === ans);
+      return { correct: q.answers.some(a => norm(a) === ans), meta: {} };
     }
     case 'fill_table': {
       const norm = s => String(s || '').trim().toLowerCase();
       const ua = userAnswer || [];
       const a = q.table.answers;
-      if (!Array.isArray(ua) || ua.length !== a.length) return false;
+      if (!Array.isArray(ua) || ua.length !== a.length) return { correct: false, meta: {} };
       for (let r=0;r<a.length;r++) {
-        if (!Array.isArray(ua[r]) || ua[r].length !== a[r].length) return false;
+        if (!Array.isArray(ua[r]) || ua[r].length !== a[r].length) return { correct: false, meta: {} };
         for (let c=0;c<a[r].length;c++) {
-          if (norm(ua[r][c]) !== norm(a[r][c])) return false;
+          if (norm(ua[r][c]) !== norm(a[r][c])) return { correct: false, meta: {} };
         }
       }
-      return true;
+      return { correct: true, meta: {} };
+    }
+    case 'sort': {
+      const ua = Array.isArray(userAnswer) ? userAnswer.map(v => String(v)) : [];
+      const corr = q.correct.map(v => String(v));
+      const correct = ua.length === corr.length && ua.every((v, i) => v === corr[i]);
+      // Compute consecutive runs of correct relative order (in correct positions consecutively)
+      // As per requirement: highlight any spans of length >=2 that are in the right consecutive order.
+      const runs = [];
+      let runStart = -1;
+      for (let i = 0; i < Math.min(ua.length, corr.length); i++) {
+        if (ua[i] === corr[i]) {
+          if (runStart === -1) runStart = i;
+        } else {
+          if (runStart !== -1 && i - runStart >= 2) runs.push([runStart, i - 1]);
+          runStart = -1;
+        }
+      }
+      if (runStart !== -1 && ua.length - runStart >= 2) runs.push([runStart, ua.length - 1]);
+      return { correct, meta: { consecutiveRuns: runs } };
     }
     default:
-      return false;
+      return { correct: false, meta: {} };
   }
 }
 
@@ -221,6 +261,11 @@ function correctAnswerInfo(q) {
     case 'fill_table': {
       const rows = q.table.answers.map(row => `<tr>${row.map(cell => `<td>${escapeHtml(String(cell))}</td>`).join('')}</tr>`).join('');
       return { showCorrect: true, correctAnswerHtml: `<table>${rows}</table>` };
+    }
+    case 'sort': {
+      const idToText = new Map(q.items.map(it => [String(it.id), it.text]));
+      const txt = q.correct.map(id => escapeHtml(String(idToText.get(String(id)) || id))).join(' → ');
+      return { showCorrect: true, correctAnswerHtml: txt };
     }
     default:
       return { showCorrect: false, correctAnswerHtml: '' };
