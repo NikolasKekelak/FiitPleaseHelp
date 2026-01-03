@@ -25,6 +25,10 @@
     {
       "id": "memory-managment",
       "file": "topic/memory-managment.json"
+    },
+    {
+      "id": "segmentovanie",
+      "file": "topic/segmentovanie.json"
     }
   ]
 }

@@ -147,6 +147,43 @@
         1,
         2
       ]
+    },
+    {
+      "id": "bitmapbestfit",
+      "type": "mc_multi",
+      "question": "Máme bitmapu ( b) ). Označte odpoveďe, ktoré opisujú ako bude prebiehať algoritmus BEST FIT, pre dáta o veľkosti 8kB. Veľkosť bloku je 1MB.",
+      "explanation": "Aj keď naše dáta majú iba 8kB, tak budeme musieť jej vynahradiť samostatný blok o veľkosti 1MB. Čiže máme jeden blok, takže stačí aby naše dáta reprezentovali iba 1 bit v bitmape. Potom následne iterujeme bitmapou dokým nenajdeme 1 bit nastavený na 0. Alokujeme naše dáta na tento blok a prislúchajúci bit v bitmape na 1.",
+      "image": "memory-managment/2026-01-03-154112_hyprshot.png",
+      "options": [
+        "S pomocou 8 bitovej masky iterujeme bitmapou",
+        "Hľadáme voľný úsek blokov, kde je aspoň 4*0 za sebou",
+        "Iterujeme bit po bite naprieč bitmapou",
+        "Hľadáme v pamäti najmenší možný blok, do ktorého sa naše dáta zmesita",
+        "Začíname od posledného alokovaného bloku",
+        "S najväčšiou pravdepodobnosťou preiterujeme celou bitmapou niekoľko krát",
+        "Najdeme síce použivaný blok, ale kde sa zmestia naše dáta, aby sme neplýtvali pamäťou"
+      ],
+      "correct": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "stolenfrommaryann",
+      "type": "mc_multi",
+      "question": "Označte správne tvrdenia o manažmente voľnej pamäteSora",
+      "explanation": ".",
+      "image": "memory-managment/2026-01-03-154112_hyprshot.png",
+      "options": [
+        "Algoritmus hľadania voľných úsekov Worst Fit má rovnakú zložitosť ako First Fit",
+        "Algoritmus hľadania voľných úsekov Worst Fit má rovnakú zložitosť ako Best Fit",
+        "Algoritmus hľadania voľných úsekov First Fit má v najhoršom prípade rovnakú zložiosť ako Best Fit",
+        "Veľkosť spájaného zoznamu voľných úsekov pamäte priamo úmerne závisí od veľkosti hlavnej pamäte"
+      ],
+      "correct": [
+        1,
+        2
+      ]
     }
   ]
 }

@@ -1,0 +1,117 @@
+{
+  "topic_id": "segmentovanie",
+  "topic_name": "segmentovanie",
+  "questions": [
+    {
+      "id": "segmentbasics",
+      "type": "mc_multi",
+      "question": "Čo platí, o Segmente z pohľadu Segmentovania?",
+      "explanation": "",
+      "explanation_image": "segmentovanie/2026-01-03-170046_hyprshot.png",
+      "options": [
+        "je adresný priestor vyhradený pre určitú časť pamäte procesu",
+        "Každý segment môže teoreticky zaberať celú fyzickú pamäť",
+        "Celý jeden process, vieme brať ako jeden segment v rámcu Segmentovania",
+        "Segmentácia umožňuje procesu mať ľubovolné množstvo segmentov",
+        "Každý segment má vlastné prístupové oprávnenia",
+        "Segmentom môžeme meniť veľkosť celkom jednoducho",
+        "Kaźdý proces má code, data a stack segment(y)"
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "segmentation",
+      "type": "mc_multi",
+      "question": "Označte tvrdenia o Segmentovaní, ktoré sú pravdivé.",
+      "explanation": "",
+      "explanation_image": "segmentovanie/2026-01-03-170834_hyprshot.png",
+      "options": [
+        "Pri swap-ovaní vieme odložiť na disk aj jeden segment procesu",
+        "Code segment sa vždy odloží do swap-u, keď dojde k Swapovaní daného procesu",
+        "Je bežné, že code segment chce pracovať s dátami v dátovom segmente",
+        "Správne adresovanie dát v segmente zabezpečuje kompilátor",
+        "Segmenty sú umiestnené v pamäti RAM v strictnom poradí",
+        "Vyhľadanie adresy segmentu a dát v segmente zabezpečuje HW",
+        "OS udržuje tabuľky deskriptorov segmentov"
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "segmentdescriptor",
+      "type": "mc_single",
+      "question": "Čo ukladá segmentový descriptor?",
+      "explanation": "Prístupovými opravneniami je myslená bezbepčnosť, a.k.a - frwx",
+      "explanation_image": "segmentovanie/2026-01-03-174139_hyprshot.png",
+      "options": [
+        "Len veľkosť segmentu a identifikátor procesu",
+        "Base adresu segmentu, jeho limit a prśtupové oprávnenia",
+        "Fyzické adresy všetkých stránok segmentu",
+        "Odkaz na tabuľku stránok procesu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "gdtdescriptor",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie správne popisuje Global Descriptor Table (GDT)?",
+      "explanation": "",
+      "explanation_image": "segmentovanie/2026-01-03-182405_hyprshot.png",
+      "options": [
+        "Obsahuje segmenty špecifické pre jeden konkrétny proces.",
+        "Je uložená v PCB každého procesu.",
+        "Obsahuje deskriptory segmentov dostupných pre celý systém.",
+        "Slúži výhradne na mapovanie virtuálnych stránok na fyzické."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "ldtdescriptor",
+      "type": "mc_single",
+      "question": "Čím je charakteristická Local Descriptor Table (LDT)?",
+      "explanation": "",
+      "explanation_image": "segmentovanie/2026-01-03-182625_hyprshot.png",
+      "options": [
+        "Je spoločná pre všetky procesy v systéme",
+        "Obsahuje deskriptory segmentov konkrétneho procesu",
+        "Je uložená výhradne v jadre operačného systému",
+        "Nahrádza globálnu tabuľku deskriptorov (GDT)"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "sortsegmentation",
+      "type": "sort",
+      "question": "Ako postupuje prístup k fyzickej adrese pri Segmentácii?\nZoradťe do správneho poradia.",
+      "explanation": ".",
+      "items": [
+        "Virtuálna adresa sa rozdelí na 3 časti",
+        "Podľa príznaku G/L sa vyberie GDT alebo LDT",
+        "Z vybranej tabuľky sa načíta descriptor príslušného segmentu.",
+        "Z deskriptora sa získajú base adresa segmentu, limit segmentu a prístupové práva",
+        "Overí sa, či offset neprekračuje limit segmentu a či sú splnené prístupové práva",
+        "Vypočíta sa fyzická adresa ako base adresa segmentu + offset"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    }
+  ]
+}
