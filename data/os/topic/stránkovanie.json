@@ -129,6 +129,77 @@
       "answers": [
         "8"
       ]
+    },
+    {
+      "id": "pagafaultnausjgfajhnisf",
+      "type": "mc_multi",
+      "question": "Vyberte správne tvrdenia týkajúce sa Page Faultu a MMU (Memory Managment Unit).",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-214156_hyprshot.png",
+      "options": [
+        "Soft Page Fault je spracovaný HW",
+        "Hard Page Fault je spracovaný HW",
+        "Akékoľvek čítanie z pamäte prechádza vždy cez MMU",
+        "Počas Page Fault sa zavolá prerušovací pod-program OS, ktorý zabezpečí vyhľadanie chýbajúcej stránky na disku.",
+        "MMU má uloženú informáciu kde sa tabuľka stránok vykonávaného procesu nachádza.",
+        "Behom načítania jednej inštrukcie môže vyskytnúť niekoľko page faultov.",
+        "Pokiaľ by som mal nekonečne veľkú pamäť, page fault nikdy nenastane."
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "optimalizationofavarageinstruction",
+      "type": "mc_multi",
+      "question": "Máme nasledujúci vzorec, pomocou ktorého počítame, priemerny čas vykonanie jednej inštrukcie. \nn je priemerný čas prečítania stránky\nk je počet vykonanných inštrukcii bez page faultu\n\nAkými rôznymi metódami, môžeme toto číslo čo najviac príbližiť k 1? (čiže optimalizovať)",
+      "explanation": "",
+      "image": "stránkovanie/2026-01-03-214438_hyprshot.png",
+      "explanation_image": "stránkovanie/2026-01-03-215302_hyprshot.png",
+      "options": [
+        "Použitím optímalneho algoritmu na výberu obete pri page faulte",
+        "Rýchlejším diskom a zbernicou",
+        "Väčšiou hlavnou pamäťou",
+        "Zväčšením frekvencie CPU",
+        "Robustnejším file managmentom"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "stateofpage",
+      "type": "mc_multi",
+      "question": "Vyberte všetky správne tvrdenia o stavových informáciách stránky.",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-220341_hyprshot.png",
+      "options": [
+        "Stavové informácie stránky sú uložené v položkách tabuľky stránok.",
+        "Present (P-bit) určuje, či má stránka pridelený stránkový rám v hlavnej pamäti.",
+        "Referenced (R-bit) nastavuje operačný systém pri každom prístupe k stránke.",
+        "Modified (M-bit) indikuje, že obsah stránky bol zmenený a môže vyžadovať zápis na disk.",
+        "Protection bits určujú, či je stránka prístupná na čítanie, zápis alebo vykonávanie.",
+        "OS udržiava a aktualizuje všetky stavové bity pri každom prístupe k pamäti.",
+        "Hardvér automaticky nastavuje niektoré stavové bity pri prístupe k stránke.",
+        "Referenced a Modified bity môžu byť využité algoritmami náhrady stránok.",
+        "Present bit slúži výhradne na ochranu pamäte pred nelegálnym prístupom.",
+        "Operačný systém môže podľa potreby resetovať niektoré stavové bity stránky."
+      ],
+      "correct": [
+        0,
+        1,
+        3,
+        4,
+        6,
+        7,
+        8
+      ]
     }
   ]
 }
