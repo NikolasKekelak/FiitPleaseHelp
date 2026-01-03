@@ -79,6 +79,29 @@ let context = { course: null, sessionLabel: '', lastSelection: null };
 let settings = loadSettings();
 let hardcoreResults = [];
 
+function applyBackgroundFromSettings() {
+  const layer = document.getElementById('bgLayer');
+  if (!layer) return;
+  const img = settings && settings.backgroundImage ? String(settings.backgroundImage) : '';
+  const op = settings && typeof settings.backgroundOpacity === 'number' ? settings.backgroundOpacity : 0.5;
+  if (img) {
+    layer.style.backgroundImage = `url('${img}')`;
+    layer.style.opacity = String(Math.max(0, Math.min(1, op)));
+  } else {
+    layer.style.backgroundImage = 'none';
+    layer.style.opacity = '0';
+  }
+}
+
+// Apply background immediately on load (for index.html)
+try {
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyBackgroundFromSettings, { once: true });
+  } else {
+    applyBackgroundFromSettings();
+  }
+} catch (_) {}
+
 function applyEnter(el, cls = 'enter') {
   if (!el) return;
   el.classList.remove(cls);
@@ -103,38 +126,28 @@ function show(screen) {
   applyEnter(map[screen], 'enter');
 }
 
-function setTheme(dark) {
-  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
-}
-
-function setPalette(name) {
-  const value = name || 'cozy';
-  document.documentElement.setAttribute('data-palette', value);
-}
-
 function initTheme() {
-  const saved = localStorage.getItem('mq_theme');
-  const preferDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const dark = saved ? saved === 'dark' : preferDark;
-  setTheme(dark);
-  els.themeToggle.checked = dark;
-  els.themeToggle.addEventListener('change', () => {
-    const d = els.themeToggle.checked;
-    setTheme(d);
-    localStorage.setItem('mq_theme', d ? 'dark' : 'light');
-  });
+  // Read theme/palette from settings storage (single source of truth)
+  let s = loadSettings();
 
-  // Initialize color palette (persist per-device)
-  const savedPal = localStorage.getItem('mq_palette') || 'cozy';
-  setPalette(savedPal);
-  if (els.paletteSelect) {
-    els.paletteSelect.value = savedPal;
-    els.paletteSelect.addEventListener('change', () => {
-      const p = els.paletteSelect.value || 'cozy';
-      setPalette(p);
-      localStorage.setItem('mq_palette', p);
-    });
-  }
+  // Legacy migration: if old localStorage keys exist, adopt them into settings once
+  try {
+    const legacyTheme = localStorage.getItem('mq_theme');
+    const legacyPalette = localStorage.getItem('mq_palette');
+    let changed = false;
+    if (legacyTheme === 'dark' || legacyTheme === 'light') {
+      const dark = legacyTheme === 'dark';
+      if (s.themeDark !== dark) { s.themeDark = dark; changed = true; }
+    }
+    if (legacyPalette && typeof legacyPalette === 'string') {
+      if (s.palette !== legacyPalette) { s.palette = legacyPalette; changed = true; }
+    }
+    if (changed) s = saveSettings(s);
+  } catch (_) {}
+
+  // Apply
+  document.documentElement.setAttribute('data-theme', s.themeDark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-palette', s.palette || 'cozy');
 }
 
 async function initCourseScreen() {
@@ -765,16 +778,22 @@ main();
 function initSettingsUi() {
   // Load current settings
   settings = loadSettings();
+  // Inline settings controls were moved to settings.html; this function is now a safe no-op
   if (els.setShowExplanation) els.setShowExplanation.checked = !!settings.showExplanation;
   if (els.setKeepResponses) els.setKeepResponses.checked = !!settings.keepResponses;
   if (els.setHardcore) els.setHardcore.checked = !!settings.hardcoreMode;
 
+  // If controls are not present on this page, skip wiring
+  if (!els.setShowExplanation && !els.setKeepResponses && !els.setHardcore) return;
+
   const save = () => {
-    settings = saveSettings({
-      showExplanation: !!els.setShowExplanation.checked,
-      keepResponses: !!els.setKeepResponses.checked,
-      hardcoreMode: !!els.setHardcore.checked,
-    });
+    const next = {
+      ...settings,
+      showExplanation: !!(els.setShowExplanation && els.setShowExplanation.checked),
+      keepResponses: !!(els.setKeepResponses && els.setKeepResponses.checked),
+      hardcoreMode: !!(els.setHardcore && els.setHardcore.checked),
+    };
+    settings = saveSettings(next);
   };
 
   els.setShowExplanation && els.setShowExplanation.addEventListener('change', save);

@@ -46,6 +46,12 @@ const DEFAULT_SETTINGS = {
   showExplanation: true,
   keepResponses: false,
   hardcoreMode: false,
+  // Background customization
+  backgroundImage: '', // data URL or URL string
+  backgroundOpacity: 0.5, // 0..1
+  // Theme
+  themeDark: false,
+  palette: 'cozy',
 };
 
 export function loadSettings() {

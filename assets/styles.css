@@ -60,15 +60,30 @@ body {
   flex-direction: column;
   min-height: 100vh;
   transition: background-color var(--speed-mid) var(--easing), color var(--speed-mid) var(--easing);
+  padding-top: 72px; /* space for fixed hotbar */
 }
 
-.app-header {
-  width: 100%;
-  padding: 16px 20px;
+/* Fixed top hotbar */
+.hotbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 8px 16px;
+  background: rgba(var(--tint), 0.08);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
 }
+.hotbar .brand { display: flex; flex-direction: column; align-items: flex-start; }
+.hotbar .brand-link { text-decoration: none; color: inherit; }
+.hotbar h1 { margin: 0; font-weight: 700; letter-spacing: 0.2px; font-size: 18px; }
+.hotbar .byline { margin-top: 2px; font-size: 12px; color: var(--muted); opacity: 0.9; }
+.hotbar .hotbar-actions { display: flex; align-items: center; gap: 14px; }
+.gear-btn { text-decoration: none; font-size: 20px; line-height: 1; padding: 6px 8px; border-radius: 10px; }
+.gear-btn:hover { background: rgba(var(--tint), 0.15); }
 
 .app-footer {
   max-width: 900px;
@@ -78,16 +93,6 @@ body {
   align-items: center;
   justify-content: space-between;
 }
-
-.app-header h1 {
-  margin: 0;
-  font-weight: 700;
-  letter-spacing: 0.2px;
-}
-
-/* Brand block: title left, tiny byline under it */
-.app-header .brand { display: flex; flex-direction: column; align-items: flex-start; }
-.app-header .brand .byline { margin-top: 2px; font-size: 12px; color: var(--muted); opacity: 0.9; }
 
 .theme-toggle { display: flex; align-items: center; gap: 14px; }
 .toggle-group { display: inline-flex; align-items: center; gap: 6px; }
@@ -269,7 +274,19 @@ input:checked + .slider:before { transform: translateX(20px); }
 
 /* Responsive */
 @media (max-width: 640px) {
-  .app-header, .app-footer, .container { padding: 12px; }
+  .app-footer, .container { padding: 12px; }
   .card { padding: 18px; border-radius: 14px; }
   .question-text { font-size: 20px; }
+}
+
+/* Background layer for custom user image */
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0; /* will be set via inline style */
+  pointer-events: none;
+  z-index: 0;
 }

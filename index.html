@@ -7,46 +7,18 @@
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
-  <header class="app-header">
+  <!-- Background layer -->
+  <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
+
+  <header class="hotbar">
     <div class="brand">
-      <h1>FiitPleaseHelp</h1>
-      <div class="byline">by nikolaaaas</div>
+      <a href="index.html" class="brand-link" aria-label="Home">
+        <h1>FiitPleaseHelp</h1>
+        <div class="byline">by nikolaaaas</div>
+      </a>
     </div>
-    <div class="theme-toggle">
-      <div class="toggle-group">
-        <label class="switch" title="Toggle dark mode">
-          <input id="themeToggle" type="checkbox" />
-          <span class="slider"></span>
-        </label>
-        <span class="toggle-label">Dark</span>
-      </div>
-      <div class="palette-group">
-        <label for="paletteSelect" class="toggle-label">Palette</label>
-        <select id="paletteSelect" class="palette-select">
-          <option value="cozy">Cozy</option>
-          <option value="ocean">Ocean</option>
-          <option value="forest">Forest</option>
-          <option value="plum">Plum</option>
-          <option value="solar">Solar</option>
-        </select>
-      </div>
-      <details class="settings" id="settingsPanel">
-        <summary>Settings</summary>
-        <div class="settings-body">
-          <label class="option-row">
-            <input type="checkbox" id="setShowExplanation" />
-            <span>Show explanation after answering</span>
-          </label>
-          <label class="option-row">
-            <input type="checkbox" id="setKeepResponses" />
-            <span>Keep responses after answering</span>
-          </label>
-          <label class="option-row">
-            <input type="checkbox" id="setHardcore" />
-            <span>Hardcore mode (no per-question feedback; single pass, score at end)</span>
-          </label>
-        </div>
-      </details>
+    <div class="hotbar-actions">
+      <a class="gear-btn" href="settings.html" title="Settings" aria-label="Settings">⚙️</a>
     </div>
   </header>
 

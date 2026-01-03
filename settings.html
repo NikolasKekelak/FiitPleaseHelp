@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Settings — FiitPleaseHelp</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
+
+  <header class="hotbar">
+    <div class="brand">
+      <a href="index.html" class="brand-link" aria-label="Home">
+        <h1>FiitPleaseHelp</h1>
+        <div class="byline">Settings</div>
+      </a>
+    </div>
+    <div class="hotbar-actions">
+      <a class="gear-btn" href="index.html" title="Back" aria-label="Back">⬅️</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card" style="max-width:720px;width:100%">
+      <h2>Settings</h2>
+
+      <div class="field inline">
+        <label class="checkbox">
+          <input type="checkbox" id="setDarkMode" />
+          <span>Dark mode</span>
+        </label>
+      </div>
+      <div class="field">
+        <label for="setPalette">Color palette</label>
+        <select id="setPalette" class="palette-select">
+          <option value="cozy">Cozy</option>
+          <option value="ocean">Ocean</option>
+          <option value="forest">Forest</option>
+          <option value="plum">Plum</option>
+          <option value="solar">Solar</option>
+        </select>
+      </div>
+
+      <div class="field inline">
+        <label class="checkbox">
+          <input type="checkbox" id="setShowExplanation" />
+          <span>Show explanation after answering</span>
+        </label>
+      </div>
+      <div class="field inline">
+        <label class="checkbox">
+          <input type="checkbox" id="setKeepResponses" />
+          <span>Keep responses after answering</span>
+        </label>
+      </div>
+      <div class="field inline">
+        <label class="checkbox">
+          <input type="checkbox" id="setHardcore" />
+          <span>Hardcore mode (no per-question feedback; single pass, score at end)</span>
+        </label>
+      </div>
+
+      <hr style="border:none;border-top:1px dashed var(--border);margin:18px 0" />
+
+      <h3 style="text-align:center;margin:8px 0 6px">Background</h3>
+
+      <div class="field">
+        <label for="bgFile">Upload image</label>
+        <input id="bgFile" type="file" accept="image/*" />
+      </div>
+      <div class="field">
+        <label for="bgUrl">Or paste image URL</label>
+        <input id="bgUrl" type="text" placeholder="https://example.com/image.jpg" />
+      </div>
+      <div class="field">
+        <label for="bgOpacity">Opacity: <span id="bgOpacityVal">50%</span></label>
+        <input id="bgOpacity" type="range" min="0" max="100" value="50" />
+      </div>
+
+      <div class="actions">
+        <button id="saveBtn" class="btn primary">Save</button>
+        <button id="clearBgBtn" class="btn">Clear Background</button>
+        <a href="index.html" class="btn subtle">Back</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="js/settings.js"></script>
+</body>
+</html>
