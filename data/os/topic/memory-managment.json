@@ -1,0 +1,83 @@
+{
+  "topic_id": "memory-managment",
+  "topic_name": "memory-managment",
+  "questions": [
+    {
+      "id": "parkinson",
+      "type": "mc_single",
+      "question": "Čo mi hovorí Parkinsonov Zákon?",
+      "explanation": "",
+      "explanation_image": "memory-managment/2026-01-03-135754_hyprshot.png",
+      "options": [
+        "Programy majú tendenciu naplniť celú pamäť, ktorá je im k dispozícií.",
+        "Každé 2 roky sa zdvojnásobi počet tranzistorov v CPU.",
+        "Programy prirozdene výuživajú najmenší priestor, ktorí im je poskytnutý v pamäti.",
+        "Hovorí o tom, že softvér sa stáva komplexnejším a pomalším, pretože sa doň pridávajú nové funkcie, ktoré často nie sú potrebné, a koncový používateľ to platí."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "dynamicvsstaticrealokactio",
+      "type": "mc_single",
+      "question": "Je nasledujúce tvrdenie pravidvé? Dynamická realokácia využíva Base a Limit Register na úrovni SW, zatiaľ ćo Statická sa deje na úrovni Hardweru, kde sa fyzicky presúvaju bloky kódu v pamäti. Dynamická realokácia je praktickejšia.",
+      "explanation": "Dynamická je na úrovni HW nie SW.\nStatickú realokáciu zase vykonáva SW čiže to drasticky spomaľuje systém.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "internalexternalmemory",
+      "type": "mc_multi",
+      "question": "Vyberte správne tvrdenia ohľadne internej a externej fragmentácie",
+      "explanation": "Dáta su neják roztrúsene naprieč 5. prednášku",
+      "options": [
+        "Interná fragmentácia vzniká vtedy, keď je pridelený blok pamäte väčší než požadovaná pamäť procesu.",
+        "Externá fragmentácia vzniká vtedy, keď je voľná pamäť rozdelená na malé nesúvislé bloky.",
+        "Interná fragmentácia je typická pre systémy s pevnou veľkosťou pamäťových blokov.",
+        "Externá fragmentácia sa vyskytuje len v systémoch so stránkovaním (paging).",
+        "Externú fragmentáciu je možné znížiť pomocou kompaktácie pamäte.",
+        "Interná fragmentácia sa dá úplne odstrániť použitím segmentácie.",
+        "Paging eliminuje externú fragmentáciu, ale môže spôsobiť internú fragmentáciu.",
+        "Externá fragmentácia znamená, že neexistuje dostatočne veľký súvislý blok pamäte, aj keď celkové voľné miesto je postačujúce.",
+        "Interná fragmentácia závisí od poradia, v akom procesy požadujú pamäť.",
+        "Externá fragmentácia je problém, ktorý vzniká výlučne pri dynamickej alokácii pamäte s premenlivou veľkosťou blokov."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        8
+      ]
+    },
+    {
+      "id": "dynamicreallocationhw",
+      "type": "mc_multi",
+      "question": "Dynamická realokácia je rýchla, avšak vyžaduje komplikovanejší hardware. Čo musí HW obsahovať aby sme vedeli použivať dynamickú realokáciu, \"bez toho aby o tom OS vedel\". (Mimo ešte extra vodičov)",
+      "explanation": "",
+      "explanation_image": "memory-managment/2026-01-03-143839_hyprshot.png",
+      "options": [
+        "sčítačku",
+        "binárnu odčítačku",
+        "komparátor",
+        "extra registre",
+        "multiplexor",
+        "de-multiplexor",
+        "odčítačku",
+        "extra program counter",
+        "transkriptor",
+        "extra  cache",
+        "aritmeticko-logickú jednotku"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    }
+  ]
+}
