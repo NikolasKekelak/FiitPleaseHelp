@@ -21,6 +21,10 @@
     {
       "id": "inter-process-communcation",
       "file": "topic/inter-process-communcation.json"
+    },
+    {
+      "id": "memory-managment",
+      "file": "topic/memory-managment.json"
     }
   ]
 }

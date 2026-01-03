@@ -168,6 +168,64 @@
       "correct": [
         0
       ]
+    },
+    {
+      "id": "kvadraticpicovinajebemuzosko",
+      "type": "mc_multi",
+      "question": "Vyberte všetky problémy, ktoré sú s nasledujúcim kódom.",
+      "explanation": "Vo funkcii, \"enter_section\", kontrolujeme každý proces s každým. Čiže O(N^2) zložitosť.",
+      "image": "inter-process-communcation/2026-01-03-124912_hyprshot.png",
+      "options": [
+        "Jeho časová zložitosť narastá kvadraticky na základe počtu threadov čakajúcich na KO.",
+        "Jeho časová zložitosť narastá kubicky na základe počtu threadov čakajúcich na KO.",
+        "Jeho časová zložitosť narastá exponencionálne na základe počtu threadov čakajúcich na KO.",
+        "Porušuje 1. podmienku vzájomného vylučovania: \"V KO môže byť najviac 1 proces.\"",
+        "Porušuje 2. podmienku vzájomného vylučovania: \"Rýchlosť a počet CPU sa nesmie brať do úvahy.\",",
+        "Porušuje 3. podmienku vzájomného vylučovania: \"Proces mimo KO nesmie brániť inému procesu vstupovať do KO.\"",
+        "Porušuje 4. podmienku vzájomného vylučovania:  \"Čas čakania procesu na vstup do KO musí byť konečný.\""
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "usazautocilanavenezuelu",
+      "type": "mc_multi",
+      "question": "Aké sú výhody a nevýhody Bakery algoritmu?",
+      "explanation": "Neni z prednasok ale bolo to na zapoctoch.",
+      "options": [
+        "jednoduchý, rýchly a využíva hardvérové atómové inštrukcie.",
+        "zaručuje vzájomné vylučovanie, férovosť a konečné čakanie",
+        "je pomalý a používa busy waiting.",
+        "Nezaručuje konečné čakanie",
+        "má nízku režijnú záťaž.",
+        "funguje len pre dva procesy",
+        "nevyžaduje zdieľanú pamäť."
+      ],
+      "correct": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "othermutexsex",
+      "type": "mc_multi",
+      "question": "Na čo sa synchronizácia procesov používa okrem vzájomného vylučovania?",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-134417_hyprshot.png",
+      "options": [
+        "na zrýchlenie vykonávania procesov pomocou paralelizmu",
+        "na usporiadanie vykonávania procesov v čase",
+        "podmienené vykonávanie",
+        "manažment prostriedkov",
+        "na dynamické prideľovanie CPU procesom plánovačom",
+        "nýhradne na ochranu kritických sekcií pred súbehom"
+      ],
+      "correct": [
+        1,
+        2,
+        3
+      ]
     }
   ]
 }
