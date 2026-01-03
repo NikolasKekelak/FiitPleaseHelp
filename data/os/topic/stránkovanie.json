@@ -119,6 +119,16 @@
         "2^20",
         "1038576"
       ]
+    },
+    {
+      "id": "Two layer paging",
+      "type": "fill_text",
+      "question": "Majme systém s jedno dvojúrovňovím strankovaním s 32-bitovým operačným systémom. Adresa rozdelená do dvoch úrovní po 10b. Veľkosť stránky je 4kB. \nAká je najmenšia veľkosť adresovania, ktorú môžeme pomocou takéhoto adresovania vytvoriť? (odpoveď napíše iba ako číslo, v kB. Napr 1048)",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-204111_hyprshot.png",
+      "answers": [
+        "8"
+      ]
     }
   ]
 }
