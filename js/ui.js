@@ -44,11 +44,17 @@ export function renderQuestion(form, q) {
 }
 
 function renderTrueFalse(form, q) {
+  // Randomize the order of True/False each render
   const opts = [
     { label: 'True', value: 'true' },
     { label: 'False', value: 'false' },
   ];
-  opts.forEach((opt, idx) => {
+  // Fisher-Yates shuffle
+  for (let i = opts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [opts[i], opts[j]] = [opts[j], opts[i]];
+  }
+  opts.forEach((opt) => {
     const label = document.createElement('label');
     label.className = 'option';
     const input = document.createElement('input');
@@ -131,8 +137,13 @@ function renderSort(form, q) {
     if (typeof it === 'string') return { id: String(idx), text: it };
     return { id: String(it.id), text: it.text };
   });
+  // Shuffle initial display order so the user must sort each time
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [items[i], items[j]] = [items[j], items[i]];
+  }
 
-  // Create rows
+  // Create rows in shuffled order
   items.forEach((it) => {
     const row = document.createElement('div');
     row.className = 'sort-item';

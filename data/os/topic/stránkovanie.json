@@ -1,0 +1,75 @@
+{
+  "topic_id": "stránkovanie",
+  "topic_name": "stránkovanie",
+  "questions": [
+    {
+      "id": "pagingdmeand",
+      "type": "mc_single",
+      "question": "Prečo bola potreba zaviesť stránkovanie?",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-193815_hyprshot.png",
+      "options": [
+        "Pretože swapovanie vždy vyžaduje uloženie celého procesu na disk",
+        "Pretože veľkosť procesu je obmedzená veľkosťou RAM a veľké procesy obmedzujú multiprogramming",
+        "Pretože segmentovanie neumožňovalo ochranu pamäte",
+        "Pretože procesy nemôžu zdieľať adresný priestor procesora"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "pagingtrue",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o stránkovaní je PRAVDIVÉ?",
+      "explanation": ".",
+      "options": [
+        "Pamäť procesu sa delí na bloky rôznej veľkosti podľa potrieb procesu.",
+        "Veľkosť procesu je vždy menšia než veľkosť hlavnej pamäte.",
+        "Stránkovanie umožňuje, aby proces obsadzoval celý adresný priestor procesora.",
+        "Stránkovanie vyžaduje, aby boli všetky stránky procesu naraz v RAM."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "page",
+      "type": "mc_single",
+      "question": "Čo je stránka (page) v kontexte stránkovania?",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-194725_hyprshot.png",
+      "options": [
+        "Súvislý blok fyzickej pamäte určený pre OS.",
+        "Súvislý blok pamäte procesu.",
+        "Logická jednotka obsahujúca celé segmenty procesu.",
+        "Dynamicky veľký blok pamäte priradený procesu."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "pageframe",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie správne popisuje stránkový rám?",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-195601_hyprshot.png",
+      "options": [
+        "Je to blok pamäte procesu uložený na disku.",
+        "Je to súvislý blok hlavnej pamäte s veľkosťou rovnakou ako stránka.",
+        "Je to záznam v tabuľke stránok.",
+        "Je to súčastou logickej adresy vypočítavanou MMU."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "pagetable",
+      "type": "mc_single",
+      "question": "Aká je úloha tabuľky stránok?",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-03-195722_hyprshot.png",
+      "options": [
+        "Ukladá samotné dáta stránok procesu.",
+        "Mapuje virtuálne adresy priamo na diskové bloky.",
+        "Udržiava mapovanie stránok procesu na rámce hlavnej pamäte.",
+        "Slúži výhradne na detekciu page faultov."
+      ],
+      "correct": 2
+    }
+  ]
+}

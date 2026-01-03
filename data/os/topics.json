@@ -29,6 +29,10 @@
     {
       "id": "segmentovanie",
       "file": "topic/segmentovanie.json"
+    },
+    {
+      "id": "stránkovanie",
+      "file": "topic/stránkovanie.json"
     }
   ]
 }
