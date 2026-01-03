@@ -1,7 +1,8 @@
-// Local persistence for quiz progress (optional)
+// Local persistence for quiz progress and user settings (optional)
 // Keys:
 //  - mq_persist: '1' to enable, '0' to disable
 //  - mq_state::<course>::<topic> : JSON serialized engine state
+//  - mq_settings: JSON serialized UI/behavior settings
 
 const PERSIST_KEY = 'mq_persist';
 
@@ -37,4 +38,38 @@ export function loadState(course, topic) {
 
 export function clearState(course, topic) {
   try { localStorage.removeItem(stateKey(course, topic)); } catch (e) {}
+}
+
+const SETTINGS_KEY = 'mq_settings';
+
+const DEFAULT_SETTINGS = {
+  showExplanation: true,
+  keepResponses: false,
+  hardcoreMode: false,
+};
+
+export function loadSettings() {
+  try {
+    const s = localStorage.getItem(SETTINGS_KEY);
+    if (!s) return { ...DEFAULT_SETTINGS };
+    const parsed = JSON.parse(s);
+    return { ...DEFAULT_SETTINGS, ...(parsed || {}) };
+  } catch (e) {
+    return { ...DEFAULT_SETTINGS };
+  }
+}
+
+export function saveSettings(settings) {
+  try {
+    const merged = { ...DEFAULT_SETTINGS, ...(settings || {}) };
+    localStorage.setItem(SETTINGS_KEY, JSON.stringify(merged));
+    return merged;
+  } catch (e) {
+    // ignore
+    return settings;
+  }
+}
+
+export function getDefaultSettings() {
+  return { ...DEFAULT_SETTINGS };
 }

@@ -1,9 +1,11 @@
 import { loadCourses, loadTopics, loadTopicQuestions, loadPresets, loadQuestionsForTopics } from './data.js';
 import { QuizEngine } from './engine.js';
 import { renderQuestion, readUserAnswer, clearAnswerArea, setDisabled } from './ui.js';
+import { loadSettings, saveSettings } from './storage.js';
 // persistence removed
 
-// Rapid practice mode: only single-choice, instant feedback, tap anywhere to continue
+// Rapid practice mode enabled: default flow auto-answers on pick for most types.
+// Special questions (mc_multi, fill_text) require explicit Answer.
 const rapidMode = true;
 let waitingForTap = false;
 let tapCleanup = null;
@@ -46,6 +48,10 @@ const els = {
   // theme
   themeToggle: document.getElementById('themeToggle'),
   paletteSelect: document.getElementById('paletteSelect'),
+  // settings
+  setShowExplanation: document.getElementById('setShowExplanation'),
+  setKeepResponses: document.getElementById('setKeepResponses'),
+  setHardcore: document.getElementById('setHardcore'),
 
   // quiz
   progressText: document.getElementById('progressText'),
@@ -64,10 +70,14 @@ const els = {
   // done
   restartBtn: document.getElementById('restartBtn'),
   backBtn: document.getElementById('backBtn'),
+  doneSubtitle: document.getElementById('doneSubtitle'),
+  summaryBox: document.getElementById('summaryBox'),
 };
 
 let engine = null;
 let context = { course: null, sessionLabel: '', lastSelection: null };
+let settings = loadSettings();
+let hardcoreResults = [];
 
 function applyEnter(el, cls = 'enter') {
   if (!el) return;
@@ -212,7 +222,11 @@ function getSelectedTopicIds() {
 function updateProgress() {
   if (!engine) return;
   const { mastered, total } = engine.progress();
-  els.progressText.textContent = `${mastered} / ${total} mastered`;
+  if (settings.hardcoreMode) {
+    els.progressText.textContent = `${mastered} / ${total} answered`;
+  } else {
+    els.progressText.textContent = `${mastered} / ${total} mastered`;
+  }
 }
 
 function updateCooldown() {
@@ -227,18 +241,9 @@ function disableAnswerInputs(disabled) {
 }
 
 function displayResult(result, q) {
-  // Explanation text
-  els.explanationText.textContent = q.explanation || '';
-  // Explanation image (optional)
-  if (els.explanationImage) {
-    els.explanationImage.innerHTML = '';
-    if (q.explanation_image) {
-      const img = document.createElement('img');
-      img.src = q.explanation_image;
-      img.alt = 'Explanation image';
-      els.explanationImage.appendChild(img);
-    }
-  }
+  // Feedback
+  els.feedback.textContent = '';
+  els.feedback.classList.remove('ok', 'bad', 'show');
   if (result.correct) {
     els.feedback.textContent = 'Correct';
     els.feedback.classList.add('ok');
@@ -252,11 +257,62 @@ function displayResult(result, q) {
       els.feedback.appendChild(cc);
     }
   }
-  // trigger subtle fade-in animation
   els.feedback.classList.add('show');
-  els.explanationBox.open = true;
-  // Hide answer options to keep the focus on the explanation
-  clearAnswerArea(els.answerForm);
+
+  // Explanation: only show/open when enabled in settings
+  if (settings.showExplanation) {
+    els.explanationText.textContent = q.explanation || '';
+    if (els.explanationImage) {
+      els.explanationImage.innerHTML = '';
+      if (q.explanation_image) {
+        const img = document.createElement('img');
+        img.src = q.explanation_image;
+        img.alt = 'Explanation image';
+        els.explanationImage.appendChild(img);
+      }
+    }
+    els.explanationBox.open = true;
+  } else {
+    els.explanationText.textContent = '';
+    if (els.explanationImage) els.explanationImage.innerHTML = '';
+    els.explanationBox.open = false;
+  }
+
+  if (settings.keepResponses) {
+    // Keep options and highlight chosen + correct/incorrect
+    highlightAnswersInPlace(q, result);
+  } else {
+    // Hide answer options to keep the focus on the explanation
+    clearAnswerArea(els.answerForm);
+  }
+}
+
+function highlightAnswersInPlace(q, result) {
+  const labels = Array.from(els.answerForm.querySelectorAll('label.option'));
+  const isChosen = (idx) => {
+    const input = els.answerForm.querySelector(`input[value="${String(idx)}"]`);
+    return input && (input.checked || input.getAttribute('data-chosen') === '1');
+  };
+  if (q.type === 'mc_single') {
+    labels.forEach((lab) => {
+      const input = lab.querySelector('input');
+      const idx = input ? Number(input.value) : -1;
+      lab.classList.remove('correct', 'incorrect', 'chosen');
+      if (idx === q.correct) lab.classList.add('correct');
+      if (isChosen(idx)) lab.classList.add('chosen');
+      if (isChosen(idx) && idx !== q.correct) lab.classList.add('incorrect');
+    });
+  } else if (q.type === 'mc_multi') {
+    const corr = new Set(q.correct || []);
+    labels.forEach((lab) => {
+      const input = lab.querySelector('input');
+      const idx = input ? Number(input.value) : -1;
+      lab.classList.remove('correct', 'incorrect', 'chosen');
+      if (corr.has(idx)) lab.classList.add('correct');
+      if (isChosen(idx)) lab.classList.add('chosen');
+      if (isChosen(idx) && !corr.has(idx)) lab.classList.add('incorrect');
+    });
+  }
 }
 
 function attachDoubleTapToContinue() {
@@ -369,10 +425,17 @@ function attachDoubleTapToContinue() {
 
 function renderCurrentQuestion() {
   if (rapidMode) {
-    // Hide traditional buttons in rapid mode
-    els.submitBtn.style.display = 'none';
-    els.nextBtn.style.display = 'none';
+    // In rapid mode, hide buttons by default, except for mc_multi and fill_text which require manual Answer
+    const qCur = engine && engine.current();
+    if (qCur && (qCur.type === 'mc_multi' || qCur.type === 'fill_text')) {
+      els.submitBtn.style.display = '';
+      els.nextBtn.style.display = 'none';
+    } else {
+      els.submitBtn.style.display = 'none';
+      els.nextBtn.style.display = 'none';
+    }
   } else {
+    // Non-rapid mode: show both controls
     els.submitBtn.style.display = '';
     els.nextBtn.style.display = '';
   }
@@ -384,7 +447,12 @@ function renderCurrentQuestion() {
 
   const q = engine.current();
   if (!q) {
-    show('done');
+    // End of quiz: show appropriate finished screen
+    if (settings.hardcoreMode) {
+      showHardcoreSummary();
+    } else {
+      showNonHardcoreDone();
+    }
     return;
   }
   els.feedback.textContent = '';
@@ -406,6 +474,20 @@ function renderCurrentQuestion() {
   clearAnswerArea(els.answerForm);
   renderQuestion(els.answerForm, q);
 
+  // For mc_multi, ensure the Answer button is enabled only when at least one option is selected
+  if (q.type === 'mc_multi') {
+    const updateSubmitEnabled = () => {
+      const anyChecked = els.answerForm.querySelectorAll('input[name="mc_multi"]:checked').length > 0;
+      setDisabled(els.submitBtn, !anyChecked);
+    };
+    updateSubmitEnabled();
+    els.answerForm.addEventListener('change', (e) => {
+      if (e.target && e.target.name === 'mc_multi') updateSubmitEnabled();
+    }, { once: false });
+  } else {
+    setDisabled(els.submitBtn, false);
+  }
+
   // animate question content subtly
   applyEnter(els.questionText, 'enter-soft');
   applyEnter(els.questionImage, 'enter-soft');
@@ -417,18 +499,116 @@ function renderCurrentQuestion() {
     const onPick = (e) => {
       if (waitingForTap) return;
       const idx = Number(e.target.value);
-      const result = engine.answer(q.id, idx);
-      displayResult(result, q);
-      disableAnswerInputs(true);
-      attachDoubleTapToContinue();
+      if (settings.hardcoreMode) {
+        const result = engine.answer(q.id, idx);
+        hardcoreResults.push({ id: q.id, q, userAnswer: idx, correct: result.correct, correctAnswerHtml: result.correctAnswerHtml });
+        // Force single-pass: mark as mastered to prevent repeats
+        // (Engine already mastered when correct; ensure wrong ones also mastered)
+        engine.mastered.add(q.id);
+        engine.cooldown[q.id] = 0;
+        // Immediately go next without feedback
+        if (engine.isDone()) {
+          showHardcoreSummary();
+        } else {
+          engine.next();
+          renderCurrentQuestion();
+        }
+      } else {
+        const result = engine.answer(q.id, idx);
+        displayResult(result, q);
+        disableAnswerInputs(true);
+        attachDoubleTapToContinue();
+      }
     };
     radios.forEach(r => {
       r.addEventListener('change', onPick, { once: true });
       r.addEventListener('click', onPick, { once: true });
     });
+  } else if (rapidMode && q.type === 'true_false') {
+    const radios = els.answerForm.querySelectorAll('input[name="tf"]');
+    const onPick = (e) => {
+      if (waitingForTap) return;
+      const val = String(e.target.value) === 'true';
+      if (settings.hardcoreMode) {
+        const result = engine.answer(q.id, val);
+        hardcoreResults.push({ id: q.id, q, userAnswer: val, correct: result.correct, correctAnswerHtml: result.correctAnswerHtml });
+        engine.mastered.add(q.id);
+        engine.cooldown[q.id] = 0;
+        if (engine.isDone()) {
+          showHardcoreSummary();
+        } else {
+          engine.next();
+          renderCurrentQuestion();
+        }
+      } else {
+        const result = engine.answer(q.id, val);
+        displayResult(result, q);
+        disableAnswerInputs(true);
+        attachDoubleTapToContinue();
+      }
+    };
+    radios.forEach(r => {
+      r.addEventListener('change', onPick, { once: true });
+      r.addEventListener('click', onPick, { once: true });
+    });
+  } else if (rapidMode && q.type === 'fill_text') {
+    const inp = els.answerForm.querySelector('input[name="fill_text"]');
+    if (inp) {
+      const onKey = (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          if (waitingForTap) return;
+          const ans = inp.value;
+          if (settings.hardcoreMode) {
+            const result = engine.answer(q.id, ans);
+            hardcoreResults.push({ id: q.id, q, userAnswer: ans, correct: result.correct, correctAnswerHtml: result.correctAnswerHtml });
+            engine.mastered.add(q.id);
+            engine.cooldown[q.id] = 0;
+            if (engine.isDone()) {
+              showHardcoreSummary();
+            } else {
+              engine.next();
+              renderCurrentQuestion();
+            }
+          } else {
+            const result = engine.answer(q.id, ans);
+            displayResult(result, q);
+            disableAnswerInputs(true);
+            attachDoubleTapToContinue();
+          }
+        }
+      };
+      inp.addEventListener('keydown', onKey, { once: false });
+    }
+  } else if (rapidMode && q.type === 'fill_table') {
+    const onKey = (e) => {
+      if (e.key === 'Enter' && e.target && e.target.name && e.target.name.startsWith('cell_')) {
+        e.preventDefault();
+        if (waitingForTap) return;
+        const ans = readUserAnswer(els.answerForm, q);
+        if (settings.hardcoreMode) {
+          const result = engine.answer(q.id, ans);
+          hardcoreResults.push({ id: q.id, q, userAnswer: ans, correct: result.correct, correctAnswerHtml: result.correctAnswerHtml });
+          engine.mastered.add(q.id);
+          engine.cooldown[q.id] = 0;
+          if (engine.isDone()) {
+            showHardcoreSummary();
+          } else {
+            engine.next();
+            renderCurrentQuestion();
+          }
+        } else {
+          const result = engine.answer(q.id, ans);
+          displayResult(result, q);
+          disableAnswerInputs(true);
+          attachDoubleTapToContinue();
+        }
+      }
+    };
+    els.answerForm.addEventListener('keydown', onKey, { once: false });
   }
 
-  setDisabled(els.submitBtn, false);
+  if (q.type !== 'mc_multi') setDisabled(els.submitBtn, false);
   setDisabled(els.nextBtn, true);
   disableAnswerInputs(false);
   updateProgress();
@@ -442,21 +622,37 @@ function onSubmit(e) {
   if (!q) return;
 
   const userAnswer = readUserAnswer(els.answerForm, q);
-  const result = engine.answer(q.id, userAnswer);
-
-  // Use common result renderer to populate feedback and explanation
-  displayResult(result, q);
-
-  // Lock inputs; wait for explicit Next
-  disableAnswerInputs(true);
-  setDisabled(els.submitBtn, true);
-  setDisabled(els.nextBtn, false);
+  if (settings.hardcoreMode) {
+    const result = engine.answer(q.id, userAnswer);
+    hardcoreResults.push({ id: q.id, q, userAnswer, correct: result.correct, correctAnswerHtml: result.correctAnswerHtml });
+    engine.mastered.add(q.id);
+    engine.cooldown[q.id] = 0;
+    if (engine.isDone()) {
+      showHardcoreSummary();
+    } else {
+      engine.next();
+      renderCurrentQuestion();
+    }
+  } else {
+    const result = engine.answer(q.id, userAnswer);
+    // Use common result renderer to populate feedback and explanation
+    displayResult(result, q);
+    // Lock inputs; in rapid mode we do not show Next button. Use double-tap to continue.
+    disableAnswerInputs(true);
+    setDisabled(els.submitBtn, true);
+    els.nextBtn.style.display = 'none';
+    attachDoubleTapToContinue();
+  }
 }
 
 function onNext() {
   if (!engine) return;
   if (engine.isDone()) {
-    show('done');
+    if (settings.hardcoreMode) {
+      showHardcoreSummary();
+    } else {
+      showNonHardcoreDone();
+    }
     return;
   }
   engine.next();
@@ -488,25 +684,19 @@ async function startFromSelection() {
     // If preset specifies topics, use them; otherwise default to all topics
     let topicIds = pr.topics && pr.topics.length ? pr.topics.slice() : (await loadTopics(context.course)).map(t => t.id);
     const { questions, label } = await loadQuestionsForTopics(context.course, topicIds);
-    const filtered = rapidMode ? filterToMcSingle(questions) : questions;
-    if (rapidMode && filtered.length === 0) {
-      alert('No single-choice questions available in the selected topics.');
-      return;
-    }
     context.sessionLabel = pr.name ? `Preset: ${pr.name}` : `Preset: ${pr.id}`;
-    engine = new QuizEngine(filtered);
+    hardcoreResults = [];
+    settings = loadSettings();
+    engine = new QuizEngine(questions);
     show('quiz');
     renderCurrentQuestion();
   } else if (context.lastSelection.mode === 'custom') {
     const ids = context.lastSelection.topicIds || [];
     const { questions, label } = await loadQuestionsForTopics(context.course, ids);
-    const filtered = rapidMode ? filterToMcSingle(questions) : questions;
-    if (rapidMode && filtered.length === 0) {
-      alert('No single-choice questions available in the selected topics.');
-      return;
-    }
     context.sessionLabel = `Topics: ${label}`;
-    engine = new QuizEngine(filtered);
+    hardcoreResults = [];
+    settings = loadSettings();
+    engine = new QuizEngine(questions);
     show('quiz');
     renderCurrentQuestion();
   }
@@ -534,6 +724,7 @@ function onBackFromDone() {
 
 function main() {
   initTheme();
+  initSettingsUi();
   initCourseScreen();
   show('course');
 
@@ -556,3 +747,70 @@ function main() {
 }
 
 main();
+
+function initSettingsUi() {
+  // Load current settings
+  settings = loadSettings();
+  if (els.setShowExplanation) els.setShowExplanation.checked = !!settings.showExplanation;
+  if (els.setKeepResponses) els.setKeepResponses.checked = !!settings.keepResponses;
+  if (els.setHardcore) els.setHardcore.checked = !!settings.hardcoreMode;
+
+  const save = () => {
+    settings = saveSettings({
+      showExplanation: !!els.setShowExplanation.checked,
+      keepResponses: !!els.setKeepResponses.checked,
+      hardcoreMode: !!els.setHardcore.checked,
+    });
+  };
+
+  els.setShowExplanation && els.setShowExplanation.addEventListener('change', save);
+  els.setKeepResponses && els.setKeepResponses.addEventListener('change', save);
+  els.setHardcore && els.setHardcore.addEventListener('change', save);
+}
+
+function showHardcoreSummary() {
+  // Show done screen with score + detailed rows
+  show('done');
+  const total = hardcoreResults.length;
+  const ok = hardcoreResults.filter(r => r.correct).length;
+  if (els.doneSubtitle) {
+    els.doneSubtitle.textContent = `Hardcore score: ${ok} / ${total}`;
+  }
+  if (els.summaryBox) {
+    els.summaryBox.innerHTML = '';
+    hardcoreResults.forEach(r => {
+      const row = document.createElement('div');
+      row.className = 'row ' + (r.correct ? 'ok' : 'bad');
+      const qTitle = document.createElement('div');
+      qTitle.className = 'q';
+      qTitle.textContent = r.q.question;
+      const badge = document.createElement('span');
+      badge.className = 'badge ' + (r.correct ? 'ok' : 'bad');
+      badge.textContent = r.correct ? 'Correct' : 'Wrong';
+      qTitle.appendChild(badge);
+      row.appendChild(qTitle);
+      if (!r.correct && r.correctAnswerHtml) {
+        const corr = document.createElement('div');
+        corr.innerHTML = `<small>Correct:</small> ${r.correctAnswerHtml}`;
+        row.appendChild(corr);
+      }
+      if (settings.showExplanation && r.q.explanation) {
+        const expl = document.createElement('div');
+        expl.innerHTML = `<small>Explanation:</small> ${r.q.explanation}`;
+        row.appendChild(expl);
+      }
+      els.summaryBox.appendChild(row);
+    });
+  }
+}
+
+function showNonHardcoreDone() {
+  // Generic finish view without score/summary
+  show('done');
+  if (els.doneSubtitle) {
+    els.doneSubtitle.textContent = 'You mastered every question in this topic.';
+  }
+  if (els.summaryBox) {
+    els.summaryBox.innerHTML = '';
+  }
+}

@@ -100,6 +100,12 @@ body {
   color: var(--text);
 }
 
+/* Settings dropdown */
+.settings { margin-left: 8px; }
+.settings summary { cursor: pointer; font-size: 13px; color: var(--muted); }
+.settings-body { padding: 8px 10px; background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); min-width: 260px; }
+.settings .option-row { display: flex; align-items: center; gap: 8px; padding: 6px 2px; }
+
 .container {
   max-width: 900px;
   width: 100%;
@@ -186,6 +192,10 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 .option input { transform: scale(1.15); }
+/* Result highlighting when keeping responses */
+.option.correct { border-color: rgba(60, 179, 113, 0.7); background: rgba(60, 179, 113, 0.12); }
+.option.incorrect { border-color: rgba(220, 20, 60, 0.7); background: rgba(220, 20, 60, 0.10); }
+.option.chosen { box-shadow: 0 0 0 2px rgba(var(--tint), 0.25) inset; }
 @media (hover: hover) and (pointer: fine) {
   .option:hover { background: rgba(var(--tint), 0.15); }
 }
@@ -208,6 +218,16 @@ body {
 .explanation { margin-top: 10px; border-top: 1px dashed var(--border); padding-top: 10px; }
 .explanation-image { margin-top: 8px; display: flex; justify-content: center; }
 .explanation-image img { max-width: 100%; border-radius: var(--radius-sm); border: 1px solid var(--border); }
+
+/* Finished summary */
+.summary { margin-top: 12px; display: grid; gap: 10px; }
+.summary .row { border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 10px; background: var(--card); }
+.summary .row .q { font-weight: 600; margin-bottom: 6px; }
+.summary .row.ok { border-color: rgba(60, 179, 113, 0.6); }
+.summary .row.bad { border-color: rgba(220, 20, 60, 0.6); }
+.summary .badge { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; margin-left: 6px; }
+.summary .badge.ok { background: rgba(60, 179, 113, 0.15); color: var(--text); }
+.summary .badge.bad { background: rgba(220, 20, 60, 0.15); color: var(--text); }
 
 /* Tap-anywhere hint pulse */
 .hint.pulse { animation: pulse 1.6s var(--easing) infinite; }

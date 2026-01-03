@@ -1,0 +1,173 @@
+{
+  "topic_id": "inter-process-communcation",
+  "topic_name": "inter-process-communcation",
+  "questions": [
+    {
+      "id": "KO",
+      "type": "mc_multi",
+      "question": "Vyberte správne podmienky riešenia vzájomneho vylučovania. (KO je kritická oblasť)",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-110325_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný.",
+        "Proces v KO nesmie brániť inému procesu vstupovať do KO.",
+        "Rýchlosť a počet CPU by sa mal brať do úvahy.",
+        "Procesy musia vstupovať do KO v rovnakom poradí, v akom o ňu žiadajú.",
+        "Všetky procesy musia mať rovnakú šancu vstúpiť do KO v každom okamihu."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "codesnippetxd",
+      "type": "mc_multi",
+      "question": "Akú podmienku vzájomného vylučovania môže nasledujúci kód porušovať?",
+      "explanation": "To že porušuje už to že do kritickej oblasti sa môžu dostať obidva procesy je celkom jasné. Ale musíme odpozorovať fakt, že využivame neatomickú premennú. Čiže na roznych architekturach procesorov bude tento kôd fungovať ináč. Taktiež treba dobré načasovanie. Čiže porušuje aj podmienku o rýchlosti a počtu CPU.",
+      "image": "inter-process-communcation/2026-01-03-111820_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný."
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "codesnippetxxxxdddxdx",
+      "type": "mc_multi",
+      "question": "Akú podmienku vzájomného vylučovania môže nasledujúci kód porušovať?",
+      "explanation": "Strict alteration-Ak je napr. turn = B a proces B je mimo KO (alebo nechce vstúpiť), proces A aj tak nemôže vstúpiť, hoci KO je voľná. Teda proces mimo KO môže blokovať vstup inému procesu, čo porušuje podmienku progress.",
+      "image": "inter-process-communcation/2026-01-03-114636_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný."
+      ],
+      "correct": [
+        2
+      ]
+    },
+    {
+      "id": "codesnipetsnipet",
+      "type": "mc_multi",
+      "question": "Akú podmienku vzájomného vylučovania môže nasledujúci kód porušovať?",
+      "explanation": ".",
+      "image": "inter-process-communcation/2026-01-03-120939_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný."
+      ],
+      "correct": [
+        3
+      ]
+    },
+    {
+      "id": "funkcnykodggs",
+      "type": "mc_multi",
+      "question": "Akú podmienku vzájomného vylučovania môže nasledujúci kód NEBUDE porušovať?",
+      "explanation": "Kód je plne funkčný ale len pre 2 processy.",
+      "image": "inter-process-communcation/2026-01-03-121108_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "semaphore",
+      "type": "mc_multi",
+      "question": "Vyberte správne tvrdenia ktoré platia o Semafóre.",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-122838_hyprshot.png",
+      "options": [
+        "je univerzálny prostriedok synchronizácie procesov.",
+        "je abstraktný dátový typ so zadefinovanými operáciami init() a down()",
+        "počet ukončených operácií uo() musí byť vždy menší alebo rovný počtu ukončených operácií down().",
+        "jedná sa o System call.",
+        "Operácia init() definuje počiatočný počet ukončených operácií down().",
+        "Operácie nad ním nie sú atomické."
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "muteex",
+      "type": "mc_single",
+      "question": "Čo je Mutex?",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-123357_hyprshot.png",
+      "options": [
+        "Inak pomenovaný binárny semafór.",
+        "Funkcia, ktorá mení vlastnosti threadu za behu.",
+        "Funkcia, ktorá kontroluje konkurenciu threadov.",
+        "Funkcia, ktorá kontroluje konkurenciu rôznych procesov."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "moniootr",
+      "type": "mc_single",
+      "question": "Ktoré tvrdenie o monitore je pravidvé?",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-123644_hyprshot.png",
+      "options": [
+        "Monitor je nízkoúrovňový synchronizačný mechanizmus podobný semaforu.",
+        "Monitor je objekt, ktorý definuje kritickú oblasť a zabezpečuje, že v jednom čase sa vykonáva len jedna jeho operácia.",
+        "Monitor umožňuje súčasné vykonávanie viacerých operácií nad rovnakým interným stavom.",
+        "Monitor je hardvérový mechanizmus implementovaný v procesore."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "specialinstructionicp",
+      "type": "mc_single",
+      "question": "Aký je problém so špecialnymi inštrukciami na korigovanie threadov?",
+      "explanation": "",
+      "explanation_image": "inter-process-communcation/2026-01-03-124123_hyprshot.png",
+      "options": [
+        "Nie každý procesor ich podporuje.",
+        "Na každom procesore fungujú diametralne ináč.",
+        "Nie sú atomické.",
+        "Není s nimi nejaký extra problém."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "codesnipetneviemcislo",
+      "type": "mc_multi",
+      "question": "Aký je problém s nasledujúcim kódom",
+      "explanation": "Každý thread si nastaví proc_turn na seba, a tým vie spôsobiť, že druhému threadu vyjde podmienka čakania ako nepravdivá, takže obaja môžu prejsť do KO.",
+      "image": "inter-process-communcation/2026-01-03-124419_hyprshot.png",
+      "options": [
+        "V KO môže byť najviac 1 proces.",
+        "Rýchlosť a počet CPU sa nesmie brať do úvahy.",
+        "Proces mimo KO nesmie brániť inému procesu vstupovať do KO.",
+        "Čas čakania procesu na vstup do KO musí byť konečný."
+      ],
+      "correct": [
+        0
+      ]
+    }
+  ]
+}

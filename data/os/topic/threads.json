@@ -16,6 +16,107 @@
         "Všetky sú spravne."
       ],
       "correct": 3
+    },
+    {
+      "id": "processthread",
+      "type": "mc_single",
+      "question": "Aký je hlavný zasadný rozdiel medzi procesom a threadom?",
+      "explanation": "Procesy sú navzájom izolované vlastným adresným priestorom, zatiaľ čo vlákna v rámci jedného procesu zdieľajú pamäť a líšia sa len vlastným stackom a registrami.",
+      "options": [
+        "Proces aj vlákno majú vlastný adresný priestor v pamäti.",
+        "Vlákna sú izolované jednotky, zatiaľ čo procesy zdieľajú pamäť.",
+        "Proces má vlastný adresný priestor, zatiaľ čo vlákna zdieľajú pamäť procesu.",
+        "Medzi procesom a vláknom neexistuje žiadny rozdiel."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "complicationwiththreads",
+      "type": "mc_single",
+      "question": "Aká je typická komplikácia pri použití viacerých vlákien v jednom procese?",
+      "explanation": "",
+      "explanation_image": "threads/2026-01-03-100158_hyprshot.png",
+      "options": [
+        "Vlákna majú oddelené globálne premenné, čo komplikuje komunikáciu.",
+        "Globálne premenné nemajú automaticky chránený prístup.",
+        "Každé vlákno má vlastnú tabuľku otvorených súborov.",
+        "Vlákna nemôžu súčasne pracovať so súbormi."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "threadcomplcation",
+      "type": "mc_single",
+      "question": "Ktorá otázka vystihuje jednu z komplikácií používania vlákien?",
+      "explanation": "",
+      "explanation_image": "threads/2026-01-03-100158_hyprshot.png",
+      "options": [
+        "Ako plánovač rozhoduje o poradí procesov?",
+        "Či sa pri volaní fork() vytvorí nový proces aj so všetkými existujúcimi vláknami.",
+        "Ako operačný systém alokuje CPU medzi procesy.",
+        "Prečo procesy nemôžu zdieľať pamäť."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "threadstack",
+      "type": "mc_single",
+      "question": "Prečo má thread vlastný zásobník?",
+      "explanation": "",
+      "explanation_image": "threads/2026-01-03-100923_hyprshot.png",
+      "options": [
+        "Thread je vykonávaný program a teda si musí udržovať vlastnú históriu vykonávania funkcií.",
+        "Nemá vlastný zásobník.",
+        "Je oddeleny od procesu, ale niektoré časti zásobníka s ním aj tak zdieľa.",
+        "Aby operačný systém vedel, ktorému procesu vlákno patrí."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "threadmodel",
+      "type": "mc_single",
+      "question": "Označte NEPRAVDÍVE tvrdenie o thread model.",
+      "explanation": "",
+      "explanation_image": "threads/2026-01-03-102740_hyprshot.png",
+      "options": [
+        "Proces je kontajner udržiavajúci prostriedky.",
+        "Thread má program, registre, PC, stack.",
+        "Thread je entita využívajúca prostriedky procesu vykonávaná na CPU.",
+        "V rámci procesu môže existovať niekoľko thread-ov.",
+        "Thread nadobúda stavy running, ready, blocked.",
+        "Všetky tvrdenia su pravdivé.",
+        "Všetky tvrdenia su nepravdivé"
+      ],
+      "correct": 4
+    },
+    {
+      "id": "processmodelthreadmodel",
+      "type": "mc_single",
+      "question": "Aký je zásadný rozdiel medzi thread modelom a process modelom?",
+      "explanation": ".",
+      "options": [
+        "V process modeli môžu viaceré procesy zdieľať rovnaký adresný priestor.",
+        "V thread modeli sú vlákna samostatné jednotky s vlastným adresným priestorom.",
+        "V process modeli sú jednotky vykonávania izolované, zatiaľ čo v thread modeli vlákna zdieľajú pamäť procesu.",
+        "Medzi thread modelom a process modelom neexistuje žiadny rozdiel z pohľadu OS."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "kernelspacethread",
+      "type": "mc_single",
+      "question": "Aké tvrdenie je o Kernel space Thread je NEPRAVIDVÉ?",
+      "explanation": "",
+      "explanation_image": "threads/2026-01-03-104022_hyprshot.png",
+      "options": [
+        "Kernel implementuje podporu vláken.",
+        "Operácie nad vláknami obsahujú systémové volanie.",
+        "Kernel sprostredkuje plánovanie vláken.",
+        "Kernel umožňuje prepnutie vlákna bez potreby volania yield().",
+        "Vlákno blokované na systémovom volaní neblokuje celý proces.",
+        "Vytvorenie a ukončenie vlákna je rádovo celkom rýchlejšie ako jeho recyklácia."
+      ],
+      "correct": 5
     }
   ]
 }

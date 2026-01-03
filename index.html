@@ -30,6 +30,23 @@
           <option value="solar">Solar</option>
         </select>
       </div>
+      <details class="settings" id="settingsPanel">
+        <summary>Settings</summary>
+        <div class="settings-body">
+          <label class="option-row">
+            <input type="checkbox" id="setShowExplanation" />
+            <span>Show explanation after answering</span>
+          </label>
+          <label class="option-row">
+            <input type="checkbox" id="setKeepResponses" />
+            <span>Keep responses after answering</span>
+          </label>
+          <label class="option-row">
+            <input type="checkbox" id="setHardcore" />
+            <span>Hardcore mode (no per-question feedback; single pass, score at end)</span>
+          </label>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -90,7 +107,8 @@
     <!-- Screen: Finished -->
     <section id="screen-done" class="card hidden">
       <h2>Great job!</h2>
-      <p>You mastered every question in this topic.</p>
+      <p id="doneSubtitle">You mastered every question in this topic.</p>
+      <div id="summaryBox" class="summary"></div>
       <div class="actions">
         <button id="restartBtn" class="btn">Restart Topic</button>
         <button id="backBtn" class="btn subtle">Back to Topics</button>

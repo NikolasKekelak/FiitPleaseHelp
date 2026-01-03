@@ -17,6 +17,10 @@
     {
       "id": "planning",
       "file": "topic/planning.json"
+    },
+    {
+      "id": "inter-process-communcation",
+      "file": "topic/inter-process-communcation.json"
     }
   ]
 }
