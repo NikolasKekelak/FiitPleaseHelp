@@ -200,6 +200,25 @@
         7,
         8
       ]
+    },
+    {
+      "id": "contextswitchpaging",
+      "type": "mc_multi",
+      "question": "Pri prepnutí kontextu OS:",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-04-210153_hyprshot.png",
+      "options": [
+        "vyprázdni TLB",
+        "nahradí TLB",
+        "nastaví registre segmentov a tabuliek stránok",
+        "načíta vybrané stránky procesu"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
     }
   ]
 }
