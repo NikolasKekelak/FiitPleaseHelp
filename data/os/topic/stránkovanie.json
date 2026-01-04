@@ -83,7 +83,7 @@
         "Keď stránka nemá pridelený stránkový rám v hlavnej pamäti",
         "Keď je hlavná pamäť úplne zaplnená."
       ],
-      "correct": 0
+      "correct": 2
     },
     {
       "id": "sortpaging",
@@ -218,6 +218,50 @@
         1,
         2,
         3
+      ]
+    },
+    {
+      "id": "rwcode",
+      "type": "mc_multi",
+      "question": "Aké prístupové oprávnenia má stránka s kódom?",
+      "explanation": "Najprv musím prečítať inštrukciu, a ju môžem jedine vykonat.",
+      "options": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "correct": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "rwxdata",
+      "type": "mc_multi",
+      "question": "Aké prístupové oprávnenia má defaultne stránka s dátami?",
+      "explanation": "Dáta neviem vykonávať",
+      "options": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "rwxconstants",
+      "type": "mc_multi",
+      "question": "Aké prístupové oprávnenia má defaultne stránka s konštantami?",
+      "explanation": "Konštanty neviem prepisovať",
+      "options": [
+        "read",
+        "write",
+        "execute"
+      ],
+      "correct": [
+        0
       ]
     }
   ]
