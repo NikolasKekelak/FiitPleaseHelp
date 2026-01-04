@@ -1,0 +1,45 @@
+{
+  "topic_id": "power managment",
+  "topic_name": "power managment",
+  "questions": [
+    {
+      "id": "energyconsumption",
+      "type": "mc_multi",
+      "question": "Pri počítačoch, medzi najväčších spotrebiteľov energie sú: (mimo grafickych kariet)",
+      "explanation": "",
+      "explanation_image": "power managment/2026-01-04-133213_hyprshot.png",
+      "options": [
+        "CPU",
+        "HDD",
+        "RAM",
+        "Motherboard",
+        "Zdroj",
+        "SSH"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "energyconsumptionreduction",
+      "type": "mc_multi",
+      "question": "Akými spôsobmi môže OS prsipieť k zníženiu spotreby energie?",
+      "explanation": "Všetko čo si viete predstaviť a ešte viac.",
+      "options": [
+        "Dynamická frekvencia CPU podľa zaťaženia",
+        "Uspať neaktívne zariadenia",
+        "Variablina rýchlosť otáčania HDD",
+        "Optimalizácia jasu monitorov",
+        "Mať rôzne môdy, zabudované do kernelu (performance, efficiency, on-dmeand)"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}

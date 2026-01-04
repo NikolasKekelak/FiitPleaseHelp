@@ -33,6 +33,14 @@
     {
       "id": "stránkovanie",
       "file": "topic/stránkovanie.json"
+    },
+    {
+      "id": "I/O devices",
+      "file": "topic/I/O devices.json"
+    },
+    {
+      "id": "power managment",
+      "file": "topic/power managment.json"
     }
   ]
 }

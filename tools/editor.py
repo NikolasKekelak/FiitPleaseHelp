@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Mastery Quiz Question Editor (Tkinter)
+ Editor (Tkinter)
 - Create/edit topics and questions
 - Validates and saves JSON in /data/<course>/topic/*.json
 - Updates /data/<course>/topics.json automatically
