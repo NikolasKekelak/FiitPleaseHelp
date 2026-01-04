@@ -1,0 +1,47 @@
+{
+  "topic_id": "I/O devices",
+  "topic_name": "I/O devices",
+  "questions": [
+    {
+      "id": "ioclassifaction",
+      "type": "mc_multi",
+      "question": "Do akých skupín klasifikujeme I/O devices?",
+      "explanation": "",
+      "explanation_image": "I/O devices/2026-01-04-215812_hyprshot.png",
+      "options": [
+        "Block Devices",
+        "Event Devices",
+        "Character Devices",
+        "Listener Devices",
+        "Audio Devices",
+        "Video Devices"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "levelsofiocommunication",
+      "type": "sort",
+      "question": "SW na komunikáciu I/O zariadení a OS sa skladá zo 4 vrstiev + HW. Zoradte dané vrstvy od najvyššiej po najnižšiu, pričom na poslednej vrstve je HW.",
+      "explanation": "",
+      "explanation_image": "I/O devices/2026-01-04-220545_hyprshot.png",
+      "items": [
+        "User Level",
+        "Device-independet operating system software",
+        "Device drivers",
+        "interrupt Handlers",
+        "Hardware"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    }
+  ]
+}
