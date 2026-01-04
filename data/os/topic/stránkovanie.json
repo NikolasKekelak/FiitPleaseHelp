@@ -14,7 +14,7 @@
         "Pretože segmentovanie neumožňovalo ochranu pamäte",
         "Pretože procesy nemôžu zdieľať adresný priestor procesora"
       ],
-      "correct": 2
+      "correct": 1
     },
     {
       "id": "pagingtrue",
@@ -94,7 +94,7 @@
         "CPU sa pokúsi fetchovať inštrukciu z virtuálnej adresy.",
         "Pri výpočte fyzickej adresy sa MMU pozrie či stránka nemá záznam v TLB.",
         "Ak záznam nebol v TLB MMU sa pozrie do tabuľky stránok, ktorá sa už nachádza v hlavnej pamäti.",
-        "A nenachádza sa MMU vyvolá hardvérové prerušenie – page fault a riadenie prevezme OS.",
+        "k sa tam nenachádza, MMU vyvolá hardvérové prerušenie – page fault a riadenie prevezme OS.",
         "Operačný systém vyberie obeť na základe použivaného algoritmu",
         "OS načíta požadovanú stránku z disku do vybraného rámu a aktualizuje tabuľku stránok aj TLB.",
         "CPU znovu fetchne tú istú inštrukciu, tentokrát už úspešne."

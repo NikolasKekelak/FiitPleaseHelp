@@ -56,7 +56,7 @@
     {
       "id": "multiprocessor",
       "type": "mc_single",
-      "question": "Mám serverovňu, kde budú na všetkých súčasne prebiehať výpočty počasia, ktorý OS by bolo najvhodnejšie použiť?",
+      "question": "Mám serverovňu, kde budú na všetkých serveroch súčasne prebiehať výpočty počasia, ktorý OS by bolo najvhodnejšie použiť?",
       "explanation": "Multiprocessor OS - Je OS určený predovšetkým pre výpočtové systémy, ktoré sú vybavené\nmnožstvom procesorov združených do tzv. Clusters. Nasadzujú sa na\nvýpočtovo náročné úlohy ako je počítanie matematických problémov\nprípadne predpovedí počasia. (P2 - Klasifikacia OS)",
       "options": [
         "Multipocessor OS",

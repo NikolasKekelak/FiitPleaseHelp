@@ -156,7 +156,7 @@
     {
       "id": "codesnipetneviemcislo",
       "type": "mc_multi",
-      "question": "Aký je problém s nasledujúcim kódom",
+      "question": "Ktoré zo 4 pravidiel vzájomneho vylučovania, porušuje nasledovný kód",
       "explanation": "Každý thread si nastaví proc_turn na seba, a tým vie spôsobiť, že druhému threadu vyjde podmienka čakania ako nepravdivá, takže obaja môžu prejsť do KO.",
       "image": "inter-process-communcation/2026-01-03-124419_hyprshot.png",
       "options": [

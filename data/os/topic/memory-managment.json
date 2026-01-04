@@ -121,7 +121,7 @@
         "Inak nazývané, Defragmentácia",
         "Jedná sa o lightweight operáciu",
         "počas kompakcie dôjde k uprataniu pamäte",
-        "Aj keď sa proces preśuva proces, stále môže byť vykonaný vďaka dynamickej realokácii",
+        "Aj keď sa proces presúva v rámci kompakcie, stále môže byť vykonaný vďaka dynamickej realokácii",
         "Používa sa prevážne na upratanie Diskov"
       ],
       "correct": [
@@ -133,7 +133,7 @@
     {
       "id": "stackfuckedheaporheapfuckedstack?",
       "type": "mc_multi",
-      "question": "Prirodzene sa stáve, že stack a pamäť dát prerastie priestor, ktorý bol pridelený procesu. Keď nastane táto situácia, aké sú rôzne spôsoby, ktoré môže OS spraviť aby vyriešil tento problém?",
+      "question": "Prirodzene sa stáva, že stack a pamäť dát prerastie priestor, ktorý bol pridelený procesu. Keď nastane táto situácia, aké sú rôzne spôsoby, ktoré môže OS spraviť aby vyriešil tento problém?",
       "explanation": "",
       "explanation_image": "memory-managment/2026-01-03-153110_hyprshot.png",
       "options": [
@@ -164,8 +164,8 @@
         "Najdeme síce použivaný blok, ale kde sa zmestia naše dáta, aby sme neplýtvali pamäťou"
       ],
       "correct": [
-        1,
-        2
+        2,
+        3
       ]
     },
     {
