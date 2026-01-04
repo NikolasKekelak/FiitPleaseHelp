@@ -263,6 +263,60 @@
       "correct": [
         0
       ]
+    },
+    {
+      "id": "processthrashing",
+      "type": "mc_single",
+      "question": "Pokiaľ Working Set je väčší, ako je jeho reálna maximálna veľkosť, začne dochádzať k veľmi častým Page Faultom, čož zníži celkovú réžiu, tento Jav sa nazýva:",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-04-223154_hyprshot.png",
+      "options": [
+        "Process Thrashing",
+        "Trumpstolesmadur'S Law",
+        "Moore'S Law",
+        "Parkinsons'S Low",
+        "System Blockage",
+        "Barriera",
+        "Deadlock"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "ospagingprocesspov",
+      "type": "mc_multi",
+      "question": "Pri vzniku processu, z pohľadu stránkovania OS:",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-04-225823_hyprshot.png",
+      "options": [
+        "zistí jeho veľkosť a vytvorí príslušnú Page Table",
+        "vytvorí príslušný priestor v swap pamäti",
+        "uloží ukazovatele na Page Table a Swap do PCB",
+        "algoritmicky vypocita kolko page faultov nastane v simulovanom prostredí, a priradi mu prioritu"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "kontextswitchOS",
+      "type": "mc_multi",
+      "question": "Pri prepnutí kontextu, Operačný systém:",
+      "explanation": "",
+      "explanation_image": "stránkovanie/2026-01-04-230143_hyprshot.png",
+      "options": [
+        "môže vyprázdniť TLB",
+        "môže nahradiť TLB",
+        "nastaví registre segmentov a tabuliek stránok",
+        "načíta vybrané stránky procesu"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
     }
   ]
 }
