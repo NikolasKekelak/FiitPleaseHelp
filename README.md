@@ -176,3 +176,47 @@ Notes
   - linux (`data/os/topic/linux.json`)
 
 You can start the quiz immediately by opening the site via a static server or GitHub Pages.
+
+---
+
+### Course Landing Pages and Inline Highlighting
+
+This project includes static course landing pages (GitHub Pages friendly) with sidebar navigation and simple HTML partials per course. It also supports minimal inline highlighting using asterisks within loaded content.
+
+Structure:
+- Course template: `courses/course-template.html` (reference markup/layout)
+- Per‑course page: `courses/<course-slug>/index.html`
+- Per‑course partials (simple semantic HTML):
+  - `courses/<course-slug>/theory.html`
+  - `courses/<course-slug>/lectures.html`
+  - `courses/<course-slug>/links.html`
+
+Routing and behavior:
+- Sidebar buttons load the partials via `fetch()` into the right content area without a full page reload.
+- Deep links are supported via URL hash: `index.html#theory`, `#lectures`, `#links`.
+- The Practice button opens the quiz filtered for that course: `../../quiz.html?course=<course-slug>`.
+- All paths are relative so the site works under a GitHub Pages subpath.
+
+Authoring highlights with asterisks:
+- Write asterisks around a word/phrase in your partials, e.g.:
+  ```html
+  <p>The *scheduler* selects the next process.</p>
+  ```
+  This renders as:
+  ```html
+  <p>The <span class="hl">scheduler</span> selects the next process.</p>
+  ```
+- Escaping: use a backslash to keep literal stars: `\*not highlighted\*`.
+- Scope: highlighting is applied only inside the injected content area and skips `<code>`, `<pre>`, `<script>`, `<style>`, and any element with class `.no-hl`.
+- Styling: `.hl { background: var(--hl-bg); color: var(--hl-fg); padding: 0 .2em; border-radius: .25em; }` and is theme‑aware (light/dark via CSS vars).
+
+How to add a new course landing page:
+1. Create `courses/<course-slug>/`.
+2. Copy `courses/course-template.html` into `courses/<course-slug>/index.html` and adjust headings if desired.
+3. Add partials: `theory.html`, `lectures.html`, `links.html` with your HTML content (you may use `*asterisk*` highlighting as described).
+4. Ensure the Practice link points to `../../quiz.html?course=<course-slug>`.
+5. Add the course to `data/courses.json` if not present (used by the main page list).
+
+Quiz page filtered by course:
+- You can link users straight to the quiz chooser filtered by a course using: `quiz.html?course=<course-slug>`.
+- The page will preselect the course and show presets/topics for that course immediately.

@@ -11,7 +11,7 @@
       "options": [
         "Pthread_exit - dobrovoľne uvoľní priestor inému vláknu, a context sa odloží.",
         "Pthread_join - spoj kontexty dvoch vlákien.",
-        "Pthreasd_yield - vráti hodnotu vlákna (\"return value\" vlákna).",
+        "Pthread_yield - vráti hodnotu vlákna (\"return value\" vlákna).",
         "Všetky sú nesprávne.",
         "Všetky sú spravne."
       ],
@@ -80,14 +80,14 @@
       "explanation_image": "threads/2026-01-03-102740_hyprshot.png",
       "options": [
         "Proces je kontajner udržiavajúci prostriedky.",
-        "Thread má program, registre, PC, stack.",
+        "Thread má vlastný program, registre, PC, stack.",
         "Thread je entita využívajúca prostriedky procesu vykonávaná na CPU.",
         "V rámci procesu môže existovať niekoľko thread-ov.",
         "Thread nadobúda stavy running, ready, blocked.",
         "Všetky tvrdenia su pravdivé.",
         "Všetky tvrdenia su nepravdivé"
       ],
-      "correct": 4
+      "correct": 1
     },
     {
       "id": "processmodelthreadmodel",

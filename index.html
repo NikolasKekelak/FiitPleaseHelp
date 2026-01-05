@@ -22,73 +22,14 @@
     </div>
   </header>
 
-  <main id="app" class="container">
-    <!-- Screen A: Course selection -->
-    <section id="screen-course" class="card">
-      <h2>Select Course</h2>
-      <div class="field">
-        <label for="courseSelect">Course</label>
-        <select id="courseSelect"></select>
-      </div>
-      <div class="actions">
-        <button id="continueBtn" class="btn primary">Continue</button>
-      </div>
-    </section>
-
-    <!-- Screen B: Choose Preset or Custom Topics -->
-    <section id="screen-choose" class="card hidden">
-      <h2>Choose Preset or Topics</h2>
-      <div class="actions" style="margin-top:0">
-        <button id="tabPresets" class="btn primary">Presets</button>
-        <button id="tabCustom" class="btn">Custom Topics</button>
-      </div>
-      <div id="presetsPane" class="pane">
-        <div id="presetList" class="list"></div>
-      </div>
-      <div id="customPane" class="pane hidden">
-        <div id="topicsList" class="list"></div>
-      </div>
-      <div class="actions">
-        <button id="startBtn2" class="btn primary" disabled>Start Quiz</button>
-        <button id="backToCourseBtn" class="btn subtle">Back</button>
-      </div>
-    </section>
-
-    <!-- Screen: Quiz -->
-    <section id="screen-quiz" class="card hidden">
-      <div class="quiz-header">
-        <div id="progressText" class="progress">0 / 0 mastered</div>
-        <div id="cooldownText" class="cooldown"></div>
-      </div>
-      <div id="questionMeta" class="question-meta"></div>
-      <div id="questionText" class="question-text"></div>
-      <div id="questionImage" class="question-image"></div>
-      <form id="answerForm" class="answer-area"></form>
-      <div class="actions">
-        <button id="submitBtn" class="btn primary">Answer</button>
-        <button id="nextBtn" class="btn" disabled>Next</button>
-      </div>
-      <div id="feedback" class="feedback"></div>
-      <details class="explanation" id="explanationBox">
-        <summary>Explanation</summary>
-        <div id="explanationImage" class="explanation-image"></div>
-        <div id="explanationText"></div>
-      </details>
-    </section>
-
-    <!-- Screen: Finished -->
-    <section id="screen-done" class="card hidden">
-      <h2>Great job!</h2>
-      <p id="doneSubtitle">You mastered every question in this topic.</p>
-      <div id="summaryBox" class="summary"></div>
-      <div class="actions">
-        <button id="restartBtn" class="btn">Restart Topic</button>
-        <button id="backBtn" class="btn subtle">Back to Topics</button>
-      </div>
+  <main class="container">
+    <section class="card">
+      <h2>Courses</h2>
+      <div id="courseGrid" class="course-grid"></div>
     </section>
   </main>
 
 
-  <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/home.js"></script>
 </body>
 </html>

@@ -159,6 +159,51 @@ async function initCourseScreen() {
     opt.textContent = c.course_name || c.id;
     els.courseSelect.appendChild(opt);
   }
+
+  // Also render course tiles linking to landing pages and practice
+  const grid = document.getElementById('courseGrid');
+  if (grid) {
+    grid.innerHTML = '';
+    courses.forEach(c => {
+      const card = document.createElement('div');
+      card.className = 'course-card';
+      const h3 = document.createElement('h3');
+      h3.textContent = c.course_name || c.id;
+      const actions = document.createElement('div');
+      actions.className = 'actions';
+      const open = document.createElement('a');
+      open.className = 'btn';
+      open.href = `./courses/${encodeURIComponent(c.id)}/index.html`;
+      open.textContent = 'Open';
+      const practice = document.createElement('a');
+      practice.className = 'btn primary';
+      practice.href = `./quiz.html?course=${encodeURIComponent(c.id)}`;
+      practice.textContent = 'Practice';
+      actions.appendChild(open);
+      actions.appendChild(practice);
+      card.appendChild(h3);
+      card.appendChild(actions);
+      grid.appendChild(card);
+    });
+  }
+
+  // If URL contains ?course=, preselect and optionally auto-continue (for quiz.html)
+  try {
+    const params = new URLSearchParams(location.search);
+    const paramCourse = params.get('course');
+    if (paramCourse) {
+      const has = courses.some(c => c.id === paramCourse);
+      if (has) {
+        els.courseSelect.value = paramCourse;
+        context.course = paramCourse;
+        // If on quiz.html, automatically proceed to Choose screen
+        if (/quiz\.html$/i.test(location.pathname)) {
+          await loadChooseScreen();
+          show('choose');
+        }
+      }
+    }
+  } catch (_) {}
 }
 
 function activateTab(name) {
@@ -167,6 +212,13 @@ function activateTab(name) {
   els.tabCustom.classList.toggle('primary', !isPresets);
   els.presetsPane.classList.toggle('hidden', !isPresets);
   els.customPane.classList.toggle('hidden', isPresets);
+  // ARIA roles and state (no visible text changes)
+  if (els.tabPresets) els.tabPresets.setAttribute('role', 'tab');
+  if (els.tabCustom) els.tabCustom.setAttribute('role', 'tab');
+  if (els.presetsPane) els.presetsPane.setAttribute('role', 'tabpanel');
+  if (els.customPane) els.customPane.setAttribute('role', 'tabpanel');
+  if (els.tabPresets) els.tabPresets.setAttribute('aria-selected', isPresets ? 'true' : 'false');
+  if (els.tabCustom) els.tabCustom.setAttribute('aria-selected', !isPresets ? 'true' : 'false');
 }
 
 async function loadChooseScreen() {
@@ -174,6 +226,8 @@ async function loadChooseScreen() {
   els.presetList.innerHTML = '';
   els.topicsList.innerHTML = '';
   els.startBtn2.disabled = true;
+  if (els.presetsPane) els.presetsPane.setAttribute('aria-busy', 'true');
+  if (els.customPane) els.customPane.setAttribute('aria-busy', 'true');
 
   // Load presets and topics for current course
   const [presets, topics] = await Promise.all([
@@ -226,6 +280,8 @@ async function loadChooseScreen() {
 
   // Default to presets tab
   activateTab('presets');
+  if (els.presetsPane) els.presetsPane.removeAttribute('aria-busy');
+  if (els.customPane) els.customPane.removeAttribute('aria-busy');
 }
 
 function getSelectedTopicIds() {
@@ -281,6 +337,9 @@ function displayResult(result, q) {
         const img = document.createElement('img');
         img.src = q.explanation_image;
         img.alt = 'Explanation image';
+        try { img.loading = 'lazy'; } catch(_) {}
+        try { img.decoding = 'async'; } catch(_) {}
+        try { img.fetchPriority = 'low'; } catch(_) {}
         els.explanationImage.appendChild(img);
       }
     }
@@ -495,6 +554,9 @@ function renderCurrentQuestion() {
     const img = document.createElement('img');
     img.src = q.image;
     img.alt = 'Question image';
+    try { img.loading = 'lazy'; } catch(_) {}
+    try { img.decoding = 'async'; } catch(_) {}
+    try { img.fetchPriority = 'low'; } catch(_) {}
     els.questionImage.appendChild(img);
   }
 

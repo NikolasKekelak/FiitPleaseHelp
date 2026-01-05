@@ -220,7 +220,7 @@
         "Prístupová doba rádovo menšia ako pri Cache",
         "V súčasnosti dosahuje veľkosti presahujúce 8 GB.",
         "Pripojená k CPU prostredníctvom samostatnej zbernice.",
-        "Pokiaľ není dostatočné miesto na DISKU na RAMke sa vytvorí virtuálna pamäť"
+        "Pokiaľ není dostatočné miesto na RAMKE na DISKu sa vytvorí virtuálna pamäť"
       ],
       "correct": 0
     },
