@@ -1,0 +1,18 @@
+{
+  "topic_id": "paging algorithms",
+  "topic_name": "paging algorithms",
+  "questions": [
+    {
+      "id": "beingzmrd",
+      "type": "mc_single",
+      "question": "Je efektívnejšie vymeniť nemodifikovanú referencovanú ako modifikovanú nereferencovanú stránku",
+      "explanation": "",
+      "explanation_image": "paging algorithms/2026-01-05-165931_hyprshot.png",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    }
+  ]
+}

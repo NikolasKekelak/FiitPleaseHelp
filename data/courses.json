@@ -1,5 +1,6 @@
 {
   "courses": [
-    { "id": "os", "course_name": "Operačné systémy" }
+    { "id": "os", "course_name": "Operačné systémy" },
+    { "id": "ui", "course_name": "Umelá inteligencia" }
   ]
 }

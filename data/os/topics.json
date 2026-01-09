@@ -41,6 +41,10 @@
     {
       "id": "power managment",
       "file": "topic/power managment.json"
+    },
+    {
+      "id": "paging algorithms",
+      "file": "topic/paging algorithms.json"
     }
   ]
 }
