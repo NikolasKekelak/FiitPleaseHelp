@@ -1,6 +1,9 @@
 {
   "courses": [
     { "id": "os", "course_name": "Operačné systémy" },
-    { "id": "ui", "course_name": "Umelá inteligencia" }
+    { "id": "ui", "course_name": "Umelá inteligencia" },
+    { "id": "pks", "course_name": "Počítačové a komunikačné siete" },
+    { "id": "zneus", "course_name": "Základy neurónových sietí" },
+    { "id": "pib", "course_name": "Princípy informačnej bezpečnosti" }
   ]
 }
