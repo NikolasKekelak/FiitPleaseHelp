@@ -1,0 +1,10 @@
+{
+  "presets": [
+    {
+      "id": "default",
+      "name": "Default",
+      "description": "Standard settings",
+      "topics": []
+    }
+  ]
+}

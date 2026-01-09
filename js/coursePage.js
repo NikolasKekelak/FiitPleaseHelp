@@ -231,12 +231,12 @@
 
   function getSectionFromHash() {
     const h = (location.hash || '').replace(/^#/, '');
-    if (h === 'lectures' || h === 'links' || h === 'theory') return h;
+    if (h === 'lectures' || h === 'links' || h === 'theory' || h === 'demos') return h;
     return 'theory';
   }
 
   // Wire sidebar buttons
-  ['theory', 'lectures', 'links'].forEach(sec => {
+  ['theory', 'lectures', 'links', 'demos'].forEach(sec => {
     const id = 'btn-' + sec;
     const el = document.getElementById(id);
     if (el) el.addEventListener('click', onNavClick);

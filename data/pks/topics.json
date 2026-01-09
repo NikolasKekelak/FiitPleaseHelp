@@ -1,0 +1,14 @@
+{
+  "course": "pks",
+  "course_name": "Počítačové a komunikačné siete",
+  "topics": [
+    {
+      "id": "ciselne sustavy",
+      "file": "topic/ciselne sustavy.json"
+    },
+    {
+      "id": "basics",
+      "file": "topic/basics.json"
+    }
+  ]
+}

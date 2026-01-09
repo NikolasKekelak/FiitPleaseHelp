@@ -150,6 +150,10 @@ class EditorApp:
         # Apply dark theme
         self._apply_dark_theme()
 
+        # Preferences (geometry, pane position, recent)
+        self._prefs_path = os.path.join(PROJECT_ROOT, 'tools', 'editor_prefs.json')
+        self.prefs = self._load_prefs()
+
         self.courses = load_courses()
         self.current_course = None
         self.topics_json = None
@@ -160,13 +164,61 @@ class EditorApp:
         self.build_ui()
         self.populate_courses()
 
+        # Apply stored geometry and pane position
+        try:
+            if self.prefs.get('geometry'):
+                self.root.geometry(self.prefs['geometry'])
+        except Exception:
+            pass
+        if 'pane_pos' in self.prefs:
+            try:
+                self.panes.sashpos(0, int(self.prefs['pane_pos']))
+            except Exception:
+                pass
+
+        # Shortcuts
+        self.root.bind('<Control-s>', lambda e: self.save_topic_file())
+        self.root.bind('<Control-S>', lambda e: self.save_topic_file())
+        self.root.bind('<Control-p>', lambda e: self.preview_question())
+        self.root.bind('<Control-P>', lambda e: self.preview_question())
+        self.root.bind('<Control-f>', lambda e: (self.search_entry.focus_set(), 'break'))
+        self.root.bind('<Control-F>', lambda e: (self.search_entry.focus_set(), 'break'))
+        self.root.bind('<Control-Return>', lambda e: self.save_question())
+        self.q_list.bind('<Delete>', lambda e: self.delete_question())
+
+        # Close handler to persist settings
+        self.root.protocol('WM_DELETE_WINDOW', self._on_close)
+
     def build_ui(self):
-        self.root.columnconfigure(1, weight=1)
-        self.root.rowconfigure(0, weight=1)
+        # Root grid: toolbar (row0), panes (row1), statusbar (row2)
+        for i in range(3):
+            self.root.rowconfigure(i, weight=0)
+        self.root.rowconfigure(1, weight=1)
+        self.root.columnconfigure(0, weight=1)
+
+        # Toolbar
+        tb = ttk.Frame(self.root, padding=(6,4))
+        tb.grid(row=0, column=0, sticky='ew')
+        tb.columnconfigure(10, weight=1)
+        ttk.Button(tb, text='🆕 New Topic', command=self.new_topic_dialog).grid(row=0, column=0, padx=(0,6))
+        ttk.Button(tb, text='💾 Save Topic', command=self.save_topic_file).grid(row=0, column=1, padx=6)
+        ttk.Button(tb, text='🧪 Validate', command=self.preview_question).grid(row=0, column=2, padx=6)
+        ttk.Button(tb, text='👁️ Preview', command=self.preview_question).grid(row=0, column=3, padx=6)
+        # spacer
+        ttk.Label(tb, text='').grid(row=0, column=10, sticky='ew')
+        self.search_var = tk.StringVar()
+        self.search_var.trace_add('write', lambda *args: self._search_in_list())
+        ttk.Label(tb, text='Search').grid(row=0, column=11, padx=(6,4))
+        self.search_entry = ttk.Entry(tb, textvariable=self.search_var, width=28)
+        self.search_entry.grid(row=0, column=12)
+
+        # Paned window with left (nav) and right (form)
+        self.panes = ttk.Panedwindow(self.root, orient='horizontal')
+        self.panes.grid(row=1, column=0, sticky='nsew')
 
         # Left panel
-        left = ttk.Frame(self.root, padding=8)
-        left.grid(row=0, column=0, sticky='ns')
+        left = ttk.Frame(self.panes, padding=8)
+        left.columnconfigure(0, weight=1)
 
         ttk.Label(left, text='Course').grid(row=0, column=0, sticky='w')
         self.course_cmb = ttk.Combobox(left, state='readonly')
@@ -180,25 +232,20 @@ class EditorApp:
 
         btns = ttk.Frame(left)
         btns.grid(row=4, column=0, pady=4, sticky='ew')
-        ttk.Button(btns, text='New Topic', command=self.new_topic_dialog).pack(side='left')
-        ttk.Button(btns, text='Save Topic File', command=self.save_topic_file).pack(side='left', padx=6)
+        ttk.Button(btns, text='Add', command=self.add_question).pack(side='left')
+        ttk.Button(btns, text='Delete', command=self.delete_question).pack(side='left', padx=6)
 
         ttk.Separator(left).grid(row=5, column=0, sticky='ew', pady=8)
 
         ttk.Label(left, text='Questions').grid(row=6, column=0, sticky='w')
         self.q_list = tk.Listbox(left, height=25)
         self._style_listbox(self.q_list)
-        self.q_list.grid(row=7, column=0, sticky='ns')
+        self.q_list.grid(row=7, column=0, sticky='nsew')
+        left.rowconfigure(7, weight=1)
         self.q_list.bind('<<ListboxSelect>>', lambda e: self.on_select_question())
 
-        qbtns = ttk.Frame(left)
-        qbtns.grid(row=8, column=0, pady=6, sticky='ew')
-        ttk.Button(qbtns, text='Add', command=self.add_question).pack(side='left')
-        ttk.Button(qbtns, text='Delete', command=self.delete_question).pack(side='left', padx=6)
-
         # Right panel (form)
-        right = ttk.Frame(self.root, padding=8)
-        right.grid(row=0, column=1, sticky='nsew')
+        right = ttk.Frame(self.panes, padding=8)
         right.columnconfigure(1, weight=1)
 
         r = 0
@@ -256,6 +303,68 @@ class EditorApp:
         ttk.Button(save_row, text='Clear Form', command=self.clear_form).pack(side='left', padx=6)
 
         self.refresh_form_fields()
+
+        # Add panes
+        self.panes.add(left, weight=1)
+        self.panes.add(right, weight=3)
+
+        # Status bar
+        sb = ttk.Frame(self.root, padding=(8,4))
+        sb.grid(row=2, column=0, sticky='ew')
+        self.status_var = tk.StringVar(value='Ready')
+        self.status_lbl = ttk.Label(sb, textvariable=self.status_var)
+        self.status_lbl.pack(side='left')
+
+    def _on_close(self):
+        # Save geometry and pane position
+        try:
+            self.prefs['geometry'] = self.root.winfo_geometry()
+            try:
+                self.prefs['pane_pos'] = self.panes.sashpos(0)
+            except Exception:
+                pass
+            self._save_prefs()
+        except Exception:
+            pass
+        self.root.destroy()
+
+    def _load_prefs(self):
+        try:
+            with open(self._prefs_path, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+
+    def _save_prefs(self):
+        try:
+            os.makedirs(os.path.dirname(self._prefs_path), exist_ok=True)
+            with open(self._prefs_path, 'w', encoding='utf-8') as f:
+                json.dump(self.prefs, f, ensure_ascii=False, indent=2)
+        except Exception:
+            pass
+
+    def set_status(self, text: str):
+        try:
+            self.status_var.set(text)
+        except Exception:
+            pass
+
+    def _search_in_list(self):
+        # Simple search: select first matching item in the questions listbox
+        try:
+            needle = (self.search_var.get() or '').strip().lower()
+            if not needle:
+                return
+            n = self.q_list.size()
+            for i in range(n):
+                item = self.q_list.get(i)
+                if needle in str(item).lower():
+                    self.q_list.selection_clear(0, tk.END)
+                    self.q_list.selection_set(i)
+                    self.q_list.see(i)
+                    break
+        except Exception:
+            pass
 
     def _apply_dark_theme(self):
         # Basic dark palette for ttk + Tk widgets

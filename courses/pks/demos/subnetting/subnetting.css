@@ -1,0 +1,44 @@
+:root {
+  --ok: var(--success);
+  --bad: var(--error);
+}
+
+.base-card { margin-bottom: 12px; }
+.base-card .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px 12px; }
+.base-card .range { grid-column: 1 / -1; }
+
+.controls { display: grid; grid-template-columns: 1fr; gap: 10px; margin: 10px 0 14px; }
+.controls label { font-weight: 600; }
+.controls .buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-sm); background: var(--card); }
+.table-wrap:focus { outline: 2px solid var(--primary); outline-offset: 0; }
+
+#answerTable { width: 100%; border-collapse: collapse; min-width: 720px; }
+#answerTable th, #answerTable td { padding: 10px 12px; border-bottom: 1px solid var(--border); text-align: left; }
+#answerTable thead th { position: sticky; top: 0; background: rgba(var(--tint), 0.05); z-index: 1; }
+
+#answerTable input[type="text"] {
+  width: 100%; min-width: 180px; max-width: 260px;
+  min-height: 44px; padding: 8px 10px; border-radius: 10px;
+  border: 1px solid var(--border); background: var(--card); color: inherit;
+}
+
+.cell-ok input, .cell-ok .ro { border-color: color-mix(in srgb, var(--ok) 55%, var(--border)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--ok) 18%, transparent); }
+.cell-bad input, .cell-bad .ro { border-color: color-mix(in srgb, var(--bad) 55%, var(--border)); box-shadow: 0 0 0 2px color-mix(in srgb, var(--bad) 18%, transparent); }
+
+.ro { display: inline-block; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; min-height: 44px; background: rgba(var(--tint), 0.04); }
+
+.score { margin-top: 12px; font-weight: 600; }
+
+.demo-card { display: flex; justify-content: space-between; align-items: center; gap: 12px; border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; background: var(--card); }
+.demo-title { font-weight: 700; }
+.demo-desc { color: var(--muted); font-size: 14px; }
+
+@media (max-width: 720px) {
+  #answerTable input[type="text"] { min-width: 140px; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  #answerTable input[type="text"], .ro { transition: box-shadow var(--speed-fast) var(--easing), border-color var(--speed-fast) var(--easing); }
+}

@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Princípy počítačového inžinierstva</title>
+  <link rel="stylesheet" href="../../assets/styles.css" />
+</head>
+<body>
+  <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
+  <header class="hotbar">
+    <div class="brand">
+      <a href="../../index.html" class="brand-link" aria-label="Home">
+        <h1>FiitPleaseHelp</h1>
+        <div class="byline">by nikolaaaas</div>
+      </a>
+    </div>
+    <nav id="courseBreadcrumb" class="crumb" aria-label="Breadcrumb"></nav>
+    <div class="hotbar-actions">
+      <a class="gear-btn" href="../../settings.html" title="Settings" aria-label="Settings">⚙️</a>
+    </div>
+  </header>
+
+  <main class="container is-course">
+    <button class="drawer-btn" aria-label="Toggle navigation" aria-expanded="false" aria-controls="courseSidebar"></button>
+    <div class="course-layout">
+      <aside id="courseSidebar" class="course-sidebar">
+        <strong>PPI</strong>
+        <a id="btn-theory" class="nav-btn" data-section="theory" href="#theory">Useful theory</a>
+        <a id="btn-lectures" class="nav-btn" data-section="lectures" href="#lectures">Lectures</a>
+        <a id="btn-links" class="nav-btn" data-section="links" href="#links">Useful links</a>
+        <hr style="border:none;border-top:1px solid var(--border);margin:10px 0;"/>
+        <a id="btn-practice" class="nav-btn" href="../../quiz.html?course=ppi">Practice ▶</a>
+      </aside>
+      <section class="course-main">
+        <h2 id="courseTitle" class="course-title">Princípy počítačového inžinierstva</h2>
+        <div id="courseContent" class="course-content"></div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../../js/coursePage.js" defer></script>
+</body>
+</html>

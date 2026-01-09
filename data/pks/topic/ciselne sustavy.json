@@ -1,0 +1,83 @@
+{
+  "topic_id": "ciselne sustavy",
+  "topic_name": "ciselne sustavy",
+  "questions": [
+    {
+      "id": "hexatodecimal1",
+      "type": "fill_text",
+      "question": "Prepiste z hexadecimalneho tvaru do binarneho 0xA9FF14:",
+      "explanation": "101010011111111100010100, 10101 0011 1111 1110 001 0100",
+      "answers": [
+        "101010011111111100010100",
+        "1010 1001 1111 1111 0001 0100"
+      ]
+    },
+    {
+      "id": "hexatodecimal2",
+      "type": "fill_text",
+      "question": "Prepiste z hexadecimalneho tvaru do binarneho 0xFFFFFF:",
+      "explanation": "111111111111111111111111,1111 1111 1111 1111 1111 1111",
+      "answers": [
+        "111111111111111111111111",
+        "1111 1111 1111 1111 1111 1111"
+      ]
+    },
+    {
+      "id": "mix1",
+      "type": "fill_text",
+      "question": "Preveď z hexadecimálneho tvaru do binárneho: 0x7A3",
+      "explanation": "7 → 0111, A → 1010, 3 → 0011 → 011110100011",
+      "answers": [
+        "011110100011",
+        "11110100011"
+      ]
+    },
+    {
+      "id": "mix2",
+      "type": "fill_text",
+      "question": "Preveď z binárneho tvaru do hexadecimálneho: 110011011011",
+      "explanation": "1100 1101 1011 → C D B → 0xCDB",
+      "answers": [
+        "CDB",
+        "0xCDB"
+      ]
+    },
+    {
+      "id": "mix3",
+      "type": "fill_text",
+      "question": "Preveď z hexadecimálneho tvaru do decimálneho: 0x9E",
+      "explanation": "9·16 + 14 = 144 + 14 = 158",
+      "answers": [
+        "158"
+      ]
+    },
+    {
+      "id": "mix4",
+      "type": "fill_text",
+      "question": "Preveď z oktálnej sústavy do binárnej: 745",
+      "explanation": "7 → 111, 4 → 100, 5 → 101 → 111100101",
+      "answers": [
+        "111100101"
+      ]
+    },
+    {
+      "id": "mix5",
+      "type": "fill_text",
+      "question": "Preveď z decimálneho tvaru do hexadecimálneho: 173",
+      "explanation": "173 ÷ 16 = 10 zvyšok 13 → A D → 0xAD",
+      "answers": [
+        "AD",
+        "0xAD"
+      ]
+    },
+    {
+      "id": "mix6",
+      "type": "fill_text",
+      "question": "Preveď z binárneho tvaru do decimálneho: 10101110",
+      "explanation": "128 + 32 + 8 + 4 + 2 = 174",
+      "answers": [
+        "174"
+      ]
+    }
+  ]
+}

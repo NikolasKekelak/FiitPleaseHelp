@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Subnetting Practice</title>
+  <link rel="stylesheet" href="../../../../assets/styles.css" />
+  <link rel="stylesheet" href="./subnetting.css" />
+</head>
+<body>
+  <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
+  <header class="hotbar">
+    <div class="brand">
+      <a href="../../../../index.html" class="brand-link" aria-label="Home">
+        <h1>FiitPleaseHelp</h1>
+        <div class="byline">by nikolaaaas</div>
+      </a>
+    </div>
+    <nav id="courseBreadcrumb" class="crumb" aria-label="Breadcrumb"></nav>
+    <div class="hotbar-actions">
+      <a class="gear-btn" href="../../../../settings.html" title="Settings" aria-label="Settings">⚙️</a>
+    </div>
+  </header>
+
+  <main class="container is-course">
+    <section class="course-main" style="width:100%">
+      <h2 class="course-title">Subnetting Practice</h2>
+      <div class="course-content" id="subnetApp" data-init="true">
+        <section id="baseCard" class="base-card" aria-live="polite">
+          <div class="grid">
+            <div><strong>Base network:</strong> <span id="baseNet"></span></div>
+            <div><strong>Prefix:</strong> <span id="basePrefix"></span></div>
+            <div><strong>Mask:</strong> <span id="baseMask"></span></div>
+            <div class="range"><strong>Range:</strong> <span id="baseRange"></span></div>
+          </div>
+        </section>
+
+        <section class="controls">
+          <label for="kSlider"># of subnetworks (k): <span id="kVal"></span></label>
+          <input id="kSlider" type="range" min="2" max="8" value="4" />
+          <div class="buttons">
+            <button id="btnRegenerate" class="btn">Regenerate task</button>
+            <button id="btnCheck" class="btn primary">Check answers</button>
+            <button id="btnShowSolution" class="btn">Show solution</button>
+            <button id="btnReset" class="btn">Reset inputs</button>
+          </div>
+        </section>
+
+        <section class="table-wrap" tabindex="0">
+          <table id="answerTable">
+            <thead>
+              <tr>
+                <th>Row</th>
+                <th>PCs needed</th>
+                <th>Network IP</th>
+                <th>Mask/prefix</th>
+                <th>Broadcast</th>
+                <th>Router IP</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </section>
+
+        <div class="score" id="scoreBox" aria-live="polite"></div>
+      </div>
+    </section>
+  </main>
+
+  <script src="./subnetting.js"></script>
+</body>
+</html>

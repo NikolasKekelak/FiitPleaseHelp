@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frame Analysis</title>
+  <link rel="stylesheet" href="../../../../assets/styles.css" />
+  <link rel="stylesheet" href="./frames.css" />
+</head>
+<body>
+  <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
+  <header class="hotbar">
+    <div class="brand">
+      <a href="../../../../index.html" class="brand-link" aria-label="Home">
+        <h1>FiitPleaseHelp</h1>
+        <div class="byline">by nikolaaaas</div>
+      </a>
+    </div>
+    <nav id="courseBreadcrumb" class="crumb" aria-label="Breadcrumb"></nav>
+    <div class="hotbar-actions">
+      <a class="gear-btn" href="../../../../settings.html" title="Settings" aria-label="Settings">⚙️</a>
+    </div>
+  </header>
+
+  <main class="container is-course">
+    <section class="course-main" style="width:100%">
+      <h2 class="course-title">Frame Analysis</h2>
+      <div class="course-content" id="framesApp" data-init="true">
+        <section class="tabs" role="tablist" aria-label="Modes">
+          <button id="tab-analyze" class="tab active" role="tab" aria-selected="true" aria-controls="panel-analyze">Analyze</button>
+          <button id="tab-build" class="tab" role="tab" aria-selected="false" aria-controls="panel-build">Build</button>
+        </section>
+
+        <section id="panel-analyze" class="panel" role="tabpanel" aria-labelledby="tab-analyze">
+          <div class="controls sticky">
+            <div class="left">
+              <span class="seed-label">Seed:</span>
+              <input id="seedInput" type="text" inputmode="numeric" aria-label="Seed" />
+              <button id="btnApplySeed" class="btn">Apply</button>
+            </div>
+            <div class="right">
+              <button id="btnRegenerateFrame" class="btn">Regenerate frame</button>
+              <button id="btnCheckAnswers" class="btn primary">Check answers</button>
+              <button id="btnShowSolutionAnalyze" class="btn">Show solution</button>
+              <button id="btnNextFrame" class="btn">Next frame</button>
+            </div>
+          </div>
+
+          <div class="layout">
+            <div class="dump-wrap" id="dumpWrap" tabindex="0" aria-label="Hexdump"></div>
+            <aside class="decoded" id="decodedTree" aria-label="Decoded tree"></aside>
+          </div>
+
+          <section class="questions" id="questions"></section>
+          <div id="analyzeScore" class="score" aria-live="polite"></div>
+        </section>
+
+        <section id="panel-build" class="panel hidden" role="tabpanel" aria-labelledby="tab-build">
+          <div class="controls sticky">
+            <div class="left">
+              <span class="task-label">Task:</span>
+              <select id="buildTask"></select>
+            </div>
+            <div class="right">
+              <button id="btnCheckBuild" class="btn primary">Check frame</button>
+              <button id="btnShowSolutionBuild" class="btn">Show solution</button>
+              <button id="btnResetBuild" class="btn">Reset</button>
+            </div>
+          </div>
+
+          <div class="build-grid">
+            <form id="buildForm" class="fields" autocomplete="off" spellcheck="false"></form>
+            <div class="dump-wrap" id="buildDumpWrap" tabindex="0" aria-label="Build hexdump"></div>
+          </div>
+          <div id="buildScore" class="score" aria-live="polite"></div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script src="./frames.js"></script>
+</body>
+</html>

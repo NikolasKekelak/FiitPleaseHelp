@@ -1,0 +1,45 @@
+{
+  "topic_id": "basics",
+  "topic_name": "basics",
+  "questions": [
+    {
+      "id": "whatisinternet",
+      "type": "mc_single",
+      "question": "Čo je to Internet?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-09 181225.png",
+      "options": [
+        "Internet je súbor serverov (napr. Google, Facebook), ktoré poskytujú aplikácie používateľom.",
+        "Internet je jedna globálna sieť, ktorú riadi jedna centrálna autorita.",
+        "Internet je sieť navzájom prepojených sietí, ktoré prevádzkujú rôzne organizácie a ISP.",
+        "Internet je kolekcia komunikačných liniek (optika, rádio, satelit) bez aktívnych sieťových prvkov.",
+        "Internet je systém na výmenu súborov medzi koncovými zariadeniami bez použitia smerovačov."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "internettruth",
+      "type": "mc_multi",
+      "question": "Označte pravdivé tvrdenia o internete:",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-09 181225.png",
+      "options": [
+        "Internet pozostáva z hostov (PC, servery, IoT zariadenia), ktoré generujú a prijímajú dáta.",
+        "Internet je jedna veľká sieť spravovaná jednou globálnou autoritou.",
+        "Smerovače a prepínače slúžia na preposielanie paketov medzi zariadeniami a sieťami.",
+        "Komunikačné linky (optika, meď, rádio, satelit) tvoria fyzickú infraštruktúru Internetu.",
+        "Internet je tvorený aplikáciami ako Google, Facebook a YouTube.",
+        "Internet je sieť sietí, ktoré sú spravované rôznymi organizáciami (ISP, firmy, univerzity).",
+        "Bez paketových prepínačov (routerov, switchov) by Internet nemohol fungovať.",
+        "Internet slúži výlučne na prenos webových stránok."
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        5,
+        6
+      ]
+    }
+  ]
+}
