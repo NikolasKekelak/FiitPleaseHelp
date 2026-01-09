@@ -94,12 +94,81 @@ body {
 /* Inline highlight */
 .hl { background: var(--hl-bg); color: var(--hl-fg); padding: 0 .2em; border-radius: .25em; }
 
-/* Course list tiles (on index page) */
+/* Course list tiles (legacy grid left for fallback) */
 .course-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px; }
 .course-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); padding: 12px; box-shadow: var(--elev); display: flex; flex-direction: column; gap: 8px; }
 .course-card h3 { margin: 0 0 6px 0; font-size: 16px; }
 .course-card .actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .course-card a.btn { text-decoration: none; }
+
+/* Tarot spread deck (new home layout) */
+.tarot-spread {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0; /* overlap via negative margins on cards */
+  perspective: 1200px;
+  overflow-x: auto;
+  padding: 16px 10px 6px;
+  scrollbar-width: none; /* Firefox */
+}
+.tarot-spread::-webkit-scrollbar { display: none; }
+
+.tarot-card {
+  position: relative;
+  width: clamp(180px, 18vw, 240px);
+  height: clamp(240px, 26vw, 320px);
+  background: color-mix(in srgb, var(--card) 80%, rgba(var(--tint), 0.25));
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.08), 0 12px 28px rgba(0,0,0,0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  margin-left: -56px; /* overlap */
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: inherit;
+  will-change: transform;
+  z-index: calc(10 + var(--i));
+  outline: none; /* we'll rely on :focus-visible */
+}
+.tarot-card:first-child { margin-left: 0; }
+
+/* Fan math: set --mid on container via JS: (N-1)/2 */
+.tarot-card { --d: calc(var(--i) - var(--mid, 2.5)); }
+
+/* Base transform: rotate by distance from center; slight drop for outer cards */
+.tarot-card {
+  transform: rotate(calc(var(--d) * 6deg)) translateY(calc(var(--d) * 2px));
+  transition: transform var(--speed-mid) var(--easing), box-shadow var(--speed-mid) var(--easing), filter var(--speed-mid) var(--easing);
+}
+
+/* Content inside card */
+.tarot-card h3 { margin: 4px 0 8px; font-size: 16px; text-align: center; }
+.tarot-card .actions { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; }
+.tarot-card a.btn { text-decoration: none; }
+
+/* Hover/focus bump */
+.tarot-card:hover, .tarot-card:focus-visible {
+  transform: translateY(-22px) rotate(calc(var(--d) * 2deg)) scale(1.06);
+  z-index: 999;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.20), 0 20px 50px rgba(0,0,0,0.18);
+}
+/* Restore visible focus outline for accessibility */
+.tarot-card:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+
+/* Optional neighbor push: push following siblings slightly when a card is hovered */
+.tarot-card:hover ~ .tarot-card { transform: translateX(12px) rotate(calc(var(--d) * 5deg)) translateY(calc(var(--d) * 2px)); }
+
+/* Responsive tweaks */
+@media (max-width: 720px) {
+  .tarot-card { margin-left: -42px; width: clamp(160px, 46vw, 220px); height: clamp(220px, 60vw, 280px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tarot-card { transition: none; }
+}
 
 /* Course landing layout */
 .course-layout { display: grid; grid-template-columns: clamp(240px, 22vw, 280px) 1fr; gap: 20px; align-items: start; }

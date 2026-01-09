@@ -28,14 +28,20 @@ function initTheme() {
 }
 
 async function renderCourseGrid() {
-  const grid = document.getElementById('courseGrid');
-  if (!grid) return;
-  grid.innerHTML = '';
+  const spread = document.getElementById('courseGrid');
+  if (!spread) return;
+  spread.innerHTML = '';
   try {
     const courses = await loadCourses();
-    courses.forEach(c => {
+    // Set mid index for fan transform: (N-1)/2
+    const mid = (courses.length - 1) / 2;
+    spread.style.setProperty('--mid', String(mid));
+
+    courses.forEach((c, idx) => {
       const card = document.createElement('div');
-      card.className = 'course-card';
+      card.className = 'tarot-card';
+      card.setAttribute('tabindex', '0');
+      card.style.setProperty('--i', String(idx));
 
       const h3 = document.createElement('h3');
       h3.textContent = c.course_name || c.id;
@@ -57,12 +63,12 @@ async function renderCourseGrid() {
       actions.appendChild(practice);
       card.appendChild(h3);
       card.appendChild(actions);
-      grid.appendChild(card);
+      spread.appendChild(card);
     });
   } catch (e) {
     const err = document.createElement('div');
     err.textContent = 'Failed to load courses.';
-    grid.appendChild(err);
+    spread.appendChild(err);
     // Avoid console noise in release; uncomment for debugging
     // console.error(e);
   }
