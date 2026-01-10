@@ -228,6 +228,8 @@ async function loadChooseScreen() {
   els.startBtn2.disabled = true;
   if (els.presetsPane) els.presetsPane.setAttribute('aria-busy', 'true');
   if (els.customPane) els.customPane.setAttribute('aria-busy', 'true');
+  // Ensure Presets tab is active by default when entering Choose screen
+  activateTab('presets');
 
   // Load presets and topics for current course
   const [presets, topics] = await Promise.all([
@@ -242,12 +244,18 @@ async function loadChooseScreen() {
     p.textContent = 'No presets defined for this course.';
     els.presetList.appendChild(p);
   } else {
+    let defaultItem = null;
+    let defaultPreset = null;
     presets.forEach(pr => {
       const item = document.createElement('button');
       item.type = 'button';
       item.className = 'item btn';
       item.textContent = pr.name || pr.id;
       item.title = pr.description || '';
+      // Keep reference to the first preset as fallback default
+      if (!defaultPreset) { defaultPreset = pr; defaultItem = item; }
+      // If preset is explicitly marked as default, prefer it
+      if (pr && (pr.default === true)) { defaultPreset = pr; defaultItem = item; }
       item.addEventListener('click', () => {
         // Mark selected
         Array.from(els.presetList.children).forEach(ch => ch.classList.remove('selected'));
@@ -257,6 +265,14 @@ async function loadChooseScreen() {
       });
       els.presetList.appendChild(item);
     });
+    // Auto-select default preset (explicit default=true or the first one)
+    if (defaultItem && defaultPreset) {
+      // Clear any previous selection just in case
+      Array.from(els.presetList.children).forEach(ch => ch.classList.remove('selected'));
+      defaultItem.classList.add('selected');
+      els.startBtn2.disabled = false;
+      context.lastSelection = { mode: 'preset', preset: defaultPreset };
+    }
   }
 
   // Render topics checklist

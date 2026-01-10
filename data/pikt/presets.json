@@ -2,7 +2,7 @@
   "presets": [
     {
       "id": "starter",
-      "name": "Základy GDPR a IP",
+      "name": "Default",
       "description": "Základné pojmy: osobné údaje, právne základy, role, DPIA, autorské právo",
       "topics": ["basics"]
     }
