@@ -779,24 +779,18 @@
       "correct": [0, 1, 4]
     },
     {
-      "topic_id": "kazusy_pracovne_a_it_pravo",
-      "topic_name": "Kazuistiky (pracovné + IT právo)",
-      "questions": [
-        {
-          "id": "kazus_databaza_klientov_odchod_z_firmy",
-          "type": "mc_multi",
-          "question": "Obchodník po odchode z firmy skopíruje databázu klientov (mená, adresy, nákupná história) a použije ju vo vlastnom podnikaní. Ktoré tvrdenia sú správne?",
-          "explanation": "Takéto konanie typicky zahŕňa neoprávnené spracúvanie osobných údajov (GDPR), môže zasiahnuť do obchodného tajomstva a môže naplniť znaky nekalej súťaže. Pôvodná firma sa spravidla môže domáhať zdržania sa konania (zákaz používania), odstránenia následkov a náhrady škody; pri obchodnom tajomstve aj primeraného zadosťučinenia/vydania bezdôvodného obohatenia podľa konkrétnych okolností.",
-          "options": [
-            "Môže ísť o porušenie GDPR (spracúvanie osobných údajov bez právneho základu).",
-            "Databáza klientov môže predstavovať obchodné tajomstvo (ak má hospodársku hodnotu a nie je bežne dostupná).",
-            "Konanie môže naplniť znaky nekalej súťaže (napr. využitie cudzej databázy na získanie výhody).",
-            "Firma sa môže domáhať zákazu používania databázy a náhrady škody (podľa okolností aj ďalších nárokov).",
-            "Nejde o porušenie, ak obchodník databázu skopíroval až po skončení pracovného pomeru."
-          ],
-          "correct": [0, 1, 2, 3]
-        }
-      ]
+      "id": "kazus_databaza_klientov_odchod_z_firmy",
+      "type": "mc_multi",
+      "question": "Obchodník po odchode z firmy skopíruje databázu klientov (mená, adresy, nákupná história) a použije ju vo vlastnom podnikaní. Ktoré tvrdenia sú správne?",
+      "explanation": "Takéto konanie typicky zahŕňa neoprávnené spracúvanie osobných údajov (GDPR), môže zasiahnuť do obchodného tajomstva a môže naplniť znaky nekalej súťaže. Pôvodná firma sa spravidla môže domáhať zdržania sa konania (zákaz používania), odstránenia následkov a náhrady škody; pri obchodnom tajomstve aj primeraného zadosťučinenia/vydania bezdôvodného obohatenia podľa konkrétnych okolností.",
+      "options": [
+        "Môže ísť o porušenie GDPR (spracúvanie osobných údajov bez právneho základu).",
+        "Databáza klientov môže predstavovať obchodné tajomstvo (ak má hospodársku hodnotu a nie je bežne dostupná).",
+        "Konanie môže naplniť znaky nekalej súťaže (napr. využitie cudzej databázy na získanie výhody).",
+        "Firma sa môže domáhať zákazu používania databázy a náhrady škody (podľa okolností aj ďalších nárokov).",
+        "Nejde o porušenie, ak obchodník databázu skopíroval až po skončení pracovného pomeru."
+      ],
+      "correct": [0, 1, 2, 3]
     }
 
 
