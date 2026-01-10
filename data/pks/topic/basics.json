@@ -40,6 +40,330 @@
         5,
         6
       ]
+    },
+    {
+      "id": "internetoptimal",
+      "type": "mc_single",
+      "question": "Môžeme Internet považovať za optimálny?",
+      "explanation": "no není, ale snažíme sa",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "internetchallanges",
+      "type": "mc_single",
+      "question": "Ktorý z nasledujúcich pojmov nepredstavuje systémovú alebo architektonickú výzvu Internetu?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 121112.png",
+      "options": [
+        "Federátívnosť (Federation)",
+        "Škálovateľnosť (Scale)",
+        "Evolúcia (Evolution)",
+        "Rozmanitosť (Diversity)",
+        "Asynchrónnosť (Asynchrony)",
+        "Odolnosť voči chybám (Fault tolerance)",
+        "Uniformita (Uniformity)"
+      ],
+      "correct": 6
+    },
+    {
+      "id": "whatisprotokol",
+      "type": "mc_single",
+      "question": "Čo je to protokol?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 121640.png",
+      "options": [
+        "Softvérový program, ktorý riadi odosielanie paketov medzi smerovačmi.",
+        "Súbor pravidiel určujúcich, ako sa dáta formátujú, prenášajú a interpretujú medzi komunikujúcimi entitami.",
+        "Fyzické médium, po ktorom sa prenášajú dáta (napr. Ethernet, optika).",
+        "Hardvérový komponent zabezpečujúci smerovanie paketov.",
+        "Databáza, v ktorej sa uchovávajú IP adresy zariadení."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "purposeofprotokol",
+      "type": "mc_single",
+      "question": "Čo presne protokol definuje pri komunikácii medzi sieťovými entitami?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 121916.png",
+      "options": [
+        "Fyzickú cestu, ktorou sa dáta prenášajú",
+        "Formát správ, akcie vykonané pri ich odoslaní a prijatí, pričom nezáleží na ich poradí",
+        "Formát správ, ich poradie a akcie vykonané pri ich odoslaní a prijatí",
+        "Len rýchlosť prenosu medzi zariadeniami",
+        "Len IP adresy komunikujúcich strán"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "syntaxandsemanticsofprotokol",
+      "type": "mc_single",
+      "question": "Dve rôzne implementácie rovnakého sieťového protokolu si navzájom rozumejú. Čo to garantuje?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 121916.png",
+      "options": [
+        "Používajú rovnaké fyzické prenosové médium",
+        "Dodržiavajú rovnakú syntax a sémantiku správ",
+        "Bežia na rovnakom operačnom systéme",
+        "Používajú rovnaký programovací jazyk",
+        "Majú rovnakú IP adresu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "layeredmodelprotokol",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o vrstvenom (layered) modeli protokolov sú pravdivé?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 122648.png",
+      "options": [
+        "Každá vrstva má vlastnú zodpovednosť v procese komunikácie.",
+        "Jeden protokol môže pokrývať viacero vrstiev naraz, aby sa znížila latencia.",
+        "Na jednej vrstve môže existovať viacero rôznych protokolov.",
+        "Vyššie vrstvy nemusia poznať spôsob, akým sú služby implementované v nižších vrstvách.",
+        "Ak sa zmení protokol na fyzickej vrstve, musia sa zmeniť aj všetky protokoly na vyšších vrstvách.",
+        "Každá vrstva reprezentuje určitú úroveň abstrakcie komunikácie.",
+        "Každá vrstva má presne jeden povinný protokol."
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "layer_physical",
+      "type": "mc_single",
+      "question": "Ktorá vrstva zabezpečuje prenos jednotlivých bitov cez fyzické médium?",
+      "explanation": ".",
+      "options": [
+        "Physical (Fyzická)",
+        "Link (Spojová)",
+        "Network (Sieťová)",
+        "Transportná",
+        "Aplikačná"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "layer_link",
+      "type": "mc_single",
+      "question": "Ktorá vrstva zabezpečuje správny prenos dát medzi dvoma priamo spojenými zariadeniami?",
+      "explanation": ".",
+      "options": [
+        "Physical (Fyzická)",
+        "Link (Spojová)",
+        "Network (Sieťová)",
+        "Transportná",
+        "Aplikačná"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "layer_network",
+      "type": "mc_single",
+      "question": "Ktorá vrstva zabezpečuje smerovanie paketov medzi rôznymi sieťami?",
+      "explanation": ".",
+      "options": [
+        "Physical (Fyzická)",
+        "Link (Spojová)",
+        "Network (Sieťová)",
+        "Transportná",
+        "Aplikačná"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "layer_transport",
+      "type": "mc_single",
+      "question": "Ktorá vrstva zabezpečuje spoľahlivý prenos dát medzi koncovými zariadeniami?",
+      "explanation": ".",
+      "options": [
+        "Physical (Fyzická)",
+        "Link (Spojová)",
+        "Network (Sieťová)",
+        "Transportná",
+        "Aplikačná"
+      ],
+      "correct": 3
+    },
+    {
+      "id": "layer_application",
+      "type": "mc_single",
+      "question": "Ktorá vrstva poskytuje sieťové služby priamo aplikáciám (napr. web, e-mail, DNS)?",
+      "explanation": ".",
+      "options": [
+        "Physical (Fyzická)",
+        "Link (Spojová)",
+        "Network (Sieťová)",
+        "Transportná",
+        "Aplikačná"
+      ],
+      "correct": 4
+    },
+    {
+      "id": "whyheaders",
+      "type": "mc_single",
+      "question": "Prečo sieťové pakety obsahujú hlavičky (headers)?",
+      "explanation": "Router vidí len bity. Bez hlavičky by nevedel, kam paket poslať ani čo s ním robiť – rovnako ako obálka pri liste.",
+      "options": [
+        "Aby bolo možné komprimovať prenášané dáta",
+        "Aby smerovače vedeli, ako majú s paketom naložiť",
+        "Aby sa zväčšila bezpečnosť dát",
+        "Aby sa zvýšila rýchlosť prenosu",
+        "Aby bolo možné prenášať binárne dáta"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "howareheaders",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich informácií sa typicky nachádzajú v hlavičke paketu?",
+      "explanation": ".",
+      "options": [
+        "Zdrojová adresa",
+        "Cieľová adresa",
+        "Obsah prenášaného súboru",
+        "Informácie potrebné na doručenie paketu",
+        "Typ alebo formát prenášaných dát",
+        "Skutočné dáta aplikácie (payload)"
+      ],
+      "correct": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "rmosimodel",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich vrstiev patria pod OSI/ISO model?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 130249.png",
+      "options": [
+        "Fyzická",
+        "Linková",
+        "Sieťová",
+        "Transportná",
+        "Relačná",
+        "Presenčná",
+        "Aplikačná"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "tcpipmodel",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich vrstiev patria pod TCP/IP model?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 131436.png",
+      "options": [
+        "Fyzická",
+        "Linková",
+        "Sieťová",
+        "Transportná",
+        "Relačná",
+        "Presenčná",
+        "Aplikačná"
+      ],
+      "correct": [
+        1,
+        2,
+        3,
+        6
+      ]
+    },
+    {
+      "id": "endtoendprinciple",
+      "type": "mc_single",
+      "question": "Čo hovorí End-to-End principle v počítačových sieťach?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 132516.png",
+      "options": [
+        "Spoľahlivosť a bezpečnosť má zabezpečovať sieť (routery a prepínače), aby boli aplikácie jednoduché.",
+        "Ak má byť nejaká vlastnosť komunikácie správne zabezpečená, musí byť implementovaná na koncových zariadeniach.",
+        "Sieť by mala analyzovať obsah paketov, aby vedela zabezpečiť ich korektné doručenie.",
+        "Každá sieťová vrstva musí implementovať vlastné mechanizmy spoľahlivosti.",
+        "Spoľahlivosť je potrebná len na fyzickej vrstve."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "spolahlivostsiete",
+      "type": "mc_single",
+      "question": "Prečo nemôže sieť sama o sebe zabezpečiť úplnú spoľahlivosť komunikácie?",
+      "explanation": "Sieť môže prenášať pakety, ale len koncové zariadenia vedia, či preniesli správnu správu.",
+      "options": [
+        "Pretože routery nemajú dostatočný výkon.",
+        "Pretože sieť nepozná význam prenášaných dát a nevie overiť ich úplnosť a správnosť.",
+        "Pretože pakety sa nikdy nestrácajú.",
+        "Pretože koncové zariadenia nemajú pamäť."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "demultiplexing",
+      "type": "mc_single",
+      "question": "Na 2. a 3. vrstve dochádza k tzv. „demultiplexingu“. O čo sa jedná?",
+      "explanation": ".",
+      "options": [
+        "Proces, pri ktorom sa viaceré dátové toky spájajú do jedného fyzického prenosu",
+        "Rozdelenie prijatých rámcov alebo paketov správnym protokolom alebo cieľovému zariadeniu",
+        "Šifrovanie paketov pred ich odoslaním do siete",
+        "Rozklad dát na bity pred ich odoslaním po médiu",
+        "Mechanizmus na zmenu veľkosti paketov počas prenosu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "narrowwaist",
+      "type": "mc_single",
+      "question": "Čo znamená pojem „narrow waist“ v architektúre Internetu?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 134545.png",
+      "options": [
+        "Internet má jednu centrálnu riadiacu vrstvu, ktorá kontroluje všetky siete.",
+        "Internet používa jeden univerzálny protokol (IP), ktorý spája rôzne aplikácie a rôzne sieťové technológie.",
+        "Internet je optimalizovaný na čo najmenšiu veľkosť paketov.",
+        "Každá aplikácia musí používať vlastný sieťový protokol.",
+        "Fyzické prenosové technológie musia byť rovnaké v celej sieti."
+      ],
+      "correct": 1
+    },
+    {
+      "id": "port",
+      "type": "mc_multi",
+      "question": "Čo môže v počítačových sieťach znamenať pojem „port“?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-10 134419.png",
+      "options": [
+        "Číslo, ktoré identifikuje konkrétnu aplikáciu alebo službu na zariadení",
+        "Fyzický konektor na sieťovom zariadení, do ktorého sa zapája kábel",
+        "IP adresa zariadenia v sieti",
+        "Softvérový identifikátor používaný transportnou vrstvou",
+        "Hardvérová pamäťová oblasť určená na ukladanie paketov",
+        "Fyzický bod pripojenia na prepínači alebo routeri"
+      ],
+      "correct": [
+        0,
+        1,
+        3,
+        5
+      ]
     }
   ]
 }
