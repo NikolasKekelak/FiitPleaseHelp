@@ -44,7 +44,7 @@ const SETTINGS_KEY = 'mq_settings';
 
 const DEFAULT_SETTINGS = {
   showExplanation: true,
-  keepResponses: false,
+  keepResponses: true,
   hardcoreMode: false,
   // Background customization
   backgroundImage: '', // data URL or URL string
