@@ -2,8 +2,26 @@
 // Courses are declared in /data/courses.json
 // Topics are declared in /data/<course>/topics.json
 
+// Resolve root prefix robustly: when running from subfolders like /quiz/ or /courses/...,
+// relative fetch('data/...') would point to a non-existent subpath. We compute a prefix
+// to reach the site root from the current page location without relying on absolute '/'.
+function getRootPrefix() {
+  try {
+    const p = (location && location.pathname) ? location.pathname : '/';
+    // Heuristic: if path ends with '/', count segments to determine depth.
+    // We consider known top-level folders: quiz, courses, images, data, js, assets.
+    // We only need to handle pages under '/quiz/' (depth 1) in this app.
+    if (/\/quiz\//i.test(p)) return '../';
+    // Demos under courses go deeper but do not use this module; safe default
+    return './';
+  } catch (_) {
+    return './';
+  }
+}
+const ROOT = getRootPrefix();
+
 export async function loadCourses() {
-  const res = await fetch('data/courses.json');
+  const res = await fetch(`${ROOT}data/courses.json`);
   if (!res.ok) throw new Error(`Failed to load courses.json (${res.status})`);
   const data = await res.json();
   // Expected shape: { courses: [{ id, course_name }] }
@@ -12,7 +30,7 @@ export async function loadCourses() {
 
 export async function loadTopics(courseId) {
   if (!courseId) return [];
-  const res = await fetch(`data/${courseId}/topics.json`);
+  const res = await fetch(`${ROOT}data/${courseId}/topics.json`);
   if (!res.ok) throw new Error(`Failed to load topics for ${courseId} (${res.status})`);
   const data = await res.json();
   // Expected shape per spec
@@ -31,7 +49,7 @@ export async function loadTopics(courseId) {
 
 export async function loadPresets(courseId) {
   try {
-    const res = await fetch(`data/${courseId}/presets.json`);
+    const res = await fetch(`${ROOT}data/${courseId}/presets.json`);
     if (!res.ok) return [];
     const data = await res.json();
     // Expected: { presets: [ { id, name, description, topics?: ["id", ...] } ] }
@@ -42,7 +60,7 @@ export async function loadPresets(courseId) {
 }
 
 export async function loadTopicQuestions(courseId, relativeFilePath) {
-  const url = `data/${courseId}/${relativeFilePath}`;
+  const url = `${ROOT}data/${courseId}/${relativeFilePath}`;
   const res = await fetch(url);
   if (!res.ok) throw new Error(`Failed to load topic file ${url} (${res.status})`);
   const data = await res.json();
@@ -58,6 +76,8 @@ export async function loadTopicQuestions(courseId, relativeFilePath) {
       } else {
         q.image = `images/${courseId}/${p}`;
       }
+      // Prefix to root for correct resolution from subfolders like /quiz/
+      if (!/^https?:\/\//.test(q.image)) q.image = `${ROOT}${q.image}`;
     }
     // Normalize optional explanation image path
     if (q.explanation_image && !/^https?:\/\//.test(q.explanation_image)) {
@@ -67,6 +87,7 @@ export async function loadTopicQuestions(courseId, relativeFilePath) {
       } else {
         q.explanation_image = `images/${courseId}/${pe}`;
       }
+      if (!/^https?:\/\//.test(q.explanation_image)) q.explanation_image = `${ROOT}${q.explanation_image}`;
     }
   });
   return data;
