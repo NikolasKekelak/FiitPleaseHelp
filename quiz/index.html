@@ -4,12 +4,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FiitPleaseHelp – Quiz</title>
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="../assets/styles.css" />
   <script>
     (function(){
       var p = location.pathname || '';
-      if (/\/quiz\.html$/i.test(p)) {
-        var clean = p.replace(/quiz\.html$/i, 'quiz/');
+      if (/\/index\.html$/i.test(p)) {
+        var clean = p.replace(/index\.html$/i, '');
         var url = clean + (location.search || '') + (location.hash || '');
         location.replace(url);
       }
@@ -20,13 +20,13 @@
   <div id="bgLayer" class="bg-layer" aria-hidden="true"></div>
   <header class="hotbar">
     <div class="brand">
-      <a href="./" class="brand-link" aria-label="Home">
+      <a href="../" class="brand-link" aria-label="Home">
         <h1>FiitPleaseHelp</h1>
         <div class="byline">by nikolaaaas</div>
       </a>
     </div>
     <div class="hotbar-actions">
-      <a class="gear-btn" href="settings.html" title="Settings" aria-label="Settings">⚙️</a>
+      <a class="gear-btn" href="../settings.html" title="Settings" aria-label="Settings">⚙️</a>
     </div>
   </header>
 
@@ -93,6 +93,6 @@
     </section>
   </main>
 
-  <script type="module" src="js/app.js"></script>
+  <script type="module" src="../js/app.js"></script>
 </body>
 </html>

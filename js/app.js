@@ -173,11 +173,11 @@ async function initCourseScreen() {
       actions.className = 'actions';
       const open = document.createElement('a');
       open.className = 'btn';
-      open.href = `./courses/${encodeURIComponent(c.id)}/index.html`;
+      open.href = `./courses/${encodeURIComponent(c.id)}/`;
       open.textContent = 'Open';
       const practice = document.createElement('a');
       practice.className = 'btn primary';
-      practice.href = `./quiz.html?course=${encodeURIComponent(c.id)}`;
+      practice.href = `./quiz/?course=${encodeURIComponent(c.id)}`;
       practice.textContent = 'Practice';
       actions.appendChild(open);
       actions.appendChild(practice);
@@ -197,7 +197,7 @@ async function initCourseScreen() {
         els.courseSelect.value = paramCourse;
         context.course = paramCourse;
         // If on quiz.html, automatically proceed to Choose screen
-        if (/quiz\.html$/i.test(location.pathname)) {
+        if (/\/quiz\/?$/i.test(location.pathname)) {
           await loadChooseScreen();
           show('choose');
         }

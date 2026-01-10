@@ -82,11 +82,11 @@
     if (elBreadcrumb) {
       elBreadcrumb.innerHTML = '';
       const aHome = document.createElement('a');
-      aHome.href = '../../index.html';
+      aHome.href = '../../';
       aHome.textContent = 'Home';
       const sep = document.createElement('span'); sep.textContent = ' / ';
       const aCourse = document.createElement('a');
-      aCourse.href = './index.html#' + section;
+      aCourse.href = './#' + section;
       aCourse.textContent = COURSE_SLUG || 'Course';
       elBreadcrumb.appendChild(aHome);
       elBreadcrumb.appendChild(sep.cloneNode(true));
@@ -245,7 +245,7 @@
   // Practice button should link to quiz filtered by course
   const practice = document.getElementById('btn-practice');
   if (practice && COURSE_SLUG) {
-    practice.setAttribute('href', `../../quiz.html?course=${encodeURIComponent(COURSE_SLUG)}`);
+    practice.setAttribute('href', `../../quiz/?course=${encodeURIComponent(COURSE_SLUG)}`);
   }
 
   window.addEventListener('hashchange', () => {

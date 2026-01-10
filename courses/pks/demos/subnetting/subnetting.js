@@ -45,11 +45,11 @@ Developer notes:
       const el = document.getElementById('courseBreadcrumb');
       if (!el) return;
       el.innerHTML = '';
-      const aHome = document.createElement('a'); aHome.href='../../../../index.html'; aHome.textContent='Home';
+      const aHome = document.createElement('a'); aHome.href='../../../../'; aHome.textContent='Home';
       const sep = document.createElement('span'); sep.textContent=' / ';
-      const aCourse = document.createElement('a'); aCourse.href='../../index.html#demos'; aCourse.textContent='pks';
+      const aCourse = document.createElement('a'); aCourse.href='../../#demos'; aCourse.textContent='pks';
       const sep2 = document.createElement('span'); sep2.textContent=' / ';
-      const aDemo = document.createElement('a'); aDemo.href='./index.html'; aDemo.textContent='Subnetting';
+      const aDemo = document.createElement('a'); aDemo.href='./'; aDemo.textContent='Subnetting';
       el.append(aHome, sep, aCourse, sep2, aDemo);
     } catch(_){}
   })();

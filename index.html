@@ -5,6 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>FiitPleaseHelp</title>
   <link rel="stylesheet" href="assets/styles.css" />
+  <script>
+    (function(){
+      var p = location.pathname || '';
+      if (/\/index\.html$/i.test(p)) {
+        var clean = p.replace(/index\.html$/i, '');
+        var url = clean + (location.search || '') + (location.hash || '');
+        location.replace(url);
+      }
+    })();
+  </script>
 </head>
 <body>
   <!-- Background layer -->
@@ -12,7 +22,7 @@
 
   <header class="hotbar">
     <div class="brand">
-      <a href="index.html" class="brand-link" aria-label="Home">
+      <a href="./" class="brand-link" aria-label="Home">
         <h1>FiitPleaseHelp</h1>
         <div class="byline">by nikolaaaas</div>
       </a>

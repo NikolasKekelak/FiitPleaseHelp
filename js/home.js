@@ -51,12 +51,12 @@ async function renderCourseGrid() {
 
       const open = document.createElement('a');
       open.className = 'btn';
-      open.href = `./courses/${encodeURIComponent(c.id)}/index.html`;
+      open.href = `./courses/${encodeURIComponent(c.id)}/`;
       open.textContent = 'Open';
 
       const practice = document.createElement('a');
       practice.className = 'btn primary';
-      practice.href = `./quiz.html?course=${encodeURIComponent(c.id)}`;
+      practice.href = `./quiz/?course=${encodeURIComponent(c.id)}`;
       practice.textContent = 'Practice';
 
       actions.appendChild(open);

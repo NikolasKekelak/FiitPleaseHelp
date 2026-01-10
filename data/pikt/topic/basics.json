@@ -85,20 +85,6 @@
       "correct": 1
     },
     {
-      "id": "okamziteskonceniepp",
-      "type": "mc_multi",
-      "question": "O okamžitom skončení pracovného pomeru zo strany zamestnávateľa platí:",
-      "explanation": "",
-      "options": [
-        "nemožno ho dať zamestnancovi, ktorý bol odsúdený za úmyselný trestný čin",
-        "je možné ho dať zamestnancovi bez uvedenia dôvodu",
-        "možno ho dať len zamestnancovi, ktorý závažne porušil pracovnú disciplínu",
-        "nemožno ho dať zamestnankyni, ktorá je tehotná",
-        "je možné ho dať zamestnancovi z akéhokoľvek dôvodu"
-      ],
-      "correct": [3]
-    },
-    {
       "id": "electroniccomnetwork",
       "type": "mc_multi",
       "question": "Čo zahŕňa elektronická komunikačná sieť?",
@@ -179,7 +165,7 @@
       ]
     },
     {
-      "id": "fiktivny_pracovny_pomer",
+      "id": "fiktivny_pracovny",
       "type": "mc_multi",
       "question": "O fiktívnom pracovnom pomere platí:",
       "explanation": "Fiktívny pracovný pomer vzniká na základe neplatnej pracovnej zmluvy, pričom právne následky závisia od toho, či účastníci o neplatnosti vedia alebo nie.",
@@ -308,24 +294,6 @@
       ]
     },
     {
-      "id": "eidas_eid_recognition",
-      "type": "mc_multi",
-      "question": "Medzi podmienky vzájomného uznávania prostriedkov elektronickej identifikácie podľa Nariadenia EP a Rady (EÚ) č. 910/2014 (eIDAS) patrí:",
-      "explanation": "Vzájomné uznávanie znamená, že členské štáty musia akceptovať notifikované schémy elektronickej identifikácie iných členských štátov, ak spĺňajú požadovanú úroveň záruky pre danú elektronickú službu.",
-      "options": [
-        "Prostriedok elektronickej identifikácie musí byť súčasťou oznámenej (notifikovanej) schémy elektronickej identifikácie.",
-        "Úroveň záruky prostriedku elektronickej identifikácie musí byť rovnaká alebo vyššia ako úroveň záruky, ktorú vyžaduje príslušný subjekt verejného sektora.",
-        "Príslušný subjekt verejného sektora používa vo vzťahu k prístupu k online službe úroveň záruky „pokročilá“ alebo „vysoká“.",
-        "Elektronický podpis musí byť na úrovni kvalifikovaného elektronického podpisu.",
-        "Príslušný subjekt verejného sektora používa vo vzťahu k prístupu k danej online službe úroveň záruky „vysoká“."
-      ],
-      "correct": [
-        0,
-        2,
-        4
-      ]
-    },
-    {
       "id": "copyright_property_rights",
       "type": "mc_multi",
       "question": "Majetkové práva autora zahŕňajú:",
@@ -341,24 +309,6 @@
         0,
         1,
         2
-      ]
-    },
-    {
-      "id": "software_copyright_law",
-      "type": "mc_multi",
-      "question": "V zmysle zákona č. 185/2015 Z.z. (Autorský zákon) platí pre ochranu počítačového programu, že:",
-      "explanation": "Autorský zákon chráni konkrétnu realizáciu počítačového programu (kód, štruktúru, rozhrania), nie samotné myšlienky a princípy. Oprávnený používateľ môže program skúmať a testovať za účelom zistenia jeho fungovania. Zdrojové materiály použité na vytvorenie programu sú tiež chránené.",
-      "options": [
-        "Do práva autora počítačového programu nezasahuje oprávnený užívateľ, ak bez súhlasu autora skúma, študuje alebo skúša funkčnosť počítačového programu na účel určenia myšlienok alebo princípov, ktoré sú základom akejkoľvek časti počítačového programu.",
-        "Myšlienky a princípy, na ktorých je založený prvok počítačového programu, vrátane tých, ktoré sú podkladom jeho rozhrania, sú chránené.",
-        "Súčasťou počítačového programu je aj podkladový materiál použitý na jeho vytvorenie.",
-        "Oprávnený užívateľ môže používať počítačový program aj v rozpore s bežným využitím počítačového programu.",
-        "Počítačový program je súbor príkazov a inštrukcií vyjadrených v akejkoľvek forme použitých priamo alebo nepriamo v počítači alebo v podobnom technickom zariadení."
-      ],
-      "correct": [
-        0,
-        2,
-        4
       ]
     },
     {
@@ -512,13 +462,342 @@
         3,
         4
       ]
+    },
+    {
+      "id": "dusevne_vlastnictvo_znaky",
+      "type": "mc_multi",
+      "question": "Spoločné znaky duševného vlastníctva sú:",
+      "explanation": "Predmetom duševného vlastníctva sú nehmotné statky (napr. diela, vynálezy), ktoré je možné používať viacerými osobami súčasne bez toho, aby sa ich používaním obmedzovali iní. Zároveň ide o práva výlučné – o spôsobe použitia rozhoduje nositeľ práv.",
+      "options": [
+        "Nie je ťažké obmedziť prístup k týmto predmetom",
+        "Nevýlučnosť",
+        "Ich objektom je nehmotný predmet",
+        "Všadeprítomnosť",
+        "Použitie týchto objektov neobmedzuje druhých užívateľov"
+      ],
+      "correct": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "okamzite_skoncenie_pp",
+      "type": "mc_multi",
+      "question": "Na základe akých zákonných dôvodov môže zamestnávateľ okamžite skončiť pracovný pomer so zamestnancom?",
+      "explanation": "Podľa Zákonníka práce môže zamestnávateľ okamžite skončiť pracovný pomer len v zákonom presne stanovených prípadoch – najmä pri závažnom porušení pracovnej disciplíny alebo pri právoplatnom odsúdení za úmyselný trestný čin.",
+      "options": [
+        "Závažné porušenie pracovnej disciplíny",
+        "Právoplatné odsúdenie zamestnanca za úmyselný trestný čin",
+        "Ak zamestnanec podáva slabý pracovný výkon",
+        "Ak zamestnávateľ nie je spokojný so zamestnancom",
+        "Ak zamestnanec poruší interný predpis bez závažných následkov",
+        "Ak sa zamestnávateľ rozhodne z organizačných dôvodov"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "egovernment",
+      "type": "mc_multi",
+      "question": "O eGovernmente platí:",
+      "explanation": "eGovernment zahŕňa elektronické služby štátu, vrátane front office (služby pre občana) a back office (vnútorné systémy štátu). eSpráva nie je súčasťou eVolieb a elektronické voľby sa na Slovensku nepoužívajú.",
+      "options": [
+        "eSpráva je súčasťou eVolieb",
+        "Súčasťou elektronickej komunikácie je aj Back office",
+        "eDemokracia patrí do eGovernmentu, len sa na území SR nerealizuje",
+        "Súčasťou eGovernmentu je aj Front office",
+        "Na území Slovenskej republiky je možné voliť elektronicky"
+      ],
+      "correct": [1, 3]
+    },
+    {
+      "id": "ecommerce_contract",
+      "type": "mc_multi",
+      "question": "Za podanie žiadosti na uzatvorenie zmluvy elektronickými prostriedkami sa považuje:",
+      "explanation": "Podľa zákona o elektronickom obchode je návrhom zmluvy elektronické potvrdenie objednávky po jej doručení.",
+      "options": [
+        "Vyzdvihnutie zakúpeného tovaru alebo služby",
+        "Elektronické potvrdenie objednávky bezodkladne po jej doručení",
+        "Doručenie návrhu kúpnej zmluvy, ktorý podpisuje predávajúci a kupujúci",
+        "Doručenie potvrdenia o uskutočnení platby za objednaný tovar alebo službu",
+        "Zaslanie súhrnu konkrétnej objednávky, ktorú je ešte možné zmeniť"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "eu_directives",
+      "type": "mc_multi",
+      "question": "Ktoré právne akty EÚ podľa čl. 288 ZFEÚ musia byť implementované do vnútroštátneho práva?",
+      "explanation": "Implementáciu vyžadujú iba smernice Európskeho parlamentu a Rady.",
+      "options": [
+        "Rozhodnutia Súdneho dvora EÚ",
+        "Odporúčania Súdneho dvora EÚ",
+        "Smernice Súdneho dvora EÚ",
+        "Smernice Rady",
+        "Smernice Európskeho parlamentu"
+      ],
+      "correct": [3, 4]
+    },
+    {
+      "id": "author_property_rights",
+      "type": "mc_multi",
+      "question": "Medzi majetkové práva autora patria:",
+      "explanation": "Majetkové práva zahŕňajú najmä právo rozhodovať o sprístupnení a komerčnom využití diela.",
+      "options": [
+        "Právo označiť dielo pseudonymom",
+        "Právo udeľovať súhlas na zverejnenie diela",
+        "Právo rozhodnúť o zverejnení diela",
+        "Právo na nedotknuteľnosť diela",
+        "Právo previesť autorstvo diela na inú osobu"
+      ],
+      "correct": [1, 2]
+    },
+    {
+      "id": "public_services_contract",
+      "type": "mc_multi",
+      "question": "Zmluva o poskytovaní verejných služieb podľa zákona o elektronických komunikáciách musí obsahovať:",
+      "explanation": "Zákon vyžaduje informácie o službách, obmedzeniach a podmienkach používania.",
+      "options": [
+        "Popis poskytovaných služieb vrátane servisných služieb a kontaktných údajov",
+        "Informácie o prístupe k službám tiesňového volania a lokalizačným údajom",
+        "Informácie o obmedzeniach prístupu k službám alebo aplikáciám",
+        "Spôsoby odškodnenia a systém úhrad pri porušení zmluvy",
+        "Druhy opatrení pri narušení bezpečnosti alebo integrity siete"
+      ],
+      "correct": [0, 1, 2]
+    },
+    {
+      "id": "ecommerce_exceptions",
+      "type": "mc_multi",
+      "question": "Na ktoré služby sa zákon o elektronickom obchode nevzťahuje?",
+      "explanation": "Zákon sa nevzťahuje na verejnoprávne činnosti, dane, notárske služby ani lotérie. Prenos dát a komerčná komunikácia medzi výnimky nepatria.",
+      "options": [
+        "Komerčná komunikácia",
+        "Dane a poplatky",
+        "Služby notárov vo výkone verejnej právomoci",
+        "Lotérie",
+        "Prenos dát"
+      ],
+      "correct": [1, 2, 3]
+    },
+    {
+      "id": "nis_operator_duties",
+      "type": "mc_multi",
+      "question": "Medzi povinnosti prevádzkovateľa základných služieb podľa smernice NIS patrí:",
+      "explanation": "Prevádzkovatelia základných služieb musia prijímať primerané bezpečnostné opatrenia a oznamovať závažné incidenty národnému orgánu alebo CSIRT.",
+      "options": [
+        "Do 72 hodín oznamovať príslušnému orgánu alebo CSIRT incidenty so závažným vplyvom na kontinuitu služieb",
+        "Prijať najjednoduchšie technické a organizačné opatrenia",
+        "Prijať primerané opatrenia na prevenciu a minimalizáciu dopadov incidentov",
+        "Bez zbytočného odkladu oznamovať incidenty iba európskym jednotkám CSIRT",
+        "Bez zbytočného odkladu oznamovať incidenty príslušnému orgánu alebo CSIRT"
+      ],
+      "correct": [0, 2, 4]
+    },
+    {
+      "id": "egovernment_services",
+      "type": "mc_multi",
+      "question": "V prípade informačných elektronických služieb verejnej správy platí, že:",
+      "explanation": "Informačné elektronické služby verejnej správy umožňujú občanom elektronicky získať informácie a odosielať podania. Môžu zahŕňať formuláre aj elektronickú komunikáciu a nemusia byť výlučne transakčné.",
+      "options": [
+        "Osoba vie vykonať úhradu za takúto elektronickú službu verejnej správy",
+        "Možno ich deliť na komunikačné a transakčné",
+        "Osoba sa nemusí identifikovať a autentifikovať k takejto elektronickej službe verejnej správy",
+        "Osoba vie nájsť formulár na webovom sídle orgánu verejnej správy, ale nemôže ho zaslať elektronicky",
+        "Osoba vie nájsť formulár na webovom sídle orgánu verejnej správy a môže ho zaslať elektronicky"
+      ],
+      "correct": [1, 2, 4]
+    },
+    {
+      "id": "eidas_recognition_v2",
+      "type": "mc_multi",
+      "question": "Medzi podmienky vzájomného uznávania prostriedkov elektronickej identifikácie podľa nariadenia eIDAS patrí:",
+      "explanation": "Vzájomné uznávanie sa uplatňuje len na notifikované schémy a pri službách, kde je požadovaná úroveň záruky pokročilá alebo vysoká.",
+      "options": [
+        "Príslušný subjekt verejného sektora používa vo vzťahu k prístupu k danej online službe úroveň záruky „pokročilá“ alebo „vysoká“",
+        "Úroveň záruky prostriedku elektronickej identifikácie musí zodpovedať rovnakej alebo vyššej úrovni ako požaduje služba",
+        "Elektronický podpis musí byť na úrovni kvalifikovaného elektronického podpisu",
+        "Prostriedok musí patriť do notifikovanej schémy elektronickej identifikácie",
+        "Príslušný subjekt verejného sektora používa úroveň záruky „vysoká“"
+      ],
+      "correct": [0, 1, 3]
+    },
+    {
+      "id": "ecommerce_contract_conclusion",
+      "type": "mc_multi",
+      "question": "Za okamih uzavretia zmluvy pri elektronickom obchode sa považuje:",
+      "explanation": "Zmluva je uzavretá vtedy, keď predávajúci elektronicky potvrdí prijatie objednávky spotrebiteľa.",
+      "options": [
+        "Doručenie potvrdenia o uskutočnení platby za objednaný tovar alebo službu",
+        "Elektronické potvrdenie objednávky bezodkladne po jej doručení",
+        "Doručenie návrhu kúpnej zmluvy, ktorú podpisuje predávajúci a kupujúci",
+        "Zaslanie súhrnu konkrétnej objednávky, ktorý je ešte možné zmeniť",
+        "Vyzdvihnutie zakúpeného tovaru alebo služby"
+      ],
+      "correct": [1]
+    },
+    {
+      "id": "telecom_operator_duties",
+      "type": "mc_multi",
+      "question": "Podnik podľa zákona o elektronických komunikáciách je povinný:",
+      "explanation": "Podnik musí overovať účastníkov, chrániť prístup k tiesňovým službám a uzatvárať zmluvy bez diskriminácie.",
+      "options": [
+        "Poskytovať informácie na základe odôvodnenej žiadosti Telekomunikačného úradu",
+        "Zabezpečiť svojim účastníkom prístup k informačnej službe o telefónnych číslach",
+        "Pri uzatvorení zmluvy overovať údaje účastníka a viesť ich evidenciu",
+        "Zabezpečiť koncovým užívateľom verejných telefónnych automatov odplatný prístup k tiesňovým službám",
+        "Uzatvoriť zmluvu o poskytovaní verejných služieb s každým záujemcom, ak nie je zákonný dôvod na odmietnutie"
+      ],
+      "correct": [1, 2, 3, 4]
+    },
+    {
+      "id": "software_copyright_variant",
+      "type": "mc_multi",
+      "question": "Pre ochranu počítačového programu podľa Autorského zákona platí:",
+      "explanation": "Autorský zákon chráni program ako tvorivý výsledok vyjadrený v kóde a v podkladových materiáloch, ale nechráni samotné myšlienky a princípy.",
+      "options": [
+        "Oprávnený užívateľ môže bez súhlasu autora skúmať funkčnosť programu na určenie jeho princípov",
+        "Počítačový program je súbor príkazov a inštrukcií vyjadrených v akejkoľvek forme",
+        "Podkladový materiál použitý na vytvorenie programu je jeho súčasťou",
+        "Myšlienky a princípy programu sú chránené",
+        "Program možno používať aj v rozpore s jeho bežným využitím"
+      ],
+      "correct": [0, 1, 2]
+    },
+    {
+      "id": "pravny_vztah",
+      "type": "mc_multi",
+      "question": "Právny vzťah je:",
+      "explanation": "Právny vzťah je spoločenský vzťah upravený právom, ktorý vzniká na základe právnych skutočností a jeho účastníci majú práva a povinnosti.",
+      "options": [
+        "Jeho účastníci majú práva a povinnosti",
+        "Je výsledkom právnej skutočnosti",
+        "Vznikne aj po smrti fyzickej osoby",
+        "Je aj manželstvo",
+        "Právom regulovaný spoločenský vzťah"
+      ],
+      "correct": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "pravna_norma",
+      "type": "mc_multi",
+      "question": "Uveďte, ktoré tvrdenia o právnej norme sú pravdivé:",
+      "explanation": "Právna norma je všeobecne záväzné pravidlo správania vydané alebo uznané štátom, nachádza sa v právnych predpisoch vrátane práva EÚ.",
+      "options": [
+        "Právna norma je všeobecne záväzné pravidlo ľudského správania",
+        "Právna norma môže mať podobu len príkazu a zákazu",
+        "Právna norma sa nachádza v ústavných zákonoch",
+        "Právna norma sa nachádza v nariadeniach Európskej komisie",
+        "Pojmovým znakom právnej normy je kognitívnosť"
+      ],
+      "correct": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "eid_card",
+      "type": "mc_multi",
+      "question": "O elektronickom občianskom preukaze (eID) platí:",
+      "explanation": "eID slúži ako doklad totožnosti aj ako prostriedok elektronickej identifikácie a podpisovania.",
+      "options": [
+        "Je dokladom totožnosti používaným vo fyzickom svete aj online pri elektronických službách",
+        "Aktivuje sa zadaním bezpečnostného osobného kódu (BOK)",
+        "Vydáva sa vždy za poplatok",
+        "Môže obsahovať súkromný kľúč na vytvorenie elektronického podpisu",
+        "Je určený len na elektronické služby verejnej správy"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "eidas_electronic_signature_rules",
+      "type": "mc_multi",
+      "question": "V zmysle nariadenia eIDAS (EÚ) č. 910/2014 o elektronickej identifikácii a dôveryhodných službách platí o elektronickom podpise, že:",
+      "explanation": "eIDAS stanovuje, že elektronický podpis sa nesmie odmietnuť ako dôkaz len preto, že má elektronickú formu. Kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu. Kvalifikovaný podpis musí byť vytvorený kvalifikovaným zariadením na vyhotovenie podpisu (QSCD) a založený na kvalifikovanom certifikáte. Existujú aj iné typy podpisu (napr. pokročilý), takže nejde len o „obyčajný“ a „kvalifikovaný“.",
+      "options": [
+        "Len kvalifikovaná elektronická pečať má právny účinok rovnocenný vlastnoručnému podpisu.",
+        "Elektronický podpis nesmie byť odmietnutý ako dôkaz v súdnom konaní iba z dôvodu, že má elektronickú podobu.",
+        "Kvalifikovaný elektronický podpis musí byť vyhotovený s použitím kvalifikovaného zariadenia na vyhotovenie elektronického podpisu.",
+        "Elektronický podpis sa delí iba na obyčajný elektronický podpis a kvalifikovaný elektronický podpis.",
+        "Len kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu."
+      ],
+      "correct": [1, 2, 4]
+    },
+    {
+      "id": "eidas_signature_legal_effects",
+      "type": "mc_multi",
+      "question": "V zmysle nariadenia eIDAS (EÚ) č. 910/2014 o elektronickej identifikácii a dôveryhodných službách platí o elektronickom podpise, že:",
+      "explanation": "eIDAS stanovuje, že elektronický podpis nesmie byť odmietnutý ako dôkaz len preto, že má elektronickú podobu. Len kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu. Kvalifikovaný podpis musí byť vytvorený pomocou kvalifikovaného zariadenia na vyhotovenie elektronického podpisu (QSCD). Okrem obyčajného a kvalifikovaného existuje aj pokročilý elektronický podpis.",
+      "options": [
+        "Elektronický podpis sa delí iba na obyčajný a kvalifikovaný elektronický podpis.",
+        "Elektronický podpis nesmie byť odmietnutý ako dôkaz v súdnom konaní len z dôvodu, že má elektronickú podobu.",
+        "Len kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu.",
+        "Kvalifikovaný elektronický podpis musí byť vytvorený pomocou kvalifikovaného zariadenia na vyhotovenie elektronického podpisu.",
+        "Kvalifikovaná elektronická pečať má rovnaký právny účinok ako vlastnoručný podpis fyzickej osoby."
+      ],
+      "correct": [1, 2, 3]
+    },
+    {
+      "id": "eidas_signature_legal_effect",
+      "type": "mc_multi",
+      "question": "V zmysle nariadenia eIDAS (EÚ) č. 910/2014 o elektronickej identifikácii a dôveryhodných službách platí o elektronickom podpise, že:",
+      "explanation": "eIDAS stanovuje, že elektronický podpis nesmie byť odmietnutý ako dôkaz len pre jeho elektronickú podobu. Len kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu. Kvalifikovaný podpis musí byť vytvorený pomocou kvalifikovaného zariadenia (QSCD). Okrem obyčajného a kvalifikovaného existuje aj pokročilý podpis.",
+      "options": [
+        "Elektronický podpis sa delí iba na obyčajný a kvalifikovaný elektronický podpis.",
+        "Elektronický podpis nesmie byť odmietnutý ako dôkaz v súdnom konaní len z dôvodu, že má elektronickú podobu.",
+        "Len kvalifikovaný elektronický podpis má právny účinok rovnocenný vlastnoručnému podpisu.",
+        "Kvalifikovaný elektronický podpis musí byť vytvorený pomocou kvalifikovaného zariadenia na vyhotovenie elektronického podpisu.",
+        "Kvalifikovaná elektronická pečať má rovnaký právny účinok ako podpis fyzickej osoby."
+      ],
+      "correct": [1, 2, 3]
+    },
+    {
+      "id": "slovak_eid_card",
+      "type": "mc_multi",
+      "question": "Elektronický občiansky preukaz podľa zákona č. 224/2006 Z. z. o občianskych preukazoch:",
+      "explanation": "Slovenský eID je plnohodnotný doklad totožnosti. Obsahuje kryptografické kľúče na vytváranie kvalifikovaného elektronického podpisu a jeho používanie sa aktivuje bezpečnostným osobným kódom (BOK). Nie je určený len na online použitie a nevydáva sa vždy za poplatok.",
+      "options": [
+        "Je dokladom totožnosti použiteľným vo fyzickom aj online prostredí.",
+        "Môže obsahovať súkromný kľúč na vytváranie elektronického podpisu.",
+        "Je určený len na prístup k elektronickým službám verejnej správy.",
+        "Vždy sa vydáva za poplatok.",
+        "Aktivuje sa zadaním bezpečnostného osobného kódu (BOK)."
+      ],
+      "correct": [0, 1, 4]
+    },
+    {
+      "topic_id": "kazusy_pracovne_a_it_pravo",
+      "topic_name": "Kazuistiky (pracovné + IT právo)",
+      "questions": [
+        {
+          "id": "kazus_databaza_klientov_odchod_z_firmy",
+          "type": "mc_multi",
+          "question": "Obchodník po odchode z firmy skopíruje databázu klientov (mená, adresy, nákupná história) a použije ju vo vlastnom podnikaní. Ktoré tvrdenia sú správne?",
+          "explanation": "Takéto konanie typicky zahŕňa neoprávnené spracúvanie osobných údajov (GDPR), môže zasiahnuť do obchodného tajomstva a môže naplniť znaky nekalej súťaže. Pôvodná firma sa spravidla môže domáhať zdržania sa konania (zákaz používania), odstránenia následkov a náhrady škody; pri obchodnom tajomstve aj primeraného zadosťučinenia/vydania bezdôvodného obohatenia podľa konkrétnych okolností.",
+          "options": [
+            "Môže ísť o porušenie GDPR (spracúvanie osobných údajov bez právneho základu).",
+            "Databáza klientov môže predstavovať obchodné tajomstvo (ak má hospodársku hodnotu a nie je bežne dostupná).",
+            "Konanie môže naplniť znaky nekalej súťaže (napr. využitie cudzej databázy na získanie výhody).",
+            "Firma sa môže domáhať zákazu používania databázy a náhrady škody (podľa okolností aj ďalších nárokov).",
+            "Nejde o porušenie, ak obchodník databázu skopíroval až po skončení pracovného pomeru."
+          ],
+          "correct": [0, 1, 2, 3]
+        }
+      ]
     }
-
-
-
-
-
-
 
 
 
