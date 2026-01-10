@@ -1,0 +1,11 @@
+{
+  "course": "pikt",
+  "course_name": "Právo informačných a komunikačných technológií",
+  "topics": [
+    {
+      "id": "basics",
+      "file": "topic/basics.json",
+      "topic_name": "Základy PIKT"
+    }
+  ]
+}

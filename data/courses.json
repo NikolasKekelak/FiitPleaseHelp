@@ -5,6 +5,7 @@
     { "id": "pks", "course_name": "Počítačové a komunikačné siete" },
     { "id": "zneus", "course_name": "Základy neurónových sietí" },
     { "id": "pib", "course_name": "Princípy informačnej bezpečnosti" },
-    { "id": "ppi", "course_name": "Princípy počítačového inžinierstva" }
+    { "id": "ppi", "course_name": "Princípy počítačového inžinierstva" },
+    { "id": "pikt", "course_name": "Právo informačných a komunikačných technológií" }
   ]
 }

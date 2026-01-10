@@ -1,0 +1,527 @@
+{
+  "topic_id": "basics",
+  "topic_name": "Základy PIKT (GDPR, autorské právo)",
+  "questions": [
+    {
+      "id": "osobneudaje_def",
+      "type": "mc_single",
+      "question": "Čo sa podľa GDPR rozumie pod pojmom \"osobné údaje\"?",
+      "explanation": "Osobné údaje sú všetky informácie o identifikovanej alebo identifikovateľnej fyzickej osobe (dotknutej osobe).",
+      "options": [
+        "Len meno a priezvisko osoby",
+        "Len číslo občianskeho preukazu",
+        "Akákoľvek informácia o identifikovanej alebo identifikovateľnej fyzickej osobe",
+        "Len zdravotné údaje osoby"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "autorske_pravo_dielo",
+      "type": "mc_single",
+      "question": "Čo sa v autorskom práve považuje za \"dielo\"?",
+      "explanation": "Dielom je jedinečný výsledok tvorivej duševnej činnosti autora, vyjadrený v objektívne vnímateľnej podobe (napr. text, kód, obraz, hudba).",
+      "options": [
+        "Akýkoľvek nápad bez vyjadrenia",
+        "Výsledok tvorivej duševnej činnosti vyjadrený v objektívne vnímateľnej podobe",
+        "Len literárne texty",
+        "Len fotografie a filmy"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "majetkove_osobnostne",
+      "type": "mc_multi",
+      "question": "Označte správne tvrdenia o majetkových a osobnostných právach autora:",
+      "explanation": "Osobnostné práva (napr. právo na autorstvo, nedotknuteľnosť diela) sú neprevoditeľné a nepremlčateľné; majetkové práva (napr. rozmnožovanie, sprístupňovanie) sú prevoditeľné/licencovateľné a časovo obmedzené.",
+      "options": [
+        "Osobnostné práva autora sú neprevoditeľné",
+        "Majetkové práva možno licencovať alebo prevádzať",
+        "Osobnostné práva sú časovo obmedzené",
+        "Majetkové práva sú časovo obmedzené"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "spracovatelska_zmluva",
+      "type": "mc_single",
+      "question": "Aký je účel spracovateľskej zmluvy (DPA) medzi prevádzkovateľom a sprostredkovateľom?",
+      "explanation": "Zmluva upravuje predmet a trvanie spracúvania, povahu a účel, typ osobných údajov, kategórie dotknutých osôb a povinnosti/práva strán, aby bol súlad s GDPR.",
+      "options": [
+        "Upraviť vlastníctvo osobných údajov",
+        "Určiť technické parametre servera",
+        "Stanoviť pravidlá a povinnosti spracúvania v súlade s GDPR",
+        "Nahradiť potrebu právneho základu"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "incident_oznamovanie",
+      "type": "mc_single",
+      "question": "Ak dôjde k porušeniu ochrany osobných údajov, dokedy má prevádzkovateľ povinnosť oznámiť to dozornému orgánu (ak je to potrebné)?",
+      "explanation": "V zásade bez zbytočného odkladu a pokiaľ je to možné, najneskôr do 72 hodín od zistenia porušenia (čl. 33 GDPR).",
+      "options": [
+        "Do 24 hodín",
+        "Do 72 hodín",
+        "Do 7 dní",
+        "Nie je stanovená lehota"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "minimalizacia_udajov",
+      "type": "mc_single",
+      "question": "Čo znamená zásada minimalizácie údajov podľa GDPR?",
+      "explanation": "Spracúvať len tie osobné údaje, ktoré sú nevyhnutné na daný účel a nie viac.",
+      "options": [
+        "Zbierať čo najviac údajov pre budúce využitie",
+        "Spracúvať len nevyhnutné údaje pre daný účel",
+        "Vymazávať všetky údaje do 24 hodín",
+        "Ukladať údaje v šifrovanej podobe"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "okamziteskonceniepp",
+      "type": "mc_multi",
+      "question": "O okamžitom skončení pracovného pomeru zo strany zamestnávateľa platí:",
+      "explanation": "",
+      "options": [
+        "nemožno ho dať zamestnancovi, ktorý bol odsúdený za úmyselný trestný čin",
+        "je možné ho dať zamestnancovi bez uvedenia dôvodu",
+        "možno ho dať len zamestnancovi, ktorý závažne porušil pracovnú disciplínu",
+        "nemožno ho dať zamestnankyni, ktorá je tehotná",
+        "je možné ho dať zamestnancovi z akéhokoľvek dôvodu"
+      ],
+      "correct": [3]
+    },
+    {
+      "id": "electroniccomnetwork",
+      "type": "mc_multi",
+      "question": "Čo zahŕňa elektronická komunikačná sieť?",
+      "explanation": "Elektronická komunikačná sieť zahŕňa všetky technológie, ktoré prenášajú informácie pomocou elektromagnetických signálov – napríklad rádiové vlny, optické vlákna alebo vysielacie siete. Nezahŕňa iba pevné okruhové siete.",
+      "options": [
+        "Prenos signálov prostredníctvom rádiových vĺn",
+        "Prenos signálov cez infračervené lúče",
+        "Siete používané na rozhlasové a televízne vysielanie",
+        "Prenos signálov cez optické vedenie",
+        "Výlučne pevné siete s prepájaním okruhov"
+      ],
+      "correct": [0, 2, 3]
+    },
+    {
+      "id": "endofemployment",
+      "type": "mc_multi",
+      "question": "Pracovný pomer možno skončiť:",
+      "explanation": "Pracovný pomer je možné skončiť len zákonom dovolenými spôsobmi. Niektoré osoby (napr. tehotné zamestnankyne) majú zvýšenú ochranu pred výpoveďou, ale pracovný pomer môže skončiť aj inými zákonnými mechanizmami, ako je okamžité skončenie zo strany zamestnávateľa alebo zamestnanca.",
+      "options": [
+        "výpoveďou tehotnej ženy",
+        "výpoveďou bez udania dôvodu",
+        "okamžitým skončením pracovného pomeru tehotnej ženy",
+        "okamžitým skončením pracovného pomeru zo strany zamestnávateľa",
+        "okamžitým skončením pracovného pomeru zo strany zamestnanca"
+      ],
+      "correct": [3, 4]
+    },
+    {
+      "id": "reverse_engineering",
+      "type": "mc_multi",
+      "question": "O spätnom programe (reverse engineering) počítačového programu platí:",
+      "explanation": "Spätné inžinierstvo softvéru je za určitých zákonných podmienok povolené, najmä na účely dosiahnutia interoperability s iným softvérom. Získané informácie však nesmú byť zneužité na vývoj konkurenčného alebo kopírujúceho programu.",
+      "options": [
+        "Môžeme ho realizovať iba za účelom dosiahnutia interoperability príslušného počítačového programu.",
+        "Môže ho uskutočniť nadobúdateľ licencie alebo iná osoba, ktorá má právo používať rozmnoženinu počítačového programu, alebo osoba oprávnená tak konať v ich mene.",
+        "Môžeme ho realizovať iba v prípadoch, keď by zabezpečenie interoperability iným spôsobom bolo možné dosiahnuť zdĺhavým a ťažko dostupným spôsobom.",
+        "Môžeme ho realizovať aj v prípade, keď interoperabilitu nie je možné dosiahnuť iným spôsobom.",
+        "Informácia takto získaná môže byť využitá na vývoj, výrobu alebo odbyt počítačového podobného programu."
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "uplna_konverzacna_sluzba",
+      "type": "mc_multi",
+      "question": "Aké charakteristiky má úplná konverzačná služba?",
+      "explanation": "Úplná konverzačná služba umožňuje obojsmernú, symetrickú komunikáciu medzi účastníkmi v reálnom čase a môže prenášať rôzne typy médií (hlas, obraz, text). Nejde iba o hlasovú službu ani o službu viazanú na geografické čísla alebo komerčné subjekty.",
+      "options": [
+        "Vyžaduje použitie geografických čísel",
+        "Poskytuje symetrický prenos údajov medzi dvoma alebo viacerými lokalitami",
+        "Zaisťuje výlučne hlasovú komunikáciu",
+        "Je určená iba pre komerčné subjekty",
+        "Umožňuje obojsmerný prenos obrazu, hlasu a textu v reálnom čase"
+      ],
+      "correct": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "nis_directive",
+      "type": "mc_multi",
+      "question": "V zmysle Smernice Európskeho parlamentu a Rady (EÚ) 2016/1148 (Smernica NIS) platí, že:",
+      "explanation": "Smernica NIS definuje, čo sa považuje za siete a informačné systémy a zavádza povinnosti v oblasti hlásenia incidentov a vytvorenia národných a európskych štruktúr pre riešenie kybernetických bezpečnostných incidentov.",
+      "options": [
+        "Medzi siete a informačné systémy možno zaradiť elektronickú komunikačnú sieť.",
+        "Poskytovatelia digitálnych služieb nie sú povinní oznámiť príslušnému orgánu alebo jednotke CSIRT každý incident, ktorý má závažný vplyv na poskytovanie ich služieb.",
+        "Kybernetická bezpečnosť je časťou informačnej bezpečnosti.",
+        "Má sa vytvoriť sieť jednotiek pre riešenie počítačových bezpečnostných incidentov.",
+        "Prevádzkovateľ digitálnych služieb je povinný do 72 hodín od vzniku incidentu oznámiť príslušnému orgánu alebo jednotke CSIRT incidenty, ktoré majú závažný vplyv na kontinuitu základných služieb, ktoré poskytuje."
+      ],
+      "correct": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "fiktivny_pracovny_pomer",
+      "type": "mc_multi",
+      "question": "O fiktívnom pracovnom pomere platí:",
+      "explanation": "Fiktívny pracovný pomer vzniká na základe neplatnej pracovnej zmluvy, pričom právne následky závisia od toho, či účastníci o neplatnosti vedia alebo nie.",
+      "options": [
+        "Pracovný pomer založený neplatnou pracovnou zmluvou.",
+        "Pokiaľ subjekty o neplatnosti pracovného pomeru nevedia, tak pre nich platia ustanovenia Zákonníka práce.",
+        "Z neplatného pracovného pomeru zamestnancovi nevzniká nárok na vyplatenie mzdy.",
+        "Aj pri neplatnom pracovnom pomere je možné zamestnancovi nariadiť prácu.",
+        "Pokiaľ subjekty o neplatnosti pracovného pomeru vedia, tak vzniká iba záväzok zamestnávateľa vyplatiť mzdu za vykonanú prácu."
+      ],
+      "correct": [
+        0,
+        1,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "primarne_pravo_eu",
+      "type": "mc_multi",
+      "question": "Primárne právo Európskej únie je:",
+      "explanation": "Primárne právo EÚ tvorí základ právneho poriadku EÚ a zahŕňa zakladateľské zmluvy, ich zmeny a súvisiace dokumenty.",
+      "options": [
+        "Právo EÚ, ktorého súčasťou je aj Charta základných práv Európskej únie.",
+        "Právo EÚ, ktorého súčasťou je aj dohoda o vystúpení Veľkej Británie z roku 2020.",
+        "Právo EÚ, ktorého súčasťou je Zmluva o pristúpení s Gréckom z roku 1979.",
+        "Právo EÚ, ktorého súčasťou je aj Zmluva z Nice.",
+        "Právo EÚ, ktorého súčasťou sú aj zakladateľské zmluvy a ich revízie."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "skoncenie_pracovneho_pomeru",
+      "type": "mc_multi",
+      "question": "Ku skončeniu pracovného pomeru môže dôjsť:",
+      "explanation": "Pracovný pomer môže zaniknúť rôznymi právnymi mechanizmami, ako je právna udalosť, právny úkon alebo rozhodnutie súdu či orgánu verejnej moci.",
+      "options": [
+        "Na základe právnej udalosti.",
+        "Na základe súdneho rozhodnutia.",
+        "Na základe úradného rozhodnutia.",
+        "Na základe právneho úkonu.",
+        "Dosiahnutím 70 rokov života."
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "autorsky_zakon_program",
+      "type": "mc_multi",
+      "question": "V zmysle zákona č. 185/2015 Z. z. (Autorský zákon) pre ochranu počítačového programu platí:",
+      "explanation": "Autorský zákon chráni počítačový program ako dielo vyjadrené v príkazoch a inštrukciách. Nechráni však myšlienky a princípy, ale ich konkrétne vyjadrenie.",
+      "options": [
+        "Myšlienky a princípy, na ktorých je založený prvok počítačového programu, vrátane tých, ktoré sú podkladom jeho rozhrania, sú chránené.",
+        "Do práva autora počítačového programu nezasahuje oprávnený užívateľ, ak bez súhlasu autora skúma, študuje alebo skúša funkčnosť programu na účel určenia myšlienok a princípov.",
+        "Počítačový program je súbor príkazov a inštrukcií vyjadrených v akejkoľvek forme použitých priamo alebo nepriamo v počítači alebo v podobnom technickom zariadení.",
+        "Oprávnený užívateľ môže používať počítačový program aj v rozpore s bežným využitím počítačového programu.",
+        "Súčasťou počítačového programu je aj podkladový materiál použitý na jeho vytvorenie."
+      ],
+      "correct": [
+        1,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "nalezitosti_pracovnej_zmluvy",
+      "type": "mc_multi",
+      "question": "Medzi obligatórne (povinné) náležitosti pracovnej zmluvy zaraďujeme:",
+      "explanation": "Zákonník práce presne určuje, ktoré údaje musia byť v pracovnej zmluve povinne uvedené.",
+      "options": [
+        "Dĺžka výpovednej doby",
+        "Druh práce a jej stručná charakteristika",
+        "Výplatné termíny mzdy",
+        "Výmera dovolenky",
+        "Miesto výkonu práce"
+      ],
+      "correct": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "pravne_skutocnosti_nezavisle",
+      "type": "mc_multi",
+      "question": "Medzi okolnosti nezávislé od vôle subjektu zaraďujeme:",
+      "explanation": "Ide o právne skutočnosti, ktoré nastávajú bez ohľadu na vôľu účastníkov a môžu spôsobiť vznik, zmenu alebo zánik právneho vzťahu.",
+      "options": [
+        "Protiprávne stavy",
+        "Trestnú činnosť",
+        "Protiprávne konanie",
+        "Spáchanie priestupku",
+        "Právne udalosti"
+      ],
+      "correct": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "patenty",
+      "type": "mc_multi",
+      "question": "O patentoch platí:",
+      "explanation": "Patent chráni technické riešenia, ktoré spĺňajú zákonné podmienky novosti, vynálezcovskej činnosti a priemyselnej využiteľnosti.",
+      "options": [
+        "Patent sa udeľuje na technické riešenie, ktoré je priemyselne využiteľné.",
+        "Vynález musí predstavovať technické riešenie technického problému.",
+        "Patent sa udeľuje na technické riešenie, ktoré je nové.",
+        "Patent a vynález je to isté.",
+        "Patent nerieši otázku vynálezcovskej činnosti."
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "eidas_eid_recognition",
+      "type": "mc_multi",
+      "question": "Medzi podmienky vzájomného uznávania prostriedkov elektronickej identifikácie podľa Nariadenia EP a Rady (EÚ) č. 910/2014 (eIDAS) patrí:",
+      "explanation": "Vzájomné uznávanie znamená, že členské štáty musia akceptovať notifikované schémy elektronickej identifikácie iných členských štátov, ak spĺňajú požadovanú úroveň záruky pre danú elektronickú službu.",
+      "options": [
+        "Prostriedok elektronickej identifikácie musí byť súčasťou oznámenej (notifikovanej) schémy elektronickej identifikácie.",
+        "Úroveň záruky prostriedku elektronickej identifikácie musí byť rovnaká alebo vyššia ako úroveň záruky, ktorú vyžaduje príslušný subjekt verejného sektora.",
+        "Príslušný subjekt verejného sektora používa vo vzťahu k prístupu k online službe úroveň záruky „pokročilá“ alebo „vysoká“.",
+        "Elektronický podpis musí byť na úrovni kvalifikovaného elektronického podpisu.",
+        "Príslušný subjekt verejného sektora používa vo vzťahu k prístupu k danej online službe úroveň záruky „vysoká“."
+      ],
+      "correct": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "copyright_property_rights",
+      "type": "mc_multi",
+      "question": "Majetkové práva autora zahŕňajú:",
+      "explanation": "Majetkové práva autora sú výlučné práva rozhodovať o komerčnom a verejnom využívaní diela – napríklad o jeho rozmnožovaní, šírení alebo verejnom prenose. Nezahŕňajú vlastníctvo fyzických nosičov ani automaticky právo dielo zverejniť.",
+      "options": [
+        "Právo rozmnožovania",
+        "Právo šírenia",
+        "Verejný prenos",
+        "Právo zverejniť dielo",
+        "Prevod vlastníctva fyzických nosičov, ktoré obsahujú autorské dielo"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "software_copyright_law",
+      "type": "mc_multi",
+      "question": "V zmysle zákona č. 185/2015 Z.z. (Autorský zákon) platí pre ochranu počítačového programu, že:",
+      "explanation": "Autorský zákon chráni konkrétnu realizáciu počítačového programu (kód, štruktúru, rozhrania), nie samotné myšlienky a princípy. Oprávnený používateľ môže program skúmať a testovať za účelom zistenia jeho fungovania. Zdrojové materiály použité na vytvorenie programu sú tiež chránené.",
+      "options": [
+        "Do práva autora počítačového programu nezasahuje oprávnený užívateľ, ak bez súhlasu autora skúma, študuje alebo skúša funkčnosť počítačového programu na účel určenia myšlienok alebo princípov, ktoré sú základom akejkoľvek časti počítačového programu.",
+        "Myšlienky a princípy, na ktorých je založený prvok počítačového programu, vrátane tých, ktoré sú podkladom jeho rozhrania, sú chránené.",
+        "Súčasťou počítačového programu je aj podkladový materiál použitý na jeho vytvorenie.",
+        "Oprávnený užívateľ môže používať počítačový program aj v rozpore s bežným využitím počítačového programu.",
+        "Počítačový program je súbor príkazov a inštrukcií vyjadrených v akejkoľvek forme použitých priamo alebo nepriamo v počítači alebo v podobnom technickom zariadení."
+      ],
+      "correct": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "regulatory_authority_duties",
+      "type": "mc_multi",
+      "question": "Aké povinnosti má regulačný úrad v oblasti elektronických komunikácií?",
+      "explanation": "Regulačný úrad má za úlohu regulovať trh elektronických komunikácií, spravovať číslovanie a dohliadať na dodržiavanie zákona. Neposkytuje technickú podporu používateľom a nespracúva národnú tabuľku frekvenčného spektra.",
+      "options": [
+        "Regulácia trhu elektronických komunikácií ex ante",
+        "Vypracovanie národnej tabuľky frekvenčného spektra",
+        "Správa čísel a vydávanie číslovacieho plánu",
+        "Poskytovanie technickej podpory užívateľom",
+        "Dohľad nad plnením povinností podľa zákona"
+      ],
+      "correct": [
+        0,
+        2,
+        4
+      ]
+    },
+    {
+      "id": "fiktivny_pracovny_pomer",
+      "type": "mc_single",
+      "question": "Čo je fiktívny pracovný pomer?",
+      "explanation": "Fiktívny pracovný pomer vzniká vtedy, keď pracovná zmluva existuje len formálne, bez skutočného úmyslu vykonávať prácu, často za účelom obchádzania zákona alebo získania výhod.",
+      "options": [
+        "Pracovný pomer založený ústnou dohodou bez písomnej zmluvy.",
+        "Pracovný pomer, pri ktorom zamestnanec pracuje na skrátený úväzok.",
+        "Pracovný pomer založený platnou pracovnou zmluvou, ale bez reálneho výkonu práce.",
+        "Pracovný pomer uzatvorený na dobu určitú.",
+        "Pracovný pomer medzi dvoma podnikateľskými subjektmi."
+      ],
+      "correct": 2
+    },
+    {
+      "id": "autor_pocitacoveho_programu",
+      "type": "mc_multi",
+      "question": "Kto môže byť autorom počítačového programu?",
+      "explanation": "Autorom počítačového programu môže byť len fyzická osoba, ktorá program vytvorila. Nezáleží na právnej spôsobilosti. Myšlienky a princípy ani umelá inteligencia nie sú autorom podľa autorského práva.",
+      "options": [
+        "Fyzická osoba, ktorá nemá spôsobilosť na právne úkony v plnom rozsahu",
+        "Osoba, ktorá programátorovi načrtla myšlienky a princípy počítačového programu",
+        "Skupina fyzických osôb",
+        "Fyzická osoba, ktorá počítačový program naprogramovala",
+        "Umelá inteligencia"
+      ],
+      "correct": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "sekundarne_pravne_predpisy",
+      "type": "mc_multi",
+      "question": "Medzi sekundárne právne predpisy v Slovenskej republike patria:",
+      "explanation": "Sekundárne právne predpisy sú vykonávacie právne akty vydané na základe zákona, napríklad nariadenia vlády. Ústava a zákony patria medzi primárne právne predpisy.",
+      "options": [
+        "Rozhodnutia všeobecných súdov Slovenskej republiky",
+        "Zákony Národnej rady Slovenskej republiky",
+        "Rozhodnutia Zboru väzenskej a justičnej stráže",
+        "Nariadenia vlády Slovenskej republiky",
+        "Ústava SR a ústavné zákony"
+      ],
+      "correct": [
+        3
+      ]
+    },
+    {
+      "id": "eu_secondary_directives",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich sekundárnych právnych aktov EÚ podľa čl. 288 ZFEÚ sú záväzné pre členské štáty a musia byť implementované do vnútroštátneho práva?",
+      "explanation": "Podľa čl. 288 ZFEÚ sú smernice záväzné pre členské štáty, pokiaľ ide o výsledok, ktorý sa má dosiahnuť, a musia byť transponované do vnútroštátneho práva. Rozhodnutia Súdneho dvora ani odporúčania nemajú charakter smerníc a nepodliehajú transpozícii.",
+      "options": [
+        "Smernice Európskeho parlamentu",
+        "Rozhodnutia Súdneho dvora EÚ",
+        "Smernice Rady",
+        "Smernice Súdneho dvora EÚ",
+        "Odporúčania Súdneho dvora EÚ"
+      ],
+      "correct": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "ecommerce_liability",
+      "type": "mc_multi",
+      "question": "V zmysle zákona č. 22/2004 Z. z. o elektronickom obchode poskytovateľ služieb informačnej spoločnosti NIE je zodpovedný za:",
+      "explanation": "Zákon o elektronickom obchode stanovuje prípady tzv. „safe harbour“, kedy poskytovateľ služieb nenesie zodpovednosť za obsah alebo prenos informácií, pokiaľ iba technicky zabezpečuje prenos alebo prístup k sieti.",
+      "options": [
+        "automatické dočasné uloženie informácií výlučne na účel zefektívnenia ich ďalšieho prenosu v elektronickej komunikačnej sieti",
+        "prenášané informácie pri službách spočívajúcich výlučne v poskytovaní prístupu do elektronickej komunikačnej siete",
+        "ak vie o protiprávnom obsahu uložených informácií",
+        "prenášané informácie pri službách spočívajúcich výlučne v prenose informácií v elektronickej komunikačnej sieti",
+        "ak vie o protiprávnom konaní príjemcu služieb informačnej spoločnosti"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "computer_program_rights",
+      "type": "mc_multi",
+      "question": "O počítačovom programe platí:",
+      "explanation": "Autorský zákon chráni počítačové programy podobne ako literárne diela. Nie všetky úpravy a rozmnoženiny sú povolené bez súhlasu autora, no existujú výnimky ako vyčerpanie práva pri prvom predaji.",
+      "options": [
+        "Každý si môže vykonať preklad, spracovanie, úpravu a každú inú zmenu počítačového programu.",
+        "Na vyhotovenie záložnej rozmnoženiny, pokiaľ je na takéto použitie potrebná, sa vyžaduje súhlas majiteľa práv k počítačovému programu.",
+        "Môže ho vytvoriť aj zamestnanec.",
+        "Prvý predaj rozmnoženiny počítačového programu v EÚ uskutočnený majiteľom práv alebo s jeho súhlasom vyčerpáva právo na verejné rozširovanie takejto rozmnoženiny.",
+        "Môže ho vytvoriť aj umelá inteligencia."
+      ],
+      "correct": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "types_of_employment",
+      "type": "mc_multi",
+      "question": "Aké poznáme druhy pracovného pomeru?",
+      "explanation": "Zákonník práce rozlišuje viacero druhov pracovného pomeru podľa pracovného času a miesta výkonu práce, vrátane telepráce.",
+      "options": [
+        "Pracovný pomer v rozsahu ustanoveného týždenného pracovného času.",
+        "Pracovný pomer s miestom výkonu práce v domácnosti alebo na inom dohodnutom mieste.",
+        "Pracovný pomer na dlhší pracovný čas.",
+        "Pracovný pomer s miestom výkonu práce na pracovisku zamestnávateľa.",
+        "Pracovný pomer s miestom výkonu práce v domácnosti alebo na inom dohodnutom mieste s použitím informačných technológií."
+      ],
+      "correct": [
+        0,
+        4
+      ]
+    },
+    {
+      "id": "public_network_device",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich patria medzi zariadenia pripojené k verejnej elektronickej komunikačnej sieti?",
+      "explanation": "Verejná elektronická komunikačná sieť zahŕňa rôzne typy koncových aj sieťových zariadení, ktoré zabezpečujú prenos signálov – bez ohľadu na to, či ide o rádiové, satelitné alebo káblové spojenia.",
+      "options": [
+        "Zariadenie pripojené k verejnej sieti prostredníctvom rádiových vĺn",
+        "Výlučne zariadenia pripojené metalickým vedením",
+        "Telekomunikačné zariadenie používané na šifrovanie údajov",
+        "Zemská družicová stanica používaná na prenos rádiových vĺn",
+        "Router slúžiaci na pripojenie k internetu"
+      ],
+      "correct": [
+        0,
+        3,
+        4
+      ]
+    }
+
+
+
+
+
+
+
+
+
+
+  ]
+}
