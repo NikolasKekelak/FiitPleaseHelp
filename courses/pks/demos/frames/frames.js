@@ -30,7 +30,8 @@ Architecture (single-file modules):
     try {
       const raw = localStorage.getItem('mq_settings');
       const s = raw ? JSON.parse(raw) : {};
-      document.documentElement.setAttribute('data-theme', s.themeDark ? 'dark' : 'light');
+      const isDark = (s.themeDark === undefined ? true : !!s.themeDark);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
       document.documentElement.setAttribute('data-palette', s.palette || 'cozy');
       const layer = document.getElementById('bgLayer');
       if (layer) {

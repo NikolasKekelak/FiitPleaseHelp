@@ -11,7 +11,7 @@
     const DEFAULTS = {
       backgroundImage: '',
       backgroundOpacity: 0.5,
-      themeDark: false,
+      themeDark: true,
       palette: 'cozy',
     };
     let settings = DEFAULTS;

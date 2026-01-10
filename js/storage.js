@@ -50,7 +50,7 @@ const DEFAULT_SETTINGS = {
   backgroundImage: '', // data URL or URL string
   backgroundOpacity: 0.5, // 0..1
   // Theme
-  themeDark: false,
+  themeDark: true,
   palette: 'cozy',
 };
 
