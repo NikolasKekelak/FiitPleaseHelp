@@ -11,6 +11,8 @@ Question types supported:
 - mc_multi
 - fill_text
 - fill_table
+- sort
+- connect_nodes
 
 Run: python tools/editor.py
 """
@@ -18,7 +20,7 @@ import json
 import os
 import shutil
 import tkinter as tk
-from tkinter import ttk, filedialog, messagebox
+from tkinter import ttk, filedialog, messagebox, simpledialog
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA_DIR = os.path.join(PROJECT_ROOT, 'data')
@@ -134,10 +136,94 @@ def validate_question(q):
         # must be a permutation
         if sorted(corr) != list(range(n)):
             return False, 'sort: correct[] must contain each index 0..n-1 exactly once (a permutation)'
+    elif t == 'connect_nodes':
+        # Expect normalized schema with stable IDs
+        left = q.get('leftNodes') or []
+        right = q.get('rightNodes') or []
+        pairs = q.get('correctPairs') or []
+        if not isinstance(left, list) or not isinstance(right, list):
+            return False, 'connect_nodes requires leftNodes[] and rightNodes[]'
+        # Collect ids and ensure unique per side
+        left_ids = [str(n.get('id')) for n in left if isinstance(n, dict) and 'id' in n]
+        right_ids = [str(n.get('id')) for n in right if isinstance(n, dict) and 'id' in n]
+        if len(set(left_ids)) != len(left_ids):
+            return False, 'connect_nodes: duplicate left node IDs'
+        if len(set(right_ids)) != len(right_ids):
+            return False, 'connect_nodes: duplicate right node IDs'
+        # Validate pairs reference existing ids
+        lset, rset = set(left_ids), set(right_ids)
+        usedL, usedR = set(), set()
+        for pr in pairs:
+            if not isinstance(pr, dict) or 'leftId' not in pr or 'rightId' not in pr:
+                return False, 'connect_nodes: each pair must be {leftId,rightId}'
+            L, R = str(pr['leftId']), str(pr['rightId'])
+            if L not in lset or R not in rset:
+                return False, 'connect_nodes: pair references unknown node id'
+            # One-to-one by default
+            if L in usedL or R in usedR:
+                return False, 'connect_nodes: one-to-one mapping violated (duplicate left or right)'
+            usedL.add(L); usedR.add(R)
     else:
         return False, f'Unknown type: {t}'
     return True, 'OK'
 
+
+# ---------- Helpers for connect_nodes ----------
+
+def _normalize_connect_nodes(q):
+    """Return normalized dict with stable ids from possibly legacy shapes.
+    Legacy supported:
+      - leftNodes: ["A", "B"], rightNodes: ["X","Y"], correctPairs: [{left:"A", right:"X"}]
+    Normalized output:
+      {
+        leftNodes:[{id:"l1",label:"A"},...],
+        rightNodes:[{id:"r1",label:"X"},...],
+        correctPairs:[{leftId:"l1", rightId:"r1"}, ...]
+      }
+    """
+    if not q:
+        return { 'leftNodes': [], 'rightNodes': [], 'correctPairs': [] }
+    left = q.get('leftNodes') or []
+    right = q.get('rightNodes') or []
+    pairs = q.get('correctPairs') or []
+    # If arrays of strings, convert to objects with ids
+    def to_nodes(arr, prefix):
+        out = []
+        seen = set()
+        idx = 1
+        for item in arr:
+            if isinstance(item, dict):
+                nid = str(item.get('id') or f"{prefix}{idx}")
+                lbl = str(item.get('label') or '')
+            else:
+                nid = f"{prefix}{idx}"
+                lbl = str(item)
+            # Ensure unique ids
+            while nid in seen:
+                idx += 1
+                nid = f"{prefix}{idx}"
+            seen.add(nid)
+            out.append({'id': nid, 'label': lbl})
+            idx += 1
+        return out
+    # If arrays are strings, they will be converted; else preserve ids
+    has_left_str = left and isinstance(left[0], str)
+    has_right_str = right and isinstance(right[0], str)
+    left_nodes = to_nodes(left if has_left_str else left, 'l') if left else []
+    right_nodes = to_nodes(right if has_right_str else right, 'r') if right else []
+    # Build label->id maps for resolving label-based pairs
+    l_label_to_id = { (n.get('label') or '').strip(): n['id'] for n in left_nodes }
+    r_label_to_id = { (n.get('label') or '').strip(): n['id'] for n in right_nodes }
+    norm_pairs = []
+    for pr in pairs:
+        if isinstance(pr, dict) and 'leftId' in pr and 'rightId' in pr:
+            norm_pairs.append({'leftId': str(pr['leftId']), 'rightId': str(pr['rightId'])})
+        elif isinstance(pr, dict) and 'left' in pr and 'right' in pr:
+            lid = l_label_to_id.get(str(pr['left']).strip())
+            rid = r_label_to_id.get(str(pr['right']).strip())
+            if lid and rid:
+                norm_pairs.append({'leftId': lid, 'rightId': rid})
+    return { 'leftNodes': left_nodes, 'rightNodes': right_nodes, 'correctPairs': norm_pairs }
 
 # ---------- GUI ----------
 
@@ -256,7 +342,7 @@ class EditorApp:
 
         ttk.Label(right, text='Type').grid(row=r, column=0, sticky='e')
         self.type_var = tk.StringVar(value='true_false')
-        self.type_cmb = ttk.Combobox(right, textvariable=self.type_var, values=['true_false','mc_single','mc_multi','fill_text','fill_table','sort'], state='readonly')
+        self.type_cmb = ttk.Combobox(right, textvariable=self.type_var, values=['true_false','mc_single','mc_multi','fill_text','fill_table','sort','connect_nodes'], state='readonly')
         self.type_cmb.grid(row=r, column=1, sticky='w', pady=2)
         self.type_cmb.bind('<<ComboboxSelected>>', lambda e: self.refresh_form_fields())
         r += 1
@@ -624,6 +710,98 @@ class EditorApp:
             ttk.Label(self.dynamic_frame, text='Correct final order as indices (comma-separated permutation of 0..n-1)').pack(anchor='w', pady=(6,0))
             self.sort_correct_var = tk.StringVar(value=corr_txt)
             ttk.Entry(self.dynamic_frame, textvariable=self.sort_correct_var).pack(fill='x')
+        elif t == 'connect_nodes':
+            # Build Connect Nodes UI
+            data = _normalize_connect_nodes(q or {})
+            # Keep state
+            self.cn_left = data['leftNodes'][:]
+            self.cn_right = data['rightNodes'][:]
+            self.cn_pairs = data['correctPairs'][:]
+
+            # Left/Right nodes section
+            cols = ttk.Frame(self.dynamic_frame)
+            cols.pack(fill='x', pady=(0,6))
+            ttk.Label(cols, text='Left nodes').grid(row=0, column=0, sticky='w')
+            ttk.Label(cols, text='Right nodes').grid(row=0, column=1, sticky='w')
+
+            left_col = ttk.Frame(cols)
+            right_col = ttk.Frame(cols)
+            left_col.grid(row=1, column=0, padx=(0,6), sticky='nsew')
+            right_col.grid(row=1, column=1, padx=(6,0), sticky='nsew')
+            cols.columnconfigure(0, weight=1)
+            cols.columnconfigure(1, weight=1)
+
+            self.cn_left_list = tk.Listbox(left_col, height=8)
+            self._style_listbox(self.cn_left_list)
+            self.cn_left_list.pack(fill='both', expand=True)
+
+            self.cn_right_list = tk.Listbox(right_col, height=8)
+            self._style_listbox(self.cn_right_list)
+            self.cn_right_list.pack(fill='both', expand=True)
+
+            def refresh_lists():
+                self.cn_left_list.delete(0, tk.END)
+                for n in self.cn_left:
+                    self.cn_left_list.insert(tk.END, f"{n['id']}: {n['label']}")
+                self.cn_right_list.delete(0, tk.END)
+                for n in self.cn_right:
+                    self.cn_right_list.insert(tk.END, f"{n['id']}: {n['label']}")
+                refresh_pairs()
+
+            # Buttons for left
+            lbtns = ttk.Frame(left_col)
+            lbtns.pack(fill='x', pady=(6,0))
+            ttk.Button(lbtns, text='Add', command=lambda: self._cn_add_node('left')).pack(side='left')
+            ttk.Button(lbtns, text='Rename', command=lambda: self._cn_rename_node('left')).pack(side='left', padx=6)
+            ttk.Button(lbtns, text='Delete', command=lambda: self._cn_delete_node('left')).pack(side='left')
+
+            # Buttons for right
+            rbtns = ttk.Frame(right_col)
+            rbtns.pack(fill='x', pady=(6,0))
+            ttk.Button(rbtns, text='Add', command=lambda: self._cn_add_node('right')).pack(side='left')
+            ttk.Button(rbtns, text='Rename', command=lambda: self._cn_rename_node('right')).pack(side='left', padx=6)
+            ttk.Button(rbtns, text='Delete', command=lambda: self._cn_delete_node('right')).pack(side='left')
+
+            # Pairs section
+            pair_box = ttk.Frame(self.dynamic_frame)
+            pair_box.pack(fill='x', pady=(8,0))
+            ttk.Label(pair_box, text='Pairs (one-to-one)').grid(row=0, column=0, columnspan=4, sticky='w')
+            ttk.Label(pair_box, text='Left').grid(row=1, column=0, sticky='w')
+            ttk.Label(pair_box, text='Right').grid(row=1, column=1, sticky='w')
+            self.cn_left_sel = ttk.Combobox(pair_box, state='readonly')
+            self.cn_right_sel = ttk.Combobox(pair_box, state='readonly')
+            self.cn_left_sel.grid(row=2, column=0, sticky='ew', padx=(0,6))
+            self.cn_right_sel.grid(row=2, column=1, sticky='ew', padx=(6,0))
+            pair_box.columnconfigure(0, weight=1)
+            pair_box.columnconfigure(1, weight=1)
+            ttk.Button(pair_box, text='Add Pair', command=lambda: self._cn_add_pair()).grid(row=2, column=2, padx=8)
+
+            self.cn_pairs_list = tk.Listbox(pair_box, height=6)
+            self._style_listbox(self.cn_pairs_list)
+            self.cn_pairs_list.grid(row=3, column=0, columnspan=3, sticky='nsew', pady=(6,0))
+            pair_box.rowconfigure(3, weight=1)
+            ttk.Button(pair_box, text='Remove Selected Pair', command=lambda: self._cn_remove_pair()).grid(row=4, column=2, pady=6, sticky='e')
+
+            def refresh_pair_selects():
+                self.cn_left_sel['values'] = [f"{n['id']} — {n['label']}" for n in self.cn_left]
+                self.cn_right_sel['values'] = [f"{n['id']} — {n['label']}" for n in self.cn_right]
+
+            def refresh_pairs():
+                self.cn_pairs_list.delete(0, tk.END)
+                id_to_label_l = {n['id']: n['label'] for n in self.cn_left}
+                id_to_label_r = {n['id']: n['label'] for n in self.cn_right}
+                for pr in self.cn_pairs:
+                    ltxt = f"{pr['leftId']} — {id_to_label_l.get(pr['leftId'], '')}"
+                    rtxt = f"{pr['rightId']} — {id_to_label_r.get(pr['rightId'], '')}"
+                    self.cn_pairs_list.insert(tk.END, f"{ltxt}  ↔  {rtxt}")
+                refresh_pair_selects()
+
+            # Methods used by buttons (bound to self so other methods can call)
+            self._cn_refresh_lists = refresh_lists
+            self._cn_refresh_pairs = refresh_pairs
+
+            # Initialize view
+            refresh_lists()
         else:
             ttk.Label(self.dynamic_frame, text='Unknown type').pack()
 
@@ -631,6 +809,86 @@ class EditorApp:
         p = filedialog.askopenfilename(title='Select image', filetypes=[('Image files','*.png;*.jpg;*.jpeg;*.gif;*.webp;*.svg'),('All files','*.*')])
         if p:
             self.image_var.set(p)
+
+    # ----- Connect Nodes editor actions -----
+    def _cn_next_id(self, side: str) -> str:
+        prefix = 'l' if side == 'left' else 'r'
+        existing = set(n['id'] for n in (self.cn_left if side == 'left' else self.cn_right))
+        i = 1
+        while True:
+            cand = f"{prefix}{i}"
+            if cand not in existing:
+                return cand
+            i += 1
+
+    def _cn_add_node(self, side: str):
+        label = simpledialog.askstring('Add node', 'Label: ', parent=self.root)
+        if label is None:
+            return
+        label = label.strip()
+        if not label:
+            return
+        nid = self._cn_next_id(side)
+        arr = self.cn_left if side == 'left' else self.cn_right
+        arr.append({'id': nid, 'label': label})
+        # Remove any pairs that became invalid (none here) and refresh
+        if hasattr(self, '_cn_refresh_lists'): self._cn_refresh_lists()
+
+    def _cn_get_sel_index(self, side: str):
+        lb = self.cn_left_list if side == 'left' else self.cn_right_list
+        sel = lb.curselection()
+        return sel[0] if sel else None
+
+    def _cn_rename_node(self, side: str):
+        idx = self._cn_get_sel_index(side)
+        if idx is None:
+            return
+        arr = self.cn_left if side == 'left' else self.cn_right
+        cur = arr[idx]
+        label = simpledialog.askstring('Rename node', 'New label:', initialvalue=cur.get('label',''), parent=self.root)
+        if label is None:
+            return
+        arr[idx]['label'] = label.strip()
+        if hasattr(self, '_cn_refresh_lists'): self._cn_refresh_lists()
+
+    def _cn_delete_node(self, side: str):
+        idx = self._cn_get_sel_index(side)
+        if idx is None:
+            return
+        arr = self.cn_left if side == 'left' else self.cn_right
+        node = arr[idx]
+        del arr[idx]
+        # Remove affected pairs
+        nid = node['id']
+        if side == 'left':
+            self.cn_pairs = [p for p in self.cn_pairs if p['leftId'] != nid]
+        else:
+            self.cn_pairs = [p for p in self.cn_pairs if p['rightId'] != nid]
+        if hasattr(self, '_cn_refresh_lists'): self._cn_refresh_lists()
+
+    def _cn_add_pair(self):
+        # Parse id from combobox value like "l1 — Label"
+        def parse_id(val):
+            if not val:
+                return None
+            return str(val).split(' — ', 1)[0].strip()
+        lid = parse_id(self.cn_left_sel.get())
+        rid = parse_id(self.cn_right_sel.get())
+        if not lid or not rid:
+            return
+        # Enforce one-to-one: remove any existing pair using these ids
+        self.cn_pairs = [p for p in self.cn_pairs if p['leftId'] != lid and p['rightId'] != rid]
+        self.cn_pairs.append({'leftId': lid, 'rightId': rid})
+        if hasattr(self, '_cn_refresh_pairs'): self._cn_refresh_pairs()
+
+    def _cn_remove_pair(self):
+        sel = self.cn_pairs_list.curselection()
+        if not sel:
+            return
+        idx = sel[0]
+        if 0 <= idx < len(self.cn_pairs):
+            del self.cn_pairs[idx]
+        if hasattr(self, '_cn_refresh_pairs'): self._cn_refresh_pairs()
 
     def build_question_from_form(self):
         q = {
@@ -680,6 +938,11 @@ class EditorApp:
                     q['correct'] = list(range(len(items)))
             else:
                 q['correct'] = list(range(len(items)))
+        elif t == 'connect_nodes':
+            # Build from internal lists
+            q['leftNodes'] = [ {'id': n['id'], 'label': n['label']} for n in getattr(self, 'cn_left', []) ]
+            q['rightNodes'] = [ {'id': n['id'], 'label': n['label']} for n in getattr(self, 'cn_right', []) ]
+            q['correctPairs'] = [ {'leftId': p['leftId'], 'rightId': p['rightId']} for p in getattr(self, 'cn_pairs', []) ]
         return q
 
     def preview_question(self):

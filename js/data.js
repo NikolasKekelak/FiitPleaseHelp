@@ -19,9 +19,13 @@ function getRootPrefix() {
   }
 }
 const ROOT = getRootPrefix();
+// Cache-busting: prevent stale data/*.json on static hosting/CDNs
+const __BUST__ = String(Date.now());
+function withBust(url) { try { return `${url}${url.includes('?') ? '&' : '?'}v=${__BUST__}`; } catch(_) { return url; } }
 
 export async function loadCourses() {
-  const res = await fetch(`${ROOT}data/courses.json`);
+  const url = withBust(`${ROOT}data/courses.json`);
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to load courses.json (${res.status})`);
   const data = await res.json();
   // Expected shape: { courses: [{ id, course_name }] }
@@ -30,7 +34,8 @@ export async function loadCourses() {
 
 export async function loadTopics(courseId) {
   if (!courseId) return [];
-  const res = await fetch(`${ROOT}data/${courseId}/topics.json`);
+  const url = withBust(`${ROOT}data/${courseId}/topics.json`);
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to load topics for ${courseId} (${res.status})`);
   const data = await res.json();
   // Expected shape per spec
@@ -49,7 +54,8 @@ export async function loadTopics(courseId) {
 
 export async function loadPresets(courseId) {
   try {
-    const res = await fetch(`${ROOT}data/${courseId}/presets.json`);
+    const url = withBust(`${ROOT}data/${courseId}/presets.json`);
+    const res = await fetch(url, { cache: 'no-store' });
     if (!res.ok) return [];
     const data = await res.json();
     // Expected: { presets: [ { id, name, description, topics?: ["id", ...] } ] }
@@ -60,8 +66,8 @@ export async function loadPresets(courseId) {
 }
 
 export async function loadTopicQuestions(courseId, relativeFilePath) {
-  const url = `${ROOT}data/${courseId}/${relativeFilePath}`;
-  const res = await fetch(url);
+  const url = withBust(`${ROOT}data/${courseId}/${relativeFilePath}`);
+  const res = await fetch(url, { cache: 'no-store' });
   if (!res.ok) throw new Error(`Failed to load topic file ${url} (${res.status})`);
   const data = await res.json();
   // Ensure each question has required fields minimally

@@ -3,24 +3,51 @@
   "topic_name": "Základy neurónových sietí",
   "questions": [
     {
-      "id": "match-architectures",
+      "id": "firsttimeconnectnodes",
       "type": "connect_nodes",
-      "question": "Match each concept on the left with the related description on the right.",
-      "explanation": "This sample demonstrates the connect-nodes interaction (one-to-one).",
+      "question": "Match Paradigim in ML with its definition.",
+      "explanation": ".",
       "leftNodes": [
-        { "id": "l1", "label": "Perceptron" },
-        { "id": "l2", "label": "CNN" },
-        { "id": "l3", "label": "RNN" }
+        {
+          "id": "l1",
+          "label": "Supervised Learning"
+        },
+        {
+          "id": "l2",
+          "label": "Unsupervised Learning"
+        },
+        {
+          "id": "l3",
+          "label": "Reinforcement Learning"
+        }
       ],
       "rightNodes": [
-        { "id": "r1", "label": "Sequence modeling" },
-        { "id": "r2", "label": "Image processing" },
-        { "id": "r3", "label": "Linear threshold unit" }
+        {
+          "id": "r1",
+          "label": "Learning from labeled data, where each input has a known correct output."
+        },
+        {
+          "id": "r2",
+          "label": "Learning from unlabeled data, where the model finds patterns or structure on its own."
+        },
+        {
+          "id": "r3",
+          "label": "Learning by interacting with an environment and receiving rewards or penalties for actions."
+        }
       ],
       "correctPairs": [
-        { "leftId": "l1", "rightId": "r3" },
-        { "leftId": "l2", "rightId": "r2" },
-        { "leftId": "l3", "rightId": "r1" }
+        {
+          "leftId": "l1",
+          "rightId": "r1"
+        },
+        {
+          "leftId": "l2",
+          "rightId": "r2"
+        },
+        {
+          "leftId": "l3",
+          "rightId": "r3"
+        }
       ]
     }
   ]

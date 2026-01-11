@@ -1,0 +1,132 @@
+{
+  "topic_id": "Functions",
+  "topic_name": "Functions",
+  "questions": [
+    {
+      "id": "differencelosscost",
+      "type": "mc_single",
+      "question": "Whats the difference between \"Loss\" and \"Cost\" function?",
+      "explanation": ".",
+      "options": [
+        "Loss measures error for one sample",
+        "Cost measures error for one sample",
+        "Loss measures error for all samples",
+        "Loss and cost are almost always identical"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "howabsoluteerrotreatslargeerrors",
+      "type": "mc_single",
+      "question": "How does absolute error treat large errors?",
+      "explanation": ".",
+      "options": [
+        "It treats all errors linearly",
+        "It amplifies large errors strongly",
+        "It ignores large errors entirely",
+        "It converts errors into probabilities"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "squareerrormesurment",
+      "type": "mc_single",
+      "question": "What does the squared error measure?",
+      "explanation": ".",
+      "options": [
+        "It amplifyies difference between values",
+        "The absolute difference between values",
+        "The ratio between two values",
+        "The product of two values"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "disadvantageofsquareerror",
+      "type": "mc_multi",
+      "question": "What is disadvantage of using Square error function?",
+      "explanation": "Squared error strongly amplifies large errors and creates a curved loss surface that may contain local minima, which can trap optimization before reaching the global minimum.",
+      "explanation_image": "Functions/Screenshot 2026-01-11 173842.png",
+      "options": [
+        "It is very sensitive to outliers",
+        "It is sensitive to local extremes",
+        "It ignores large prediction errors",
+        "It cannot be used for regression",
+        "It produces non-continuous gradients"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "Disadvantageofabsoluteerror",
+      "type": "mc_single",
+      "question": "What is a disadvantage of using the absolute error function?",
+      "explanation": "The absolute error is not differentiable at zero, which makes gradient-based optimization more difficult compared to squared error.",
+      "explanation_image": "Functions/Screenshot 2026-01-11 174249.png",
+      "options": [
+        "It has non-smooth gradients at zero",
+        "It strongly amplifies large errors",
+        "It ignores differences between values",
+        "It produces many local minima"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "hubertsloss",
+      "type": "mc_single",
+      "question": "Which function combines pros of square and absolute error, while getting rid if disadvantages?",
+      "explanation": "",
+      "explanation_image": "Functions/Screenshot 2026-01-11 174324.png",
+      "options": [
+        "Hubert Loss",
+        "Andrews Loss",
+        "Hugo's Loss",
+        "Euler Loss",
+        "Smooth Gradient Function"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "relucomparedtotanhandsigmoid",
+      "type": "mc_single",
+      "question": "Why is ReLU often preferred over Sigmoid or Tanh in deep networks?",
+      "explanation": "ReLU does not saturate for positive values, which helps gradients propagate better during backpropagation compared to Sigmoid or Tanh.",
+      "options": [
+        "It reduces vanishing gradient problems",
+        "It limits outputs to a fixed range",
+        "It converts values into probabilities",
+        "It removes all negative activations"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "leakyrelu",
+      "type": "mc_single",
+      "question": "What problem does Leaky ReLU solve compared to standard ReLU?",
+      "explanation": ".",
+      "options": [
+        "It avoids neurons becoming inactive",
+        "It forces outputs into a small range",
+        "It increases the model input size",
+        "It removes all negative outputs"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "sigmoidtanh",
+      "type": "mc_single",
+      "question": "What is a key difference between the Sigmoid and Tanh activation functions?",
+      "explanation": "",
+      "explanation_image": "Functions/Screenshot 2026-01-11 175140.png",
+      "options": [
+        "Tanh outputs values between −1 and 1",
+        "Sigmoid outputs values between −1 and 1",
+        "Tanh outputs only positive values",
+        "Sigmoid outputs unbounded values"
+      ],
+      "correct": 0
+    }
+  ]
+}
