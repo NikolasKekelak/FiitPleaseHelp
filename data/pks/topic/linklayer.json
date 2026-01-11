@@ -1,0 +1,394 @@
+{
+  "topic_id": "linklayer",
+  "topic_name": "linklayer",
+  "questions": [
+    {
+      "id": "linklayerquest",
+      "type": "mc_single",
+      "question": "Čo je hlavnou úlohou Link Layeru v sieťovej architektúre?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 104039.png",
+      "options": [
+        "Prenáša datagramy medzi fyzicky susednými uzlami cez konkrétny komunikačný link.",
+        "Zabezpečuje smerovanie paketov medzi vzdialenými sieťami cez internet.",
+        "Poskytuje end-to-end komunikáciu medzi aplikáciami.",
+        "Rieši šifrovanie a autentifikáciu komunikácie medzi hostmi."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "linklayerservices",
+      "type": "mc_multi",
+      "question": "Ktoré služby typicky poskytuje Link Layer pri prenose dát medzi dvoma priamo pripojenými uzlami?",
+      "explanation": "Link Layer sa stará o to, aby sa IP datagram bezpečne a korektne preniesol cez jeden konkrétny fyzický link. Preto ho zapuzdruje do rámca (frame), používa MAC adresy na identifikáciu odosielateľa a príjemcu, kontroluje chyby vzniknuté šumom alebo útlmom signálu, môže korigovať niektoré bitové chyby a riadi, kto môže vysielať na zdieľanom médiu (napr. Wi-Fi alebo Ethernet).",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 104650.png",
+      "options": [
+        "Zapuzdrenie datagramu do frame a pridanie hlavičky a päty",
+        "Adresovanie pomocou MAC adries na identifikáciu zdroja a cieľa na linke",
+        "Detekcia a korekcia chýb",
+        "Riadenie prístupu k zdieľanému komunikačnému médiu",
+        "Výber najlepšej trasy medzi rôznymi sieťami v internete",
+        "Preklad doménových mien na IP adresy"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "niccardchip",
+      "type": "mc_multi",
+      "question": "Kde je v hoste implementovaná linková vrstva?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 111430.png",
+      "options": [
+        "V sieťovej karte (NIC)",
+        "V sieťovom čipe",
+        "V aplikačnej vrstve operačného systému",
+        "V routeri poskytovateľa internetu",
+        "V RAM pamäti počítača"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "linklayerineveryhost",
+      "type": "mc_single",
+      "question": "Linková vrstva je implementovaná len v routeroch a switchoch, nie v bežných počítačoch.",
+      "explanation": "Každý host pripojený do siete má vlastnú linkovú vrstvu, pretože každý musí posielať a prijímať rámce.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 111538.png",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "nicwhichlayer",
+      "type": "mc_multi",
+      "question": "Ktoré vrstvy implementuje sieťová karta (NIC)?",
+      "explanation": "NIC rieši rámce, MAC adresy a fyzické signály, nie TCP, HTTP alebo aplikácie.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 114726.png",
+      "options": [
+        "Linková vrstva",
+        "Fyzická vrstva",
+        "Transportná vrstva",
+        "Aplikačná vrstva",
+        "Sieťová vrstva"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "recievingatlayer",
+      "type": "mc_multi",
+      "question": "Ktoré úlohy vykonáva prijímacia strana pri linkovej vrstve?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 111946.png",
+      "options": [
+        "Kontroluje chyby v prijatom rámci",
+        "Extrahuje paket a odovzdá ho vyššej vrstve",
+        "Prekladá IP adresy na doménové mená",
+        "Rozhoduje o smerovaní do inej siete"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "sendingatalayer",
+      "type": "mc_multi",
+      "question": "Aká je hlavná úloha odosielacej strany pi linkovej vrstve?",
+      "explanation": "Odosielacia strana sa stará o vytvorenie rámca a jeho odoslanie, nie o routovanie alebo aplikácie.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 111751.png",
+      "options": [
+        "Zapuzdriť paket do rámca",
+        "Pripraviť rámec na prenos po linke",
+        "Vybrať najlepšiu trasu do cieľovej siete",
+        "Rozhodnúť, ktorý proces v OS dostane dáta",
+        "Dekódovať aplikačné dáta"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "whatudajecezinternet",
+      "type": "mc_multi",
+      "question": "Ktoré údaje sa používajú pri doručovaní dát cez internet?",
+      "explanation": "IP, MAC a port sú technické identifikátory použité priamo pri prenose dát.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 113402.png",
+      "options": [
+        "IP adresa",
+        "MAC adresa",
+        "Port",
+        "URL",
+        "DNS záznam",
+        "ARP záznam"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "macadressisfalse",
+      "type": "mc_single",
+      "question": "MAC adresa sa používa na smerovanie paketov cez celý internet.",
+      "explanation": "MAC adresy fungujú len v lokálnej sieti. Internetové smerovanie používa IP adresy.",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "bitsofmacadress",
+      "type": "fill_text",
+      "question": "Z koľkých bitov sa skladá MAC adresa pre rozhranie? (napíšte čislom)",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 123515.png",
+      "answers": [
+        "48"
+      ]
+    },
+    {
+      "id": "hexaformac",
+      "type": "mc_single",
+      "question": "MAC adresu zapisujeme v akej číselnej sústave?",
+      "explanation": ".",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 123647.png",
+      "options": [
+        "hexadecimálna",
+        "oktálna",
+        "binárna",
+        "decimálna",
+        "trinárna"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "macothernames",
+      "type": "mc_multi",
+      "question": "Ako ináč nazávyme ešte MAC adresu?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 123841.png",
+      "options": [
+        "LAN adresa",
+        "Fyzická adresa",
+        "Ethernet adresa",
+        "Logická adresa"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "macadresspurpose",
+      "type": "mc_multi",
+      "question": "Na čo slúži MAC adresa?",
+      "explanation": "MAC adresa sa používa iba v lokálnej sieti na doručenie rámcov konkrétnemu zariadeniu.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 124135.png",
+      "options": [
+        "Na identifikáciu fyzického sieťového rozhrania v lokálnej sieti",
+        "Na globálne smerovanie paketov cez internet",
+        "Na identifikáciu aplikácie v operačnom systéme",
+        "Na preklad doménových mien"
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "mactruestatements",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o MAC adresách sú pravdivé?",
+      "explanation": "MAC je hardvérová adresa zariadenia, nie sieťová ani aplikačná.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 124235.png",
+      "options": [
+        "Sú zvyčajne uložené v ROM sieťovej karty",
+        "Majú dĺžku 48 bitov",
+        "Sú prideľované výrobcom na základe blokov od IEEE",
+        "Menia sa vždy, keď sa zariadenie presunie do inej siete",
+        "Identifikujú aplikáciu, ktorá dáta posiela"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "ppremntlivostmac",
+      "type": "mc_single",
+      "question": "MAC adresa sa mení, keď sa zariadenie presunie do inej IP siete.",
+      "explanation": "V základe nie, ale dnešne OS si vytvarajú virtuálnu MAC adresu. Ale realna fyzická pre zariadenie ostáva vždy rovnaká",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "broadcastlink",
+      "type": "mc_single",
+      "question": "Čo je broadcast (shared medium) link?",
+      "explanation": "Broadcast link znamená, že všetci vysielajú do rovnakého média, napríklad Wi-Fi, 4G / 5G, satelit",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 125251.png",
+      "options": [
+        "Link, kde viac zariadení zdieľa jeden prenosový kanál",
+        "Link, ktorý spája vždy presne dve zariadenia",
+        "Link používaný iba v optických sieťach",
+        "Link medzi dvoma routermi"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "pointopoint",
+      "type": "mc_single",
+      "question": "Point-to-point linky nepotrebujú riešiť kolízie.",
+      "explanation": "Na point-to-point linke je vždy len jeden vysielač a jeden prijímač.",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 125409.png",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "ethernetasdominantdaddy",
+      "type": "mc_multi",
+      "question": "Prečo Ethernet ostal dominantnou technológiou pre LAN?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 143154.png",
+      "options": [
+        "Pretože je jednoduchý, lacný",
+        "Dokázal sa prispôsobovať vyšším rýchlostiam",
+        "Pretože funguje iba na Wi-Fi",
+        "Pretože nepoužíva MAC adresy",
+        "Pretože nahradil IP protokol"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "lanethernet",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o Etherrnete sú pravdivé?",
+      "explanation": "Ethernet funguje na linkovej vrstve a umožňuje priamu komunikáciu v LAN.",
+      "options": [
+        "Zariadenia v jednej LAN komunikujú pomocou MAC adries",
+        "Ethernet podporuje široké spektrum rýchlostí",
+        "Ethernet vyžaduje vždy router aj v lokálnej sieti",
+        "Ethernet pracuje len na aplikačnej vrstve"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "truefalseethernet",
+      "type": "mc_single",
+      "question": "Zariadenia v rovnakej Ethernet LAN potrebujú router, aby si mohli posielať dáta.",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 143410.png",
+      "options": [
+        "False",
+        "True"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "modernethernet",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia platia pre moderný Ethernet so switchom?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 143659.png",
+      "options": [
+        "Každý host má vlastný point-to-point link",
+        "Zariadenia si navzájom nekolidujú",
+        "Všetky zariadenia vysielajú do jedného spoločného kábla",
+        "Switch len zosilňuje signál",
+        "Využíva sa topológia s názvom \"Tree\""
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "typesoflancommunication",
+      "type": "mc_multi",
+      "question": "Aké máme typy lokálnej (LAN) komunikácie?",
+      "explanation": "",
+      "explanation_image": "linklayer/Screenshot 2026-01-11 144117.png",
+      "options": [
+        "Multicast",
+        "Broadcast",
+        "Unicast",
+        "Point-to-point message",
+        "Nocast",
+        "Egoacast"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "ethernetstandards",
+      "type": "mc_single",
+      "question": "Čo majú všetky Ethernet štandardy (100 Mbps, 1 Gbps, 10 Gbps…) spoločné?",
+      "explanation": "Rýchlosť a médium sa menia, ale linková vrstva ostáva rovnaká.",
+      "options": [
+        "Rovnaký MAC protokol a formát rámca",
+        "Rovnakú fyzickú vrstvu",
+        "Rovnaký typ kábla",
+        "Rovnakú maximálnu dĺžku linky"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "copperoroptics?",
+      "type": "mc_single",
+      "question": "Ethernet rámce majú rovnaký formát bez ohľadu na to, či sa prenášajú po medi alebo po optike.",
+      "explanation": "Rozdiel je len vo fyzickej vrstve (signál, médium), nie v rámci.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "csmacd",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o CSMA/CD sú správne?\n(Carrier Sense Multiple Access with Collision Detection (viacnásobný prístup s detekciou kolízií a snímaním nosnej vlny))",
+      "explanation": "CSMA/CD rieši kolízie, ktoré dnes v switched sieťach nevznikajú.",
+      "options": [
+        "Používalo sa v starých zdieľaných Ethernetoch",
+        "V modernom switched full-duplex Ethernete sa nepoužíva",
+        "Je potrebné aj pri optických vláknach",
+        "Je súčasťou IP protokolu"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    }
+  ]
+}

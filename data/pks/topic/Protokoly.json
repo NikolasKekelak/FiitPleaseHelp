@@ -1,0 +1,82 @@
+{
+  "topic_id": "Protokoly",
+  "topic_name": "Protokoly",
+  "questions": [
+    {
+      "id": "whatisarp",
+      "type": "mc_multi",
+      "question": "Na čo presne slúži ARP v sieťach Ethernet/IP?",
+      "explanation": "IP adresa sa používa pre routovanie, ale Ethernet rámce potrebujú MAC adresu cieľa – ARP tento preklad zabezpečuje",
+      "options": [
+        "Prekladá IP adresy na Mac adresy pre lokálnu sieť",
+        "Prekladá MAC adresy na IP adresy pre routovanie",
+        "Prekladá komunikáciu medzi fyzickou a virtualnou sieťou",
+        "Zabezpečuje šifrovanie komunikácie v LAN",
+        "Rozhoduje, ktorým routerom má ísť paket"
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "hostarp",
+      "type": "mc_single",
+      "question": "Čo urobí host, ak chce poslať paket na IP adresu v tej istej lokálnej sieti, ale nepozná jej MAC adresu?",
+      "explanation": "ARP request sa posiela ako broadcast na FF:FF:FF:FF:FF:FF, aby cieľový host mohol odpovedať",
+      "options": [
+        "Pošle ARP broadcast so žiadosťou o MAC adresu cieľovej IP",
+        "Pošle paket rovno na router pomocou default gateway",
+        "Použije DNS na zistenie MAC adresy",
+        "Pošle unicast správu všetkým hostom",
+        "Pošle multicast potencionálnym hostom"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "arprequest",
+      "type": "mc_multi",
+      "question": "ARP request sa posiela ako broadcast na FF:FF:FF:FF:FF:FF, aby cieľový host mohol odpovedať",
+      "explanation": "Len zariadenie s požadovanou IP odpovie, a to priamo žiadateľovi (unicast), nie celej sieti",
+      "options": [
+        "Cieľový host odpovie unicastom so svojou MAC adresou tomu, kto sa pýtal",
+        "Všetky hosty pošlú svoju MAC adresu",
+        "Odpoveď ide vždy broadcastom",
+        "Odpoveď pošle router"
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "arpcahche",
+      "type": "mc_multi",
+      "question": "Prečo sa výsledok ARP ukladá do cache?",
+      "explanation": "Cache šetrí čas aj bandwidth – ďalšie pakety sa môžu posielať rovno unicastom",
+      "options": [
+        "Aby sa nemusel proces za každým opakovať",
+        "Aby sa MAC adresa nikdy nemohla zmeniť",
+        "Aby mohol router presmerovať prevádzku",
+        "Aby sa zvýšila bezpečnosť spojenia"
+      ],
+      "correct": [
+        0
+      ]
+    },
+    {
+      "id": "arpatl2",
+      "type": "mc_multi",
+      "question": "Kde v sieťovom modeli ARP vlastne beží?",
+      "explanation": "ARP nie je IP protokol – ide o špeciálny L2 mechanizmus, ktorý používa Ethernet rámce",
+      "options": [
+        "Na linkovej vrstve",
+        "Na sieťovej vrstve",
+        "Na transportnej vrstve",
+        "Na aplikačnej vrstve",
+        "Iba na routeroch"
+      ],
+      "correct": [
+        0
+      ]
+    }
+  ]
+}
