@@ -529,7 +529,7 @@ function renderCurrentQuestion() {
   if (rapidMode) {
     // In rapid mode, hide buttons by default, except for mc_multi, fill_text, and sort which require manual Answer
     const qCur = engine && engine.current();
-    if (qCur && (qCur.type === 'mc_multi' || qCur.type === 'fill_text' || qCur.type === 'sort')) {
+    if (qCur && (qCur.type === 'mc_multi' || qCur.type === 'fill_text' || qCur.type === 'sort' || qCur.type === 'connect_nodes')) {
       els.submitBtn.style.display = '';
       els.nextBtn.style.display = 'none';
     } else {

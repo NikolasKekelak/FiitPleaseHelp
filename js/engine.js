@@ -4,6 +4,7 @@
 // - Incorrect -> stays; increases weight; set short cooldown to avoid immediate repeat
 // - Failed questions appear more often than unseen ones (weighted random)
 // - Quiz ends only when all questions are mastered
+import { normalizeConnectNodesQuestion, evaluateConnectNodes } from './connect-nodes.js';
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {
@@ -172,6 +173,14 @@ function normalizeQuestions(questions) {
         }
         break;
       }
+      case 'connect_nodes': {
+        const norm = normalizeConnectNodesQuestion(q);
+        if (!Array.isArray(norm.leftNodes) || !Array.isArray(norm.rightNodes)) throw new Error(`Question ${q.id} connect_nodes requires leftNodes[] and rightNodes[]`);
+        q.leftNodes = norm.leftNodes;
+        q.rightNodes = norm.rightNodes;
+        q.correctPairs = norm.correctPairs || [];
+        break;
+      }
       default:
         throw new Error(`Unknown type: ${q.type}`);
     }
@@ -241,6 +250,11 @@ function evaluate(q, userAnswer) {
       if (runStart !== -1 && ua.length - runStart >= 2) runs.push([runStart, ua.length - 1]);
       return { correct, meta: { consecutiveRuns: runs } };
     }
+    case 'connect_nodes': {
+      // userAnswer expected: { connections: Array<{leftId,rightId}> }
+      const { correct, meta } = evaluateConnectNodes(q, userAnswer || { connections: [] });
+      return { correct, meta };
+    }
     default:
       return { correct: false, meta: {} };
   }
@@ -266,6 +280,10 @@ function correctAnswerInfo(q) {
       const idToText = new Map(q.items.map(it => [String(it.id), it.text]));
       const txt = q.correct.map(id => escapeHtml(String(idToText.get(String(id)) || id))).join(' → ');
       return { showCorrect: true, correctAnswerHtml: txt };
+    }
+    case 'connect_nodes': {
+      // Do not reveal correct solution by default
+      return { showCorrect: false, correctAnswerHtml: '' };
     }
     default:
       return { showCorrect: false, correctAnswerHtml: '' };

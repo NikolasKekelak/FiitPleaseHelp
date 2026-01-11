@@ -1,5 +1,27 @@
 {
   "topic_id": "basics",
   "topic_name": "Základy neurónových sietí",
-  "questions": []
+  "questions": [
+    {
+      "id": "match-architectures",
+      "type": "connect_nodes",
+      "question": "Match each concept on the left with the related description on the right.",
+      "explanation": "This sample demonstrates the connect-nodes interaction (one-to-one).",
+      "leftNodes": [
+        { "id": "l1", "label": "Perceptron" },
+        { "id": "l2", "label": "CNN" },
+        { "id": "l3", "label": "RNN" }
+      ],
+      "rightNodes": [
+        { "id": "r1", "label": "Sequence modeling" },
+        { "id": "r2", "label": "Image processing" },
+        { "id": "r3", "label": "Linear threshold unit" }
+      ],
+      "correctPairs": [
+        { "leftId": "l1", "rightId": "r3" },
+        { "leftId": "l2", "rightId": "r2" },
+        { "leftId": "l3", "rightId": "r1" }
+      ]
+    }
+  ]
 }

@@ -102,6 +102,29 @@ body {
 .course-card a.btn { text-decoration: none; }
 
 /* Tarot spread deck (new home layout) */
+
+/* Connect Nodes (cn-*) */
+.cn-form { position: relative; }
+.cn-container { position: relative; display: flex; flex-direction: column; gap: 12px; }
+.cn-guidance { color: var(--muted); font-size: 14px; }
+.cn-grid { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 16px; align-items: start; }
+.cn-col { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--elev); padding: 8px; }
+.cn-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+.cn-node { position: relative; display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 10px 12px; min-height: 44px; border: 1px solid var(--border); border-radius: 12px; background: var(--card); cursor: pointer; transition: background var(--speed-fast) var(--easing), border-color var(--speed-fast) var(--easing), box-shadow var(--speed-fast) var(--easing); }
+.cn-node:hover, .cn-node:focus { outline: none; border-color: rgba(var(--tint), 0.5); box-shadow: 0 0 0 3px rgba(var(--tint), 0.15); }
+.cn-node.selected { background: rgba(var(--tint), 0.12); border-color: rgba(var(--tint), 0.7); }
+.cn-node.connected { background: rgba(var(--tint), 0.08); }
+.cn-clear { font-size: 16px; line-height: 1; padding: 4px 8px; border: 1px solid var(--border); border-radius: 10px; background: transparent; cursor: pointer; color: var(--muted); }
+.cn-clear:hover { background: rgba(var(--tint), 0.12); color: var(--text); }
+.cn-svg { position: absolute; top: 0; left: 0; pointer-events: none; }
+.cn-link { fill: none; stroke: rgba(var(--tint), 0.9); stroke-width: 3; stroke-linecap: round; filter: drop-shadow(0 1px 1px rgba(0,0,0,0.08)); }
+.cn-actions { display: flex; gap: 8px; justify-content: flex-end; }
+
+@media (max-width: 720px) {
+  .cn-grid { grid-template-columns: 1fr; }
+}
+
+/* Tarot spread deck (new home layout) */
 .tarot-spread {
   display: flex;
   align-items: flex-end;

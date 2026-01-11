@@ -1,5 +1,6 @@
 // UI rendering for question types
 // Keep logic minimal; actual correctness is handled by engine
+import { renderConnectNodesQuestion } from './connect-nodes.js';
 
 function shuffleWithIndex(arr) {
   const indexed = arr.map((v, i) => ({ v, i }));
@@ -37,6 +38,9 @@ export function renderQuestion(form, q) {
       break;
     case 'sort':
       renderSort(form, q);
+      break;
+    case 'connect_nodes':
+      renderConnectNodesQuestion(form, q);
       break;
     default:
       form.textContent = 'Unsupported question type';
@@ -246,6 +250,12 @@ export function readUserAnswer(form, q) {
         const n = Number(id);
         return Number.isNaN(n) ? id : n;
       });
+    }
+    case 'connect_nodes': {
+      const st = form.__connectNodesState;
+      if (!st || !st.connections) return { connections: [] };
+      const arr = Array.from(st.connections.entries()).map(([leftId, rightId]) => ({ leftId, rightId }));
+      return { connections: arr };
     }
     default:
       return null;

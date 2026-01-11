@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quiz Editor</title>
+  <link rel="stylesheet" href="../assets/styles.css" />
+  <style>
+    .editor { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 900px) { .editor { grid-template-columns: 1fr; } }
+    .editor .pane { background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm); box-shadow: var(--elev); padding: 12px; }
+    .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 10px; }
+    .row { display: flex; gap: 8px; align-items: center; }
+    .list { display: flex; flex-direction: column; gap: 6px; }
+    .node-item { display: flex; align-items: center; gap: 8px; }
+    .node-item input { flex: 1; }
+    .nodes-columns { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    textarea { width: 100%; min-height: 100px; }
+  </style>
+</head>
+<body>
+  <header class="hotbar">
+    <div class="brand"><a href="../" class="brand-link"><h1>FiitPleaseHelp</h1><div class="byline">Editor</div></a></div>
+  </header>
+
+  <main class="container" style="margin-top: 12px;">
+    <section class="card">
+      <h2>Create Question</h2>
+      <div class="field">
+        <label for="typeSelect">Question type</label>
+        <select id="typeSelect">
+          <option value="connect_nodes">Connect Nodes</option>
+        </select>
+      </div>
+      <div id="editorRoot" class="editor"></div>
+    </section>
+  </main>
+
+  <script type="module" src="../js/editor.js"></script>
+</body>
+</html>
