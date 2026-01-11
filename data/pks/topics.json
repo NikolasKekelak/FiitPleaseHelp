@@ -17,6 +17,10 @@
     {
       "id": "Protokoly",
       "file": "topic/Protokoly.json"
+    },
+    {
+      "id": "Devices",
+      "file": "topic/Devices.json"
     }
   ]
 }

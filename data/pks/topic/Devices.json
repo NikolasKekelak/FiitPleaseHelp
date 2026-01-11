@@ -1,0 +1,102 @@
+{
+  "topic_id": "Devices",
+  "topic_name": "Devices",
+  "questions": [
+    {
+      "id": "switch_layer",
+      "type": "mc_single",
+      "question": "Na ktorej vrstve OSI modelu pracuje Ethernet switch?",
+      "explanation": "Switch je link-layer zariadenie a pracuje s Ethernet rámcami a MAC adresami.",
+      "options": [
+        "Linková vrstva (Layer 2)",
+        "Sieťová vrstva (Layer 3)",
+        "Transportná vrstva",
+        "Aplikačná vrstva"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_forwarding_basis",
+      "type": "mc_single",
+      "question": "Podľa čoho sa Ethernet switch rozhoduje, na ktorý port má rámec preposlať?",
+      "explanation": "Switch používa destination MAC address z Ethernet hlavičky a porovnáva ju so svojou MAC tabuľkou.",
+      "options": [
+        "Destination MAC address",
+        "Source IP address",
+        "Destination IP address",
+        "TCP port"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_transparent",
+      "type": "mc_single",
+      "question": "Čo znamená, že Ethernet switch je \"transparentný\"?",
+      "explanation": "Hosty nevedia o existencii switcha a komunikujú akoby boli priamo prepojené.",
+      "options": [
+        "Hosty nevedia, že medzi nimi je switch",
+        "Switch nefiltruje žiadne rámce",
+        "Switch pracuje na fyzickej vrstve",
+        "Switch používa šifrovanie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_self_learning",
+      "type": "mc_single",
+      "question": "Ako sa Ethernet switch naučí, na ktorom porte je konkrétny host?",
+      "explanation": "Switch si ukladá source MAC adresu a port, z ktorého rámec prišiel.",
+      "options": [
+        "Podľa source MAC adresy prichádzajúcich rámcov",
+        "Pomocou ARP protokolu",
+        "Podľa IP adries",
+        "Pomocou DHCP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_unknown_destination",
+      "type": "mc_single",
+      "question": "Čo urobí switch, ak nemá v tabuľke cieľovú MAC adresu rámca?",
+      "explanation": "Ak cieľ nie je známy, switch vykoná flooding – pošle rámec na všetky porty okrem vstupného.",
+      "options": [
+        "Pošle rámec na všetky porty okrem toho, z ktorého prišiel",
+        "Zahodí rámec",
+        "Pošle ho routeru",
+        "Pošle ho späť odosielateľovi"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_collision_domains",
+      "type": "mc_single",
+      "question": "Prečo v switched Ethernete nevznikajú kolízie?",
+      "explanation": "Každý port switcha je samostatná collision domain a komunikácia je full-duplex.",
+      "options": [
+        "Každý port je samostatná collision domain a linky sú full-duplex",
+        "Používa sa CSMA/CD",
+        "Ethernet je broadcastový",
+        "Používa sa IP protokol"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "switch_simultaneous_tx",
+      "type": "mc_multi",
+      "question": "Ktoré tvrdenia o switched Ethernete sú správne?",
+      "explanation": "Switch umožňuje paralelné prenosy medzi rôznymi dvojicami portov bez kolízií.",
+      "options": [
+        "Viaceré dvojice hostov môžu komunikovať súčasne bez kolízií",
+        "Každý port je samostatná collision domain",
+        "Všetky zariadenia zdieľajú jednu collision domain",
+        "Switch musí používať CSMA/CD"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    }
+
+
+  ]
+}
