@@ -1,0 +1,230 @@
+{
+  "topic_id": "Architectures",
+  "topic_name": "Architectures",
+  "questions": [
+    {
+      "id": "gnndatatype",
+      "type": "mc_single",
+      "question": "What type of data are Graph Neural Networks (GNNs) designed to process?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 164229.png",
+      "options": [
+        "Data organized as graphs of nodes and edges",
+        "Data organized as grids of pixels",
+        "Data organized as sequences of values",
+        "Data organized as isolated records"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "gnnusecase",
+      "type": "mc_single",
+      "question": "Which problems are well suited for Graph Neural Networks?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 164229.png",
+      "options": [
+        "Modeling social networks and molecules",
+        "Processing images and videos",
+        "Recognizing spoken language streams",
+        "Sorting lists of numeric values"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "autoencodersadvantage",
+      "type": "mc_single",
+      "question": "What is a main advantage of autoencoders?",
+      "explanation": "Autoencoders compress input data into a lower-dimensional latent space, allowing them to learn efficient internal representations.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 164734.png",
+      "options": [
+        "They can learn compact data representations",
+        "They can classify labeled training data",
+        "They can generate rule-based predictions",
+        "They can compute exact probability values"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "latentspaceautoencoders",
+      "type": "mc_single",
+      "question": "What is the role of the latent space in an autoencoder?",
+      "explanation": "",
+      "image": "Architectures/Screenshot 2026-01-11 165107.png",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 164734.png",
+      "options": [
+        "It stores compressed versions of the input",
+        "It stores raw copies of the input",
+        "It stores final class predictions",
+        "It stores random noise for training"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "autoencodersarchitecturespecialty",
+      "type": "mc_single",
+      "question": "What is special about Architecture of Autoencoders?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 164734.png",
+      "options": [
+        "We train the encoder and decoder together",
+        "We train the network in separate stages",
+        "We train only the encoder during learning",
+        "We train only the decoder during learning"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "gansmainidea",
+      "type": "mc_single",
+      "question": "What is the main idea behind Generative Adversarial Networks (GANs)?",
+      "explanation": "GANs use a generator and a discriminator trained adversarially: one creates samples, the other judges them.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 165326.png",
+      "options": [
+        "Two networks compete to improve generation",
+        "One network predicts fixed output values",
+        "One network stores all training examples",
+        "Two networks process data independently"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "roleofdiscriminator",
+      "type": "mc_single",
+      "question": "What is the role of the discriminator in a GAN?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 165326.png",
+      "options": [
+        "It decides if samples look real",
+        "It generates new synthetic samples",
+        "It compresses images into vectors",
+        "It applies filters to input data"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "gansusage",
+      "type": "mc_single",
+      "question": "Which tasks are GANs commonly used for?",
+      "explanation": "GANs are widely used for generating images, augmenting datasets, and performing style transfer between visual domains.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 165326.png",
+      "options": [
+        "Image creation and style transfer",
+        "Classify different classes in the picture",
+        "Predicting stock prices directly",
+        "Image classification"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "transformersniggers",
+      "type": "mc_single",
+      "question": "What is the main mechanism that Transformers use to process data?",
+      "explanation": "Transformers rely on attention to determine which parts of the input are most relevant when computing representations.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 170053.png",
+      "options": [
+        "They use attention to weight information",
+        "They use recursion to process sequences",
+        "They use convolution to scan images",
+        "They use rules to select features"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "optimusprime",
+      "type": "mc_single",
+      "question": "Why are Transformers well suited for long sequences?",
+      "explanation": "Attention allows Transformers to connect distant elements in a sequence without relying on step-by-step recurrence.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 170053.png",
+      "options": [
+        "They model long-range dependencies directly",
+        "They process tokens one at a time",
+        "They use memory cells for state tracking",
+        "They reset context after each layer"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "bumblebee",
+      "type": "mc_single",
+      "question": "Which applications commonly use Transformer models?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 170053.png",
+      "options": [
+        "Language processing and vision tasks",
+        "Sorting numbers and matrices",
+        "Controlling physical robot arms",
+        "Solving algebraic equations"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "rnnsdatatype",
+      "type": "mc_single",
+      "question": "What type of data are Recurrent Neural Networks best suited for?",
+      "explanation": "RNNs are designed to process sequences by keeping information from previous inputs through internal memory.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 170349.png",
+      "options": [
+        "They are suited for short sequential data",
+        "They are suited for long sequential data",
+        "They are suited for image grids",
+        "They are suited for static tables"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "rnnsloops",
+      "type": "mc_single",
+      "question": "What is the main role of the loops in an RNN?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 170349.png",
+      "options": [
+        "They store information from earlier steps",
+        "They remove noise from the input",
+        "They enlarge the input vectors",
+        "They speed up matrix operations"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "convolutiondatatype",
+      "type": "mc_single",
+      "question": "What type of data are Convolutional Neural Networks mainly designed for?",
+      "explanation": "",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 171040.png",
+      "options": [
+        "visual image data",
+        "text sequences",
+        "graph structures",
+        "numeric tables"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "cnnconvolutionallayer",
+      "type": "mc_single",
+      "question": "What is the main purpose of convolutional layers in a CNN?",
+      "explanation": "Convolutional layers detect patterns such as edges, textures, and shapes that are useful for recognizing objects.",
+      "explanation_image": "Architectures/Screenshot 2026-01-11 171040.png",
+      "options": [
+        "They extract important visual features",
+        "They store long-term memory values",
+        "They compare predicted class labels",
+        "They generate random image samples"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "CNNpoolinglayer",
+      "type": "mc_single",
+      "question": "Why are pooling layers used in CNNs?",
+      "explanation": "Pooling reduces the dimensionality of feature maps, which makes the network more efficient and robust.",
+      "options": [
+        "They reduce the spatial data size",
+        "They increase the image resolution",
+        "They improve class label accuracy",
+        "They add noise to the features"
+      ],
+      "correct": 0
+    }
+  ]
+}

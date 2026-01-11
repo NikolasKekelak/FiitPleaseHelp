@@ -1,0 +1,246 @@
+{
+  "topic_id": "Use-cases",
+  "topic_name": "Use-cases",
+  "questions": [
+    {
+      "id": "architecture-transformer",
+      "type": "mc_single",
+      "question": "We would like to process natural language, which NN architecture would be optimal?",
+      "explanation": "Transformers are designed to handle long-range dependencies and context in text using attention mechanisms.",
+      "options": [
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-cnn",
+      "type": "mc_single",
+      "question": "We would like to recognize objects in images, which NN architecture would be optimal?",
+      "explanation": "CNNs are designed to extract spatial features such as edges, textures, and shapes from images.",
+      "options": [
+        "Convolutional NN",
+        "Transformer",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-rnn",
+      "type": "mc_single",
+      "question": "We would like to predict values in a time series, which NN architecture would be optimal?",
+      "explanation": "RNNs are designed to model sequential data by keeping information from previous time steps.",
+      "options": [
+        "Recurrent NN",
+        "Transformer",
+        "Convolutional NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-gan",
+      "type": "mc_single",
+      "question": "We would like to generate realistic synthetic images, which NN architecture would be optimal?",
+      "explanation": "GANs are designed to generate new data by training a generator and discriminator in competition.",
+      "options": [
+        "GANs",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-autoencoder",
+      "type": "mc_single",
+      "question": "We would like to reduce the dimensionality of data, which NN architecture would be optimal?",
+      "explanation": "Autoencoders compress data into a latent space and reconstruct it, enabling dimensionality reduction.",
+      "options": [
+        "Autoencoder",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-gnn",
+      "type": "mc_single",
+      "question": "We would like to analyze relationships in a social network, which NN architecture would be optimal?",
+      "explanation": "Graph Neural Networks are designed to process data structured as nodes and edges.",
+      "options": [
+        "Graph NN",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-mlp",
+      "type": "mc_single",
+      "question": "We would like to classify tabular numerical data, which NN architecture would be optimal?",
+      "explanation": "MLPs are well suited for fixed-size vector inputs such as structured numerical features.",
+      "options": [
+        "MLP",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-transformer",
+      "type": "mc_single",
+      "question": "We would like to process natural language, which NN architecture would be optimal?",
+      "explanation": "Transformers are designed to handle long-range dependencies and context in text using attention mechanisms.",
+      "options": [
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-cnn",
+      "type": "mc_single",
+      "question": "We would like to recognize objects in images, which NN architecture would be optimal?",
+      "explanation": "CNNs are designed to extract spatial features such as edges, textures, and shapes from images.",
+      "options": [
+        "Convolutional NN",
+        "Transformer",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-segmentation",
+      "type": "mc_single",
+      "question": "We would like to perform pixel-level image segmentation, which NN architecture would be optimal?",
+      "explanation": "CNN-based architectures such as U-Net and Fully Convolutional Networks are designed for dense pixel prediction.",
+      "options": [
+        "Convolutional NN",
+        "Transformer",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-rnn",
+      "type": "mc_single",
+      "question": "We would like to predict values in a time series, which NN architecture would be optimal?",
+      "explanation": "RNNs are designed to model sequential data by keeping information from previous time steps.",
+      "options": [
+        "Recurrent NN",
+        "Transformer",
+        "Convolutional NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-gan",
+      "type": "mc_single",
+      "question": "We would like to generate realistic synthetic images, which NN architecture would be optimal?",
+      "explanation": "GANs are designed to generate new data by training a generator and discriminator in competition.",
+      "options": [
+        "GANs",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "Autoencoder",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-autoencoder",
+      "type": "mc_single",
+      "question": "We would like to detect anomalies in data, which NN architecture would be optimal?",
+      "explanation": "Autoencoders detect anomalies by reconstructing normal data poorly for unusual samples.",
+      "options": [
+        "Autoencoder",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Graph NN",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-gnn",
+      "type": "mc_single",
+      "question": "We would like to analyze relationships in a molecule, which NN architecture would be optimal?",
+      "explanation": "Graph Neural Networks are designed to model structured data with nodes and edges.",
+      "options": [
+        "Graph NN",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "MLP"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "architecture-mlp",
+      "type": "mc_single",
+      "question": "We would like to classify structured tabular data, which NN architecture would be optimal?",
+      "explanation": "MLPs work well for fixed-size numerical feature vectors.",
+      "options": [
+        "MLP",
+        "Transformer",
+        "Convolutional NN",
+        "Recurrent NN",
+        "GANs",
+        "Autoencoder",
+        "Graph NN"
+      ],
+      "correct": 0
+    }
+  ]
+}

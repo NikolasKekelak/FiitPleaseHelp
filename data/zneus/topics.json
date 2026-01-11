@@ -1,0 +1,23 @@
+{
+  "course": "zneus",
+  "course_name": "Základy neurónových sietí",
+  "topics": [
+    {
+      "id": "basics",
+      "file": "topic/basics.json",
+      "topic_name": "Základy neurónových sietí"
+    },
+    {
+      "id": "Functions",
+      "file": "topic/Functions.json"
+    },
+    {
+      "id": "Architectures",
+      "file": "topic/Architectures.json"
+    },
+    {
+      "id": "Use-cases",
+      "file": "topic/Use-cases.json"
+    }
+  ]
+}

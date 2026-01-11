@@ -1,0 +1,10 @@
+{
+  "presets": [
+    {
+      "id": "starter",
+      "name": "Default",
+      "description": "Základné pojmy: perceptrón, loss, backprop",
+      "topics": ["basics"]
+    }
+  ]
+}
