@@ -1,0 +1,111 @@
+{
+  "topic_id": "Mid-term Exam",
+  "topic_name": "Mid-term Exam",
+  "questions": [
+    {
+      "id": "classification_true_statements",
+      "type": "mc_multi",
+      "question": "Which statements are true about classification?",
+      "explanation": "Classification predicts discrete labels and assigns inputs to one of multiple classes. Logistic regression is used for classification, while linear regression is not.",
+      "options": [
+        "Predicts labels",
+        "Predicts a continuous numerical value",
+        "Estimates an output based on input data",
+        "Assigns input data to 2 or more classes",
+        "Logistic regression is a variant of classification",
+        "Linear regression is a variant of classification"
+      ],
+      "correct": [
+        0,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "validation_set_true_statements",
+      "type": "mc_multi",
+      "question": "Which of the following statements about data sets are true?",
+      "explanation": "A validation set should match the real use case and should be clean. There is no universal fixed percentage split, and you should not merge validation data into training just to increase training size.",
+      "options": [
+        "The validation set should represent the intended use case of the model",
+        "The validation set must be created by separating at least 30% of the data from the training set",
+        "If we do not have enough data in the validation set, we can include the validation data in the training set and continue to use only the training set",
+        "The validation set should not contain dirty data with incorrect annotations"
+      ],
+      "correct": [
+        0,
+        3
+      ]
+    },
+    {
+      "id": "cost_function_true_statements",
+      "type": "mc_multi",
+      "question": "Which statements are true about the cost function?",
+      "explanation": "A cost function aggregates error over a dataset (or batch) and is minimized with respect to model parameters (weights). Inputs are treated as constants, weights as variables.",
+      "options": [
+        "Quantifies the error for the entire dataset",
+        "Quantifies the error for the given x",
+        "It takes the parameters of the model as input",
+        "To train the model, we minimize its value by finding the best weights",
+        "Measures how good the model estimates its prediction y, given input x",
+        "Weights w are variables, and inputs x are constants from its perspective",
+        "Weights w are constants, and inputs x are variables from its perspective",
+        "Weights w and inputs x are variables from its perspective"
+      ],
+      "correct": [
+        0,
+        2,
+        3,
+        5
+      ]
+    },
+    {
+      "id": "cnn_feature_hierarchy_order",
+      "type": "sort",
+      "question": "Select the feature types learnt by hidden layers of a CNN and write down their order from input to output. (sort it)",
+      "explanation": "CNNs typically learn simple features first (pixels, edges), then mid-level patterns (corners, parts), and finally high-level concepts (objects).",
+      "items": [
+        "Pixels",
+        "Edges",
+        "Corners",
+        "Components/parts",
+        "Objects"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "output_activation_regression",
+      "type": "mc_single",
+      "question": "A neural network estimates the price of real estate (EUR/m²). Which activation function should be used on the last output layer?",
+      "explanation": "The output is a continuous unbounded numerical value, so a linear activation such as ReLU or no activation is appropriate.",
+      "options": [
+        "Leaky ReLU",
+        "ReLU",
+        "Tanh",
+        "Sigmoid"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "cnn_use_cases",
+      "type": "mc_multi",
+      "question": "Which of the following are valid use cases of Convolutional Neural Networks (CNNs)?",
+      "explanation": "CNNs are mainly used for tasks involving visual and spatial data, such as recognizing objects, detecting faces, and segmenting images.",
+      "options": [
+        "Image classification",
+        "Object detection",
+        "Image segmentation",
+        "Time series forecasting",
+        "Text translation",
+        "Graph traversal"
+      ],
+      "correct": [0, 1, 2]
+    }
+  ]
+}

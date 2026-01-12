@@ -49,6 +49,155 @@
           "rightId": "r3"
         }
       ]
+    },
+    {
+      "id": "sortfeautreengineering",
+      "type": "sort",
+      "question": "Which of the following sequences correctly represents the feature engineering workflow?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-11 202222.png",
+      "items": [
+        "Data Collection",
+        "Preprocessing",
+        "Feature Extraction",
+        "Feautre Selection",
+        "Training Model",
+        "Model Evaluation Iteration"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
+    },
+    {
+      "id": "snorttrainign",
+      "type": "sort",
+      "question": "Which of the following sequences correctly represents the neural network training process?",
+      "explanation": ".",
+      "items": [
+        "Data batch",
+        "Forward pass",
+        "Compute loss",
+        "Backward pass",
+        "Compute gradients",
+        "Update weights/Optimize",
+        "Repeat until condition is met"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    },
+    {
+      "id": "feautureengineeringmaingoal",
+      "type": "mc_single",
+      "question": "What is the main goal of feature engineering?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-11 203639.png",
+      "options": [
+        "To create useful inputs for models",
+        "To store data more efficiently",
+        "To reduce training time only",
+        "To remove all data noise"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "outputoffeautureengineering",
+      "type": "mc_single",
+      "question": "What is the output of the feature engineering process?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-11 203639.png",
+      "options": [
+        "Extracted features for the classifier",
+        "Raw data for training",
+        "Final class predictions",
+        "Model accuracy values"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "electricityconsumption",
+      "type": "mc_single",
+      "question": "A model predicts how much electricity a household will consume next month. Which task does this represent?",
+      "explanation": "Electricity consumption is a numerical value on a continuous scale, so this is a regression task.",
+      "options": [
+        "Regression",
+        "Classification"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "maliciousnetwork",
+      "type": "mc_single",
+      "question": "A model outputs a probability that network traffic is malicious. Which ML task is this an example of?",
+      "explanation": "Even though the model outputs a probability, the goal is to decide between classes (malicious vs legitimate), which is classification.",
+      "options": [
+        "Classification",
+        "Regression"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "lioneaboundazy",
+      "type": "mc_single",
+      "question": "Why is a linear decision boundary suitable for classification but not for regression?",
+      "explanation": "Classification aims to separate data into groups, while regression aims to fit a continuous mapping between inputs and outputs.",
+      "options": [
+        "Because classification separates classes while regression fits values",
+        "Because regression does not use mathematical functions",
+        "Because classification does not use input features",
+        "Because regression only works with categories"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "exmaplesofclassification",
+      "type": "mc_multi",
+      "question": "What are examples of Classification",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-11 205611.png",
+      "options": [
+        "Logistic Regression",
+        "Support Vector Machines (SVM)",
+        "Clustering",
+        "Linear Regression",
+        "Decision Trees",
+        "Random Forest",
+        "Gradient Boosting"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "regressionexamples",
+      "type": "mc_multi",
+      "question": "What are examples of Regression?",
+      "explanation": "",
+      "explanation_image": "basics/Screenshot 2026-01-11 205736.png",
+      "options": [
+        "Logistic Regression",
+        "Support Vector Machines (SVM)",
+        "Clustering",
+        "Linear Regression",
+        "Gradient Boosting"
+      ],
+      "correct": [
+        3,
+        4
+      ]
     }
   ]
 }

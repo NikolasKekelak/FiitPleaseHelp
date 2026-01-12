@@ -18,6 +18,10 @@
     {
       "id": "Use-cases",
       "file": "topic/Use-cases.json"
+    },
+    {
+      "id": "Mid-term Exam",
+      "file": "topic/Mid-term Exam.json"
     }
   ]
 }
