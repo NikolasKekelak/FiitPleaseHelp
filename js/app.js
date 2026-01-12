@@ -1,7 +1,7 @@
-import { loadCourses, loadTopics, loadTopicQuestions, loadPresets, loadQuestionsForTopics } from './data.js';
-import { QuizEngine } from './engine.js';
-import { renderQuestion, readUserAnswer, clearAnswerArea, setDisabled } from './ui.js';
-import { loadSettings, saveSettings } from './storage.js';
+import { loadCourses, loadTopics, loadTopicQuestions, loadPresets, loadQuestionsForTopics } from './data.js?v=20260112';
+import { QuizEngine } from './engine.js?v=20260112';
+import { renderQuestion, readUserAnswer, clearAnswerArea, setDisabled } from './ui.js?v=20260112';
+import { loadSettings, saveSettings } from './storage.js?v=20260112';
 // persistence removed
 
 // Rapid practice mode enabled: default flow auto-answers on pick for most types.

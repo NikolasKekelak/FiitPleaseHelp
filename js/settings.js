@@ -1,4 +1,4 @@
-import { loadSettings, saveSettings } from './storage.js';
+import { loadSettings, saveSettings } from './storage.js?v=20260112';
 
 // Reuse background applier (local copy to avoid importing app.js)
 function applyBackgroundFromSettings(settings) {

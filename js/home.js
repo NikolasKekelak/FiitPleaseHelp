@@ -1,6 +1,6 @@
 // Home page script: render course grid and apply theme/background
-import { loadCourses } from './data.js';
-import { loadSettings } from './storage.js';
+import { loadCourses } from './data.js?v=20260112';
+import { loadSettings } from './storage.js?v=20260112';
 
 function applyBackgroundFromSettings() {
   try {

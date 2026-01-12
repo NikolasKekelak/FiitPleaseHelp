@@ -4,7 +4,7 @@
 // - Incorrect -> stays; increases weight; set short cooldown to avoid immediate repeat
 // - Failed questions appear more often than unseen ones (weighted random)
 // - Quiz ends only when all questions are mastered
-import { normalizeConnectNodesQuestion, evaluateConnectNodes } from './connect-nodes.js';
+import { normalizeConnectNodesQuestion, evaluateConnectNodes } from './connect-nodes.js?v=20260112';
 
 function shuffle(arr) {
   for (let i = arr.length - 1; i > 0; i--) {

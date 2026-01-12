@@ -1,6 +1,6 @@
 // UI rendering for question types
 // Keep logic minimal; actual correctness is handled by engine
-import { renderConnectNodesQuestion } from './connect-nodes.js';
+import { renderConnectNodesQuestion } from './connect-nodes.js?v=20260112';
 
 function shuffleWithIndex(arr) {
   const indexed = arr.map((v, i) => ({ v, i }));
