@@ -127,6 +127,100 @@
         "Sigmoid outputs unbounded values"
       ],
       "correct": 0
+    },
+    {
+      "id": "smoothmonotonicfunctions",
+      "type": "mc_multi",
+      "question": "Which functions are smooth and non-monotonic?",
+      "explanation": "",
+      "explanation_image": "Functions/2026-01-14-120914_hyprshot.png",
+      "options": [
+        "Swish",
+        "GELU",
+        "Mish",
+        "ELU",
+        "RELU",
+        "Leaky RELU",
+        "SELU"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "selurecommended architecture",
+      "type": "fill_text",
+      "question": "Which activation function is recommended for \"self-normalizing architectures\"",
+      "explanation": "",
+      "explanation_image": "Functions/2026-01-14-121329_hyprshot.png",
+      "answers": [
+        "selu",
+        "SELU",
+        "Selu"
+      ]
+    },
+    {
+      "id": "whatisembedding",
+      "type": "mc_single",
+      "question": "What is an embedding in machine learning?",
+      "explanation": ".",
+      "options": [
+        "A learned dense vector representation of discrete objects that captures semantic or structural relationships",
+        "A fixed binary vector representation of discrete objects that contains exactly one active position",
+        "A numerical vector representation of input samples that directly stores their raw feature values",
+        "A compressed vector representation of data created without using any training process",
+        "A numerical vector representation used only to calculate loss during neural network training"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "whatisattention",
+      "type": "mc_single",
+      "question": "What is attention in neural networks?",
+      "explanation": "Attention computes similarity scores between a query and a set of keys and uses them to form a weighted sum of values. This lets the model focus on the most relevant tokens or features instead of treating all inputs equally, which is crucial for sequence modeling and transformers.",
+      "options": [
+        "A mechanism that allows a model to dynamically weight and select relevant parts of the input when computing an output",
+        "A technique that processes all input elements with equal importance during every network layer",
+        "A fixed weighting scheme that assigns constant importance values to all input features",
+        "A dimensionality reduction method that compresses sequences into a single vector",
+        "A regularization technique that prevents neural networks from overfitting"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "autoregressivemodelsusage",
+      "type": "mc_multi",
+      "question": "Which of the following are typical use cases of autoregressive models?",
+      "explanation": "",
+      "explanation_image": "Functions/2026-01-14-124912_hyprshot.png",
+      "options": [
+        "Natural language",
+        "Translation",
+        "Time Series",
+        "Forecasting",
+        "Image  & Video"
+      ],
+      "correct": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "id": "kingmanwomanqueen",
+      "type": "fill_text",
+      "question": "In a word embedding space, ‘king’ − ‘man’ + ‘woman’ is closest to which word?",
+      "explanation": ".",
+      "answers": [
+        "queen",
+        "quen",
+        "Queen",
+        "Quen"
+      ]
     }
   ]
 }

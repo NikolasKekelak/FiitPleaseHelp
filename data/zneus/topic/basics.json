@@ -171,8 +171,6 @@
         "Support Vector Machines (SVM)",
         "Clustering",
         "Linear Regression",
-        "Decision Trees",
-        "Random Forest",
         "Gradient Boosting"
       ],
       "correct": [
@@ -197,6 +195,25 @@
       "correct": [
         3,
         4
+      ]
+    },
+    {
+      "id": "typesofclassification",
+      "type": "mc_multi",
+      "question": "What are the types of classification problems?",
+      "explanation": "",
+      "explanation_image": "basics/2026-01-14-120348_hyprshot.png",
+      "options": [
+        "Binary",
+        "Multi-label",
+        "Multi-class",
+        "Uni-label",
+        "Uni-class"
+      ],
+      "correct": [
+        0,
+        1,
+        2
       ]
     }
   ]

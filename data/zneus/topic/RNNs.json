@@ -1,0 +1,23 @@
+{
+  "topic_id": "RNNs",
+  "topic_name": "RNNs",
+  "questions": [
+    {
+      "id": "explodingvanishinhgradientproblem",
+      "type": "mc_multi",
+      "question": "Which problem(s) generally occur with \"Vanilla\" Recurrent NN?",
+      "explanation": "When weights after recurrent layer are >1, gradient will became too big, while if the weight are <1, gradient will approach zero",
+      "options": [
+        "Exploding Gradient Problem",
+        "Vanishing Gradient Problem",
+        "High memory demand",
+        "Under-fitting",
+        "Over-fitting"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    }
+  ]
+}

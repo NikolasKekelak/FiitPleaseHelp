@@ -22,6 +22,14 @@
     {
       "id": "Mid-term Exam",
       "file": "topic/Mid-term Exam.json"
+    },
+    {
+      "id": "RNNs",
+      "file": "topic/RNNs.json"
+    },
+    {
+      "id": "CNNs",
+      "file": "topic/CNNs.json"
     }
   ]
 }
