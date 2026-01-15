@@ -433,6 +433,19 @@
         "It controls how many layers of the network are evaluated during the inference process"
       ],
       "correct": 0
+    },
+    {
+      "id": "niggers",
+      "type": "mc_single",
+      "question": "What is fine-tuning in machine learning?",
+      "explanation": "Fine-tuning reuses knowledge learned from a large pretrained model and adapts it to a new domain or task by further training on task-specific data, typically with a smaller learning rate.",
+      "options": [
+        "The process of continuing training a pretrained model on a new dataset to adapt it to a specific task",
+        "The process of modifying a model’s architecture to increase its number of layers or neurons",
+        "The process of adjusting input data to better match the expected distribution of the model",
+        "The process of selecting the most relevant features before training a model from scratch"
+      ],
+      "correct": 0
     }
   ]
 }
