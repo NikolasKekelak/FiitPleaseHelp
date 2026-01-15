@@ -26,10 +26,6 @@
     {
       "id": "RNNs",
       "file": "topic/RNNs.json"
-    },
-    {
-      "id": "CNNs",
-      "file": "topic/CNNs.json"
     }
   ]
 }
