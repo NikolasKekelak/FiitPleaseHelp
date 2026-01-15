@@ -324,6 +324,115 @@
         "Miscellaneous"
       ],
       "correct": 0
+    },
+    {
+      "id": "lstm",
+      "type": "fill_text",
+      "question": "How is called structure/model down below:",
+      "explanation": "",
+      "explanation_image": "basics/2026-01-15-174712_hyprshot.png",
+      "answers": [
+        "lstm",
+        "LSTM"
+      ]
+    },
+    {
+      "id": "normalizationlayer",
+      "type": "mc_single",
+      "question": "What is the primary role of a normalization layer (such as Batch Normalization or Layer Normalization) in a neural network?",
+      "explanation": "Normalization layers rescale and shift activations so that their distributions remain stable during training. This prevents exploding or vanishing activations, allows higher learning rates, and significantly improves convergence speed and training stability.",
+      "options": [
+        "To stabilize and accelerate training by keeping activations within a consistent scale across layers",
+        "To reduce overfitting by randomly dropping neurons during training",
+        "To increase the expressive power of the network by adding non-linear transformations.",
+        "To compress the network by reducing the number of parameters"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "whatisgeneralization",
+      "type": "mc_single",
+      "question": "What does generalization mean in machine learning?",
+      "explanation": "Generalization refers to how well a model applies what it learned from training data to new, unseen data. A model that generalizes well captures underlying patterns instead of memorizing specific examples.",
+      "options": [
+        "The ability of a trained model to produce accurate predictions on data it has not encountered during training.",
+        "The ability of a trained model to reproduce the patterns found only in the training dataset.",
+        "The ability of a trained model to adjust its parameters when new input samples are provided.",
+        "The ability of a trained model to reduce complexity by removing unnecessary internal features."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "differenceunderfittingoverfitting",
+      "type": "mc_single",
+      "question": "What is the difference between overfitting and underfitting in machine learning?",
+      "explanation": "Overfitting means the model fits the training data too closely, including noise, which harms performance on new data. Underfitting means the model is too limited to capture the true relationships in the data, resulting in poor performance even on the training set.",
+      "options": [
+        "Overfitting occurs when a model captures noise and specific details of the training data, while underfitting occurs when the model is too simple to represent the underlying structure.",
+        "Overfitting occurs when a model adapts too slowly to training data, while underfitting occurs when it adapts too quickly to new samples.",
+        "Overfitting occurs when a model relies too heavily on regularization, while underfitting occurs when regularization is not applied.",
+        "Overfitting occurs when a model compresses features too aggressively, while underfitting occurs when features are left unprocessed."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "hypermodelparameters",
+      "type": "mc_multi",
+      "question": "What is the difference between hyperparameters and model parameters?",
+      "explanation": "Hyperparameters (such as learning rate, number of layers, or batch size) are chosen before training and influence how learning proceeds. Model parameters (such as weights and biases) are optimized during training to fit the data.",
+      "options": [
+        "Hyperparameters are values set before training that control how the model learns",
+        "Model parameters are values learned from the data during training",
+        "Hyperparameters describe the internal state of the model after training",
+        "Model parameters define the structure of the training dataset",
+        "Hyperparameters are adjusted automatically during optimization",
+        "Model parameters remain fixed once training begins"
+      ],
+      "correct": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "whatisregularization",
+      "type": "mc_single",
+      "question": "What is regularization in machine learning?",
+      "explanation": "Regularization introduces penalties or constraints on model complexity, which discourages overly complex models that fit noise in the training data and helps improve performance on unseen da",
+      "options": [
+        "A technique that adds constraints to the learning process in order to reduce overfitting and improve generalization.",
+        "A technique that modifies the training data in order to increase the number of available input samples.",
+        "A technique that adjusts the activation functions to improve numerical stability during training.",
+        "A technique that controls how fast model parameters are updated during optimization."
+      ],
+      "correct": 0
+    },
+    {
+      "id": "problemwithrnn",
+      "type": "mc_single",
+      "question": "What is a key limitation of this sequential RNN-style structure for long sentences?",
+      "explanation": ".",
+      "image": "basics/2026-01-15-181629_hyprshot.png",
+      "options": [
+        "It struggles to preserve and use information across many time steps",
+        "It struggles to represent spatial features across two image dimensions",
+        "It struggles to compute convolution responses across local receptive fields",
+        "It struggles to apply pooling operations across multi-scale feature maps"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "temperature",
+      "type": "mc_single",
+      "question": "What does the temperature of inference control in a neural network or language model?",
+      "explanation": "",
+      "explanation_image": "basics/2026-01-15-183111_hyprshot.png",
+      "options": [
+        "Controls how random or deterministic are the answers of the model",
+        "It controls how quickly the model updates its internal weights during the training process",
+        "It controls how strongly the loss function penalizes incorrect predictions during optimization",
+        "It controls how many layers of the network are evaluated during the inference process"
+      ],
+      "correct": 0
     }
   ]
 }
