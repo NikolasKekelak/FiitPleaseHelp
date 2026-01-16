@@ -1,0 +1,125 @@
+{
+  "topic_id": "Tabu Search",
+  "topic_name": "Tabu Search",
+  "questions": [
+    {
+      "id": "ts_definition",
+      "type": "mc_single",
+      "question": "Čo je metóda zakázaného hľadania (Tabu Search)?",
+      "explanation": "Tabu Search je heuristický optimalizačný algoritmus rozširujúci horolezecký algoritmus o pamäť zakázaných stavov alebo ťahov.",
+      "options": [
+        "Deterministický algoritmus pre globálnu optimalizáciu",
+        "Rozšírenie horolezeckého algoritmu využívajúce pamäť",
+        "Evolučný algoritmus pracujúci s populáciou riešení",
+        "Pravdepodobnostný algoritmus založený na teplote"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ts_motivation",
+      "type": "mc_single",
+      "question": "Aký problém horolezeckého algoritmu rieši Tabu Search?",
+      "explanation": "Hlavným cieľom je zabrániť zacykleniu v lokálnom extréme.",
+      "options": [
+        "Vysokú výpočtovú náročnosť algoritmu",
+        "Zacyklenie v lokálnom maxime alebo minime",
+        "Potrebu fitness funkcie",
+        "Závislosť od počiatočného riešenia"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ts_single_state",
+      "type": "mc_single",
+      "question": "Koľko stavov riešenia je aktívnych v jednom okamihu v Tabu Search?",
+      "explanation": "Rovnako ako hill climbing a simulated annealing, Tabu Search pracuje s jedným aktuálnym stavom.",
+      "options": [
+        "Celá populácia riešení",
+        "Presne jeden aktuálny stav",
+        "Dva stavy – aktuálny a najlepší",
+        "Počet stavov závislý od veľkosti tabu listu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ts_tabu_list",
+      "type": "mc_single",
+      "question": "Čo predstavuje tabu list v algoritme Tabu Search?",
+      "explanation": "Tabu list uchováva nedávno navštívené stavy alebo inverzné transformácie.",
+      "options": [
+        "Zoznam všetkých navštívených riešení",
+        "Krátkodobú pamäť zakázaných stavov alebo ťahov",
+        "Populáciu kandidátnych riešení",
+        "Množinu najlepších globálnych riešení"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ts_memory_types",
+      "type": "mc_multi",
+      "question": "Aké typy pamäte sa spomínajú pri Tabu Search?",
+      "explanation": "Tabu Search môže využívať viacero úrovní pamäte.",
+      "options": [
+        "Krátkodobá pamäť",
+        "Strednodobá pamäť",
+        "Dlhodobá pamäť",
+        "Vyrovnávacia pamäť procesora",
+        "Pamäť fitness funkcie"
+      ],
+      "correct": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "ts_tabu_size",
+      "type": "mc_single",
+      "question": "Prečo je veľkosť tabu listu dôležitým parametrom Tabu Search?",
+      "explanation": "Veľkosť tabu listu ovplyvňuje schopnosť algoritmu uniknúť z lokálnych extrémov.",
+      "options": [
+        "Určuje veľkosť stavového priestoru",
+        "Ovplyvňuje mieru zacyklenia a diverzitu hľadania",
+        "Zabezpečuje deterministickú konvergenciu",
+        "Nahrádza potrebu susedných riešení"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ts_advantages",
+      "type": "mc_multi",
+      "question": "Označte výhody metódy Tabu Search:",
+      "explanation": "Tabu Search rozširuje hill climbing o pamäťový mechanizmus.",
+      "options": [
+        "Schopnosť uniknúť z lokálnych extrémov",
+        "Jednoduchá implementácia základného princípu",
+        "Práca s populáciou riešení",
+        "Riadené prehľadávanie stavového priestoru",
+        "Zaručené nájdenie globálneho optima"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "ts_disadvantages",
+      "type": "mc_multi",
+      "question": "Označte nevýhody metódy Tabu Search:",
+      "explanation": "Výkon Tabu Search závisí od vhodného nastavenia parametrov.",
+      "options": [
+        "Citlivosť na veľkosť tabu listu",
+        "Vyššie pamäťové nároky než hill climbing",
+        "Deterministické správanie bez flexibility",
+        "Nutnosť správne definovať susedné riešenia",
+        "Neschopnosť pracovať s lokálnymi riešeniami"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    }
+  ]
+}

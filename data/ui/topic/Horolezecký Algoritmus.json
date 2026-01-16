@@ -1,0 +1,110 @@
+{
+  "topic_id": "Horolezecký Algoritmus",
+  "topic_name": "Horolezecký Algoritmus",
+  "questions": [
+    {
+      "id": "hc_definition",
+      "type": "mc_single",
+      "question": "Čo vystihuje horolezecký algoritmus (Hill Climbing)?",
+      "explanation": "Horolezecký algoritmus je heuristický vyhľadávací algoritmus založený na lokálnom zlepšovaní riešenia.",
+      "options": [
+        "Algoritmus, ktorý paralelne prehľadáva viacero riešení naraz",
+        "Algoritmus, ktorý sa iteratívne presúva do lepších susedných stavov",
+        "Algoritmus, ktorý využíva pravdepodobnosť na výber riešení",
+        "Algoritmus, ktorý systematicky prehľadáva celý stavový priestor"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "hc_properties",
+      "type": "mc_multi",
+      "question": "Označte správne tvrdenia o správaní horolezeckého algoritmu:",
+      "explanation": "Hill Climbing je lokálny algoritmus pracujúci s jediným aktuálnym riešením.",
+      "options": [
+        "Algoritmus pracuje vždy len s jedným aktuálnym riešením",
+        "Algoritmus generuje populáciu riešení v každej iterácii",
+        "Algoritmus môže skončiť v lokálnom maxime",
+        "Výsledok algoritmu závisí od počiatočného riešenia",
+        "Algoritmus vždy konverguje ku globálnemu optimu"
+      ],
+      "correct": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "hc_termination",
+      "type": "mc_single",
+      "question": "Za akých podmienok sa horolezecký algoritmus zvyčajne ukončí?",
+      "explanation": "Algoritmus sa zastaví, keď v okolí aktuálneho riešenia neexistuje lepší nasledovník.",
+      "options": [
+        "Keď sa dosiahne vopred definovaný počet iterácií",
+        "Keď sa nenájde žiadny sused s lepšou hodnotou cieľovej funkcie",
+        "Keď sa preskúma celý stavový priestor riešení",
+        "Keď sa dosiahne minimálna hodnota cieľovej funkcie"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "hc_advantages_1",
+      "type": "mc_multi",
+      "question": "Označte výhody horolezeckého algoritmu:",
+      "explanation": "Horolezecký algoritmus je jednoduchý a efektívny v určitých typoch úloh.",
+      "options": [
+        "Jednoduchá implementácia algoritmu",
+        "Schopnosť garantovane nájsť globálne optimum",
+        "Efektívnosť pri problémoch s dobre definovanými lokálnymi maximami",
+        "Nezávislosť výsledku od počiatočného riešenia",
+        "Možnosť paralelného spracovania viacerých riešení"
+      ],
+      "correct": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "hc_advantages_2",
+      "type": "mc_single",
+      "question": "Pre ktoré problémy je horolezecký algoritmus obzvlášť vhodný?",
+      "explanation": "Algoritmus funguje dobre tam, kde lokálne maximum často zodpovedá aj globálnemu riešeniu.",
+      "options": [
+        "Problémy s chaotickým a diskontinuálnym priestorom riešení",
+        "Problémy s dobre definovanými lokálnymi maximami",
+        "Problémy vyžadujúce prehľadanie celého priestoru",
+        "Problémy s vysokou mierou náhodnosti hodnotenia"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "hc_disadvantages_1",
+      "type": "mc_multi",
+      "question": "Označte nevýhody horolezeckého algoritmu:",
+      "explanation": "Hill Climbing je lokálna optimalizačná metóda bez mechanizmu úniku z lokálnych extrémov.",
+      "options": [
+        "Možnosť uviaznutia v lokálnom maxime",
+        "Vysoká výpočtová náročnosť algoritmu",
+        "Silná závislosť od počiatočného riešenia",
+        "Nutnosť udržiavať veľkú pamäťovú štruktúru",
+        "Zložité nastavovanie viacerých parametrov"
+      ],
+      "correct": [
+        0,
+        2
+      ]
+    },
+    {
+      "id": "hc_disadvantages_2",
+      "type": "mc_single",
+      "question": "Prečo horolezecký algoritmus nemusí nájsť globálne optimum?",
+      "explanation": "Algoritmus sa riadi len lokálnym zlepšovaním bez možnosti prijatia horšieho riešenia.",
+      "options": [
+        "Pretože nepracuje s presnou cieľovou funkciou",
+        "Pretože sa môže zastaviť v lokálnom maxime",
+        "Pretože generuje príliš málo nasledovníkov",
+        "Pretože nepoužíva náhodné počiatočné riešenie"
+      ],
+      "correct": 1
+    }
+  ]
+}

@@ -1,0 +1,156 @@
+{
+  "topic_id": "Simulované žíhanie",
+  "topic_name": "Simulované žíhanie",
+  "questions": [
+    {
+      "id": "sa_definition",
+      "type": "mc_single",
+      "question": "Čo je simulované žíhanie (Simulated Annealing)?",
+      "explanation": "Simulované žíhanie je heuristický optimalizačný algoritmus odvodený od horolezeckého algoritmu, ktorý s určitou pravdepodobnosťou pripúšťa aj zhoršenie riešenia.",
+      "options": [
+        "Deterministický algoritmus na nájdenie globálneho optima bez použitia náhody",
+        "Rozšírenie horolezeckého algoritmu, ktoré umožňuje prijímať aj horšie riešenia",
+        "Paralelný algoritmus založený na genetických operáciách",
+        "Presná metóda riešenia NP-úplných problémov"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "sa_vs_hillclimbing",
+      "type": "mc_single",
+      "question": "Hlavný rozdiel medzi horolezeckým algoritmom a simulovaným žíhaním je:",
+      "explanation": "SA umožňuje s určitou pravdepodobnosťou prijať aj horšie riešenie, čím sa vie dostať z lokálnych miním.",
+      "options": [
+        "SA pracuje s populáciou riešení, hill climbing len s jedným",
+        "SA nikdy nekonverguje do lokálneho extrému",
+        "SA umožňuje akceptovať horšie riešenia na základe teploty",
+        "Hill climbing nepoužíva cieľovú funkciu"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "sa_state_space",
+      "type": "mc_single",
+      "question": "Koľko stavov / konfigurácií má simulované žíhanie aktívnych v jednom čase?",
+      "explanation": "Rovnako ako hill climbing a tabu search, SA pracuje vždy len s jedným aktuálnym stavom.",
+      "options": [
+        "Celú populáciu stavov",
+        "Dva stavy – aktuálny a najlepší nájdený",
+        "Presne jeden aktuálny stav",
+        "Počet stavov závisí od teploty"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "sa_temperature_meaning",
+      "type": "mc_single",
+      "question": "Čo reprezentuje teplota v simulovanom žíhaní?",
+      "explanation": "Teplota určuje pravdepodobnosť, že algoritmus prijme horšie riešenie z okolia aktuálneho stavu.",
+      "options": [
+        "Rýchlosť výpočtu algoritmu",
+        "Počet generovaných nasledovníkov",
+        "Pravdepodobnosť prijatia horšieho riešenia",
+        "Presnosť výpočtu cieľovej funkcie"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "sa_acceptance",
+      "type": "mc_multi",
+      "question": "Označte správne tvrdenia o akceptačnom kritériu v simulovanom žíhaní:",
+      "explanation": "Lepšie riešenia sa prijímajú vždy, horšie len s pravdepodobnosťou závislou od teploty a rozdielu energie.",
+      "options": [
+        "Lepšie riešenia sú vždy prijaté",
+        "Horšie riešenia sú prijímané len pri nulovej teplote",
+        "Pravdepodobnosť prijatia horšieho riešenia klesá so znižujúcou sa teplotou",
+        "Akceptácia horších riešení pomáha uniknúť z lokálnych miním",
+        "Rozdiel hodnoty cieľovej funkcie nemá vplyv na akceptáciu"
+      ],
+      "correct": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "sa_zero_temperature",
+      "type": "mc_single",
+      "question": "Ako sa správa simulované žíhanie pri teplote T = 0?",
+      "explanation": "Pri nulovej teplote SA prestáva prijímať horšie riešenia a správa sa ako klasický hill climbing.",
+      "options": [
+        "Algoritmus sa zastaví",
+        "Správa sa identicky ako tabu search",
+        "Správa sa identicky ako horolezecký algoritmus",
+        "Začne generovať viac nasledovníkov"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "cooling_schedule",
+      "type": "mc_multi",
+      "question": "Čo patrí medzi bežné ochladzovacie plány v simulovanom žíhaní?",
+      "explanation": "Ochladzovací plán určuje, ako sa teplota v čase znižuje.",
+      "options": [
+        "Lineárny pokles teploty",
+        "Geometrický pokles teploty",
+        "Exponenciálny nárast teploty",
+        "Fixná teplota počas celého behu",
+        "Relatívny pokles teploty pomocou koeficientu α"
+      ],
+      "correct": [
+        0,
+        1,
+        4
+      ]
+    },
+    {
+      "id": "sa_parameters",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich patria medzi hlavné parametre simulovaného žíhania?",
+      "explanation": "Nesprávne nastavené parametre môžu viesť k pomalej konvergencii alebo uviaznutiu v lokálnom extréme.",
+      "options": [
+        "Počiatočná teplota",
+        "Veľkosť populácie",
+        "Dĺžka jednej etapy (počet iterácií pri danej teplote)",
+        "Rýchlosť poklesu teploty",
+        "Počet krížení"
+      ],
+      "correct": [
+        0,
+        2,
+        3
+      ]
+    },
+    {
+      "id": "sa_fast_cooling",
+      "type": "mc_single",
+      "question": "Aký je dôsledok príliš rýchleho ochladzovania v simulovanom žíhaní?",
+      "explanation": "Príliš rýchle ochladzovanie môže spôsobiť, že algoritmus nestihne preskúmať stavový priestor.",
+      "options": [
+        "Algoritmus získa presnejšie riešenie",
+        "Zvýši sa pravdepodobnosť nájdenia globálneho optima",
+        "Algoritmus sa správa skoro ako hill climbing",
+        "Algoritmus prestane používať náhodu"
+      ],
+      "correct": 2
+    },
+    {
+      "id": "sa_advantages",
+      "type": "mc_multi",
+      "question": "Označte výhody simulovaného žíhania:",
+      "explanation": "SA je jednoduchý, flexibilný a vhodný pre veľké a komplikované priestory riešení.",
+      "options": [
+        "Jednoduchá implementácia",
+        "Zaručené nájdenie globálneho optima",
+        "Schopnosť uniknúť z lokálnych miním",
+        "Flexibilné použitie pre rôzne optimalizačné úlohy",
+        "Nezávislosť od nastavenia parametrov"
+      ],
+      "correct": [
+        0,
+        2,
+        3
+      ]
+    }
+  ]
+}

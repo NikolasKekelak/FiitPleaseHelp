@@ -1,5 +1,22 @@
 {
   "course": "ui",
   "course_name": "Umelá inteligencia",
-  "topics": []
+  "topics": [
+    {
+      "id": "Generačné Algoritmy",
+      "file": "topic/Generačné Algoritmy.json"
+    },
+    {
+      "id": "Simulované žíhanie",
+      "file": "topic/Simulované žíhanie.json"
+    },
+    {
+      "id": "Horolezecký Algoritmus",
+      "file": "topic/Horolezecký Algoritmus.json"
+    },
+    {
+      "id": "Tabu search",
+      "file": "topic/Tabu search.json"
+    }
+  ]
 }

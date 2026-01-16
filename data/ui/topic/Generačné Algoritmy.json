@@ -1,0 +1,260 @@
+{
+  "topic_id": "Generačné Algoritmy",
+  "topic_name": "Generačné Algoritmy",
+  "questions": [
+    {
+      "id": "ga_definition",
+      "type": "mc_single",
+      "question": "Čo najlepšie vystihuje genetický algoritmus?",
+      "explanation": "Genetický algoritmus je evolučná heuristika inšpirovaná princípmi prirodzeného výberu.",
+      "options": [
+        "Algoritmus, ktorý systematicky prehľadáva celý stavový priestor",
+        "Evolučný algoritmus pracujúci s populáciou riešení a operátormi evolúcie",
+        "Greedy algoritmus založený na lokálnom zlepšovaní riešení",
+        "Deterministický algoritmus založený na presnom výpočte gradientu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_population",
+      "type": "mc_single",
+      "question": "Čo v genetickom algoritme predstavuje populácia?",
+      "explanation": "Populácia je množina kandidátnych riešení v jednej generácii algoritmu.",
+      "options": [
+        "Množina všetkých možných riešení problému",
+        "Skupina chromozómov reprezentujúcich riešenia v danej generácii",
+        "Postupnosť génov jedného konkrétneho riešenia",
+        "Pamäťová štruktúra uchovávajúca najlepšie riešenia"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_fitness",
+      "type": "mc_single",
+      "question": "Aká je úloha fitness (účelovej) funkcie v genetickom algoritme?",
+      "explanation": "Fitness funkcia určuje mieru úspešnosti jednotlivých riešení.",
+      "options": [
+        "Generuje nové riešenia pomocou mutácie",
+        "Vyjadruje kvalitu riešenia vzhľadom na optimalizačný cieľ",
+        "Určuje veľkosť populácie v ďalšej generácii",
+        "Zabezpečuje diverzitu génov v populácii"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_operators",
+      "type": "mc_multi",
+      "question": "Označte genetické operátory používané v genetickom algoritme:",
+      "explanation": "Genetické operátory zabezpečujú variabilitu a kombinovanie riešení.",
+      "options": [
+        "Kríženie (rekombinácia)",
+        "Mutácia",
+        "Deterministické triedenie riešení",
+        "Výber rodičov",
+        "Backtracking"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "ga_selection",
+      "type": "mc_single",
+      "question": "Aký je hlavný cieľ výberu (selection) v genetickom algoritme?",
+      "explanation": "Výber určuje, ktoré riešenia budú mať väčšiu šancu vytvoriť potomkov.",
+      "options": [
+        "Zabezpečiť rovnakú šancu všetkých jedincov",
+        "Uprednostniť lepšie hodnotené riešenia pri tvorbe novej populácie",
+        "Zachovať všetky riešenia bez zmeny",
+        "Minimalizovať počet mutácií v populácii"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_mutation_role",
+      "type": "mc_single",
+      "question": "Prečo je mutácia dôležitá v genetickom algoritme?",
+      "explanation": "Mutácia pomáha udržiavať genetickú rozmanitosť a predchádza stagnácii.",
+      "options": [
+        "Zaručuje rýchlu konvergenciu ku globálnemu optimu",
+        "Umožňuje zavádzanie nových genetických variácií do populácie",
+        "Znižuje potrebu fitness funkcie",
+        "Nahrádza proces kríženia medzi riešeniami"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_advantages",
+      "type": "mc_multi",
+      "question": "Označte výhody genetického algoritmu:",
+      "explanation": "Genetické algoritmy sú robustné heuristiky vhodné pre zložité optimalizačné úlohy.",
+      "options": [
+        "Schopnosť uniknúť lokálnym optimám",
+        "Prirodzená paralelizácia výpočtu",
+        "Zaručené nájdenie globálneho optima",
+        "Použiteľnosť v zašumených a nelineárnych prostrediach",
+        "Nutnosť presného matematického modelu problému"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "ga_disadvantages",
+      "type": "mc_multi",
+      "question": "Označte nevýhody genetického algoritmu:",
+      "explanation": "Výkon genetického algoritmu výrazne závisí od návrhu a nastavenia parametrov.",
+      "options": [
+        "Citlivosť na nastavenie parametrov algoritmu",
+        "Vysoká výpočtová náročnosť pri veľkých populáciách",
+        "Deterministické správanie algoritmu",
+        "Závislosť kvality riešenia od fitness funkcie",
+        "Neschopnosť pracovať s diskrétnymi problémami"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "ga_principle",
+      "type": "mc_single",
+      "question": "Na akom základnom princípe sú postavené genetické algoritmy?",
+      "explanation": "Genetické algoritmy sú inšpirované biologickou evolúciou a prirodzeným výberom.",
+      "options": [
+        "Na deterministickej optimalizácii pomocou gradientu",
+        "Na simulácii evolučných procesov a selekcie",
+        "Na systematickom prehľadávaní stavového priestoru",
+        "Na exaktnom riešení kombinatorických úloh"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_parallelism",
+      "type": "mc_single",
+      "question": "Prečo sa genetické algoritmy považujú za prirodzene paralelné?",
+      "explanation": "Jednotlivé riešenia v populácii môžu byť vyhodnocované nezávisle od seba.",
+      "options": [
+        "Pretože používajú paralelné triedenie chromozómov",
+        "Pretože každé riešenie sa vyhodnocuje nezávisle",
+        "Pretože kríženie prebieha súčasne pre všetky gény",
+        "Pretože vždy využívajú viacero procesorov"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_population_size",
+      "type": "mc_single",
+      "question": "Aký je dôsledok príliš malej populácie v genetickom algoritme?",
+      "explanation": "Malá populácia obmedzuje diverzitu a prehľadanie stavového priestoru.",
+      "options": [
+        "Zvýši sa rýchlosť konvergencie ku globálnemu optimu",
+        "Zníži sa rozmanitosť riešení a preskúmaná časť priestoru",
+        "Algoritmus prestane používať kríženie",
+        "Výsledky budú deterministicky presné"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_population_large",
+      "type": "mc_single",
+      "question": "Čo je typickým dôsledkom príliš veľkej populácie?",
+      "explanation": "Veľká populácia zvyšuje výpočtovú náročnosť bez primeraného zisku.",
+      "options": [
+        "Výrazné zlepšenie kvality riešenia",
+        "Zvýšenie výpočtovej náročnosti algoritmu",
+        "Eliminácia potreby mutácie",
+        "Zníženie citlivosti na fitness funkciu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_fitness_quality",
+      "type": "mc_single",
+      "question": "Prečo je návrh fitness funkcie kľúčový pre úspech genetického algoritmu?",
+      "explanation": "Riešenie je len také dobré, ako je dobrá jeho fitness funkcia.",
+      "options": [
+        "Pretože fitness funkcia riadi evolučný tlak",
+        "Pretože fitness funkcia určuje veľkosť populácie",
+        "Pretože fitness funkcia nahrádza kríženie",
+        "Pretože fitness funkcia eliminuje potrebu mutácie"
+      ],
+      "correct": 0
+    },
+    {
+      "id": "ga_selection_pressure",
+      "type": "mc_single",
+      "question": "Čo vyjadruje selekčný tlak v genetickom algoritme?",
+      "explanation": "Selekčný tlak určuje mieru zvýhodnenia lepších jedincov pri výbere.",
+      "options": [
+        "Počet génov v chromozóme",
+        "Mieru preferovania lepších riešení pri výbere",
+        "Pravdepodobnosť mutácie génov",
+        "Rýchlosť poklesu diverzity populácie"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_convergence",
+      "type": "mc_single",
+      "question": "Čo znamená predčasná konvergencia genetického algoritmu?",
+      "explanation": "Populácia sa stane príliš homogénnou ešte pred nájdením dobrého riešenia.",
+      "options": [
+        "Algoritmus rýchlo nájde globálne optimum",
+        "Algoritmus stratí diverzitu a uviazne v suboptimálnom riešení",
+        "Algoritmus prestane generovať nové populácie",
+        "Algoritmus automaticky zvýši mutáciu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_termination",
+      "type": "mc_multi",
+      "question": "Ktoré z nasledujúcich môžu byť kritériá ukončenia genetického algoritmu?",
+      "explanation": "Ukončenie algoritmu je dané praktickými alebo kvalitatívnymi kritériami.",
+      "options": [
+        "Dosiahnutie maximálneho počtu generácií",
+        "Dosiahnutie dostatočne dobrej hodnoty fitness",
+        "Úplné prehľadanie stavového priestoru",
+        "Zastavenie zlepšovania riešenia",
+        "Dosiahnutie nulovej mutácie"
+      ],
+      "correct": [
+        0,
+        1,
+        3
+      ]
+    },
+    {
+      "id": "ga_noise",
+      "type": "mc_single",
+      "question": "Prečo sú genetické algoritmy vhodné pre zašumené prostredia?",
+      "explanation": "GA sú robustné voči nepresnostiam hodnotenia riešení.",
+      "options": [
+        "Pretože používajú presné matematické modely",
+        "Pretože pracujú s populáciou a stochastikou",
+        "Pretože fitness funkcia je vždy deterministická",
+        "Pretože eliminujú náhodnosť výpočtu"
+      ],
+      "correct": 1
+    },
+    {
+      "id": "ga_solution_quality",
+      "type": "mc_single",
+      "question": "Ako sa typicky správa kvalita riešenia genetického algoritmu v čase?",
+      "explanation": "Genetický algoritmus postupne zlepšuje riešenia s rastúcim počtom generácií.",
+      "options": [
+        "Kvalita riešenia sa zhoršuje s časom",
+        "Kvalita riešenia sa postupne zlepšuje",
+        "Kvalita riešenia je konštantná",
+        "Kvalita riešenia sa mení náhodne bez trendu"
+      ],
+      "correct": 1
+    }
+  ]
+}

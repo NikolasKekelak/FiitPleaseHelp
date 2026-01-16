@@ -127,6 +127,7 @@
       "correct": [
         0,
         1,
+        2,
         3
       ]
     },
@@ -426,7 +427,8 @@
       ],
       "correct": [
         2,
-        3
+        3,
+        4
       ]
     },
     {
@@ -794,6 +796,34 @@
         "Nejde o porušenie, ak obchodník databázu skopíroval až po skončení pracovného pomeru."
       ],
       "correct": [0, 1, 2, 3]
+    },
+    {
+      "id": "spolocneznakyosobnehomajetku",
+      "type": "mc_multi",
+      "question": "Aké majú spoločné znaky predmety práv duševného vlastníctva?",
+      "explanation": ".",
+      "options": [
+        "použitie týchto objektov jednou osobou neobmedzuje zdroje iných",
+        "ide o objekty, ktorých sa môžeme dotknúť",
+        "sú to predmety, ktorých sa nevieme dotknúť",
+        "sú všadeprítomné",
+        "sú nevýlučiteľné"
+      ],
+      "correct": [0,2,3,4]
+    },
+    {
+      "id": "povinnosti podniku",
+      "type": "mc_multi",
+      "question": "Ktoré povinosti má podnik v oblasti poskytovania verejných služieb?",
+      "explanation": ".",
+      "options": [
+        "Poskytovať verejne dostupné služby",
+        "Poskytovať infraštruktúru výhradne pre štátne účely",
+        "Vykonávať redakčnú kontrolu nad obsahom",
+        "Zabezpečiť ochranu osobných údajov",
+        "Uchovávať údeje o uživateľoch verejných služieb"
+      ],
+      "correct": [0,3,4]
     }
 
 
